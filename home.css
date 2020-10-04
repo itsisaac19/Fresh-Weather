@@ -1,0 +1,281 @@
+@keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+  }
+  }
+  /*Fade out */
+  @keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-moz-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-webkit-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-o-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-ms-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+  }
+  }
+#back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(240, 240, 240);
+}
+#greensplit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32%;
+    height: 100vh;
+    background-color: #BCD5BF;
+}
+#flowers {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-image: url(./FlowersandStuff-01.png);
+}
+#biggrid {
+    width: 93%;
+    height: 90vh;
+    background-color: rgb(129, 129, 129, 0.001);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#topgrid {
+    width: 100%;
+    height: 12vh;
+    background-color: rgb(177, 177, 177, 0.001);
+    margin: 0;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#logosquare {
+    width: 90px;
+    height: 90px;
+    background-color: rgb(207, 207, 207);
+    box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
+    border-radius: 7px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 63px;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-position: center;
+    background-size: 155%;
+}
+#dotsquare {
+    position: absolute;
+    display: flex;
+    width: 90px;
+    height: 90px;
+    margin: 0;
+    top: 50%;
+    left: 163px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
+    border-radius: 7px;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+#dots:hover {
+    transform: rotate(90deg);
+    transition: ease-out 0.4s;
+    cursor: pointer;
+    box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
+}
+#dots {
+    transition: ease-in 0.2s;
+    z-index: 1000;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+#dots:active {
+    box-shadow: none;
+    margin-top: 11%;
+}
+.expandhoriztranslate {
+    transition: ease-in 0.5s;
+    width: 320%;
+}
+.closedhoriztranslate {
+    transition: ease-in 0.5s;
+    width: 100%;
+}
+#expandthedots {
+    position: absolute;
+    display: flex;
+    left: 0px;
+    height: 100%;
+    border-radius: 7px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
+    transition: ease-in 0.5s;
+    align-items: center;
+    justify-content: center;
+}
+.customizefadein {
+    animation: fadeIn ease 1.5s;
+}
+.customizefadeout {
+    animation: fadeOut ease 0.7s;
+}
+#customize {
+    display: none;
+    margin-top: 20px;
+    margin-left: 40px;
+    font-size: 25px;
+    font-family: 'Barlow', sans-serif;
+}
+#bodygrid {
+    width: 100%;
+    height: 72vh;
+    background-color: rgb(177, 177, 177, 0.001);
+    margin: 0;
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#leftopbodygrid {
+    width: 49.3%;
+    height: 40vh;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
+    border-radius: 7px;
+    margin: 0;
+    position: absolute;
+    top: 21vh;
+    left: 26%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#leftbottombodygrid {
+    width: 49.3%;
+    height: 18vh;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
+    border-radius: 7px;
+    margin: 0;
+    position: absolute;
+    top: 74%;
+    left: 26%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#leftbottomrightbodygrid {
+    width: 40.8%;
+    height: 18vh;
+    background-color: rgb(233, 233, 233);
+    box-shadow: none;
+    border-radius: 0px 7px 7px 0px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 79.7%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#rightbodygrid {
+    width: 29.3%;
+    height: 64vh;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
+    border-radius: 7px;
+    margin: 0;
+    position: absolute;
+    top: 46%;
+    left: 80%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
