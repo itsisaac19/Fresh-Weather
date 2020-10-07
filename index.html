@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <title>Document</title>
-    <link rel="stylesheet" href="../Fresh Weather/home.css">
+    <link rel="stylesheet" href="/home.css" type="text/css">
 </head>
 <body>
     <div id="back"></div>
@@ -14,22 +14,33 @@
     <div id="biggrid">
         <div id="topgrid">
             <div id="logosquare">
-                <img id="logo" src="https://i.ibb.co/pL7tKqV/Light-Tree.jpg" style="width: 90px; border-radius: 7px;">
+                <div id="expandthelogo" class="closedhoriztranslatelogo">
+                    <p id="settings">settings</p>
+                </div>
+                <img id="logo" src="./FreshLogos/LightTree.png" onmouseover="expandthelogo()" onmouseout="closethelogo()"/>
             </div>
-            <div id="dotsquare">
+            <div id="dotsquare" class="pulldots">
                 <div id="expandthedots" class="closedhoriztranslate">
                     <p id="customize">customize</p>
                 </div>
-                <img id="dots" onclick="dotsclicked()" onmouseover="expandthedots()" onmouseout="closethedots()" src="./FreshLogos/DotsMenu.png" style="width: 60px; height: 55px; border-radius: 7px;">
+                <img id="dots" onmouseover="expandthedots()" onmouseout="closethedots()" src="./FreshLogos/DotsMenu.png" style="width: 60px; height: 55px; border-radius: 7px;">
+            </div>
+            <div id="clocksquare">
+                <div id="clock"></div>
             </div>
         </div>
         <div id="bodygrid">
-            <div id="leftopbodygrid"></div>
+            <div id="leftopbodygrid">
+                <p id="temp">70°</p>
+                <p id="desc">Sunny</p>
+                <img id="wicon"/>
+                <p id="date">July 4th, 2020</p>
+            </div>
             <div id="leftbottombodygrid">
                 <div id="leftbottomrightbodygrid"></div>
             </div>
             <div id="rightbodygrid"></div>
-        </div>
+        </div> 
     </div>
 </body>
 <script src="./home.js"></script>
