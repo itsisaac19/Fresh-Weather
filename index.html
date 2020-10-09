@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>FRESH</title>
     <link rel="stylesheet" href="/home.css" type="text/css">
 </head>
 <body>
     <div id="back"></div>
-    <div id="greensplit"></div>
-    <div id="flowers"></div>
+    <div id="minheight">
+        <p id="uhoh">uh-oh! make your browser size bigger to view this website</p>
+    </div>
+    <div id="greensplit" class="greensplitshow"></div>
+    <div id="notibubble" class="notiup">Notification</div>
+    <div id="exit" class="exithide" onclick="exitChangeLayout()">Exit</div>
+    <div id="flowers" class="flowersshown"></div>
     <div id="biggrid">
         <div id="topgrid">
             <div id="logosquare">
@@ -23,13 +28,13 @@
                 <div id="expandthedots" class="closedhoriztranslate">
                     <p id="customize">customize</p>
                 </div>
-                <img id="dots" onmouseover="expandthedots()" onmouseout="closethedots()" src="./FreshLogos/DotsMenu.png" style="width: 60px; height: 55px; border-radius: 7px;">
+                <img id="dots" onclick="customize()" onmouseover="expandthedots()" onmouseout="closethedots()" src="./FreshLogos/DotsMenu.png" style="width: 60px; height: 55px; border-radius: 7px;">
             </div>
             <div id="clocksquare">
                 <div id="clock"></div>
             </div>
         </div>
-        <div id="bodygrid">
+        <div id="bodygrid" class="goback">
             <div id="leftopbodygrid">
                 <p id="temp">70°</p>
                 <p id="desc">Sunny</p>
@@ -41,6 +46,24 @@
             </div>
             <div id="rightbodygrid"></div>
         </div> 
+
+        <div id="customizesquare" class="swingout" class="displaynone">
+            <div id="leftcolumntext">
+                <p id="basic">Basic</p>
+                <p id="advanced">Advanced (Beta)</p>
+                <div id="return" onclick="freshdashboard()">Return</div>
+            </div>
+            <img id="divideline" src="Dividerline.png">
+            <div id="bodytext">
+                <div id="headerbasic">
+                    <p id="backgroundcolor">Background Color</p>
+                    <p id="theme">Theme</p>
+                </div>
+                <div id="headeradvanced">
+                    <p onclick="changeLayout()" id="layout">Layout (Beta)</p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="./home.js"></script>

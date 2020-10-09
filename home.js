@@ -4,6 +4,31 @@ var currtime = document.getElementById("clock");
 
 //Animations:
 
+//customize page
+
+function customize() {
+   var bodygrid = document.getElementById("bodygrid")
+   var customize = document.getElementById("customizesquare")
+   
+   bodygrid.classList.remove("goback");
+   bodygrid.classList.add("goleft");
+
+   customize.classList.remove("swingout")
+   customize.classList.add("swingin")
+}
+//dashboard
+
+function freshdashboard () {
+    var bodygrid = document.getElementById("bodygrid")
+    var customize = document.getElementById("customizesquare")
+    
+    bodygrid.classList.add("goback");
+    bodygrid.classList.remove("goleft");
+ 
+    customize.classList.add("swingout")
+    customize.classList.remove("swingin")
+}
+
 //dots
 function expandthedots() {
     var element1 = document.getElementById("expandthedots");
@@ -70,6 +95,43 @@ function pulldots() {
     setTimeout(function(){
         var element = document.getElementById("dotsquare").style.left = "163px"
     },500);
+}
+//Layout Function 
+
+function changeLayout () {
+    freshdashboard();
+    document.getElementById("temp").innerHTML = "temperature"
+    document.getElementById("desc").innerHTML = "description"
+    document.getElementById("date").innerHTML = "today's date"
+    document.getElementById("notibubble").innerHTML = "Layout Mode"
+    
+    document.getElementById("notibubble").classList.add("notidown")
+    document.getElementById("notibubble").classList.remove("notiup")
+
+    document.getElementById("flowers").classList.add("flowershidden")
+    document.getElementById("flowers").classList.remove("flowersshown")
+
+    document.getElementById("greensplit").classList.remove("greensplitshow")
+    document.getElementById("greensplit").classList.add("greenspilthide")
+
+    setTimeout(function(){
+        document.getElementById("notibubble").classList.remove("notidown")
+        document.getElementById("notibubble").classList.add("notiup")
+    },2000);
+
+    setTimeout(function(){
+        document.getElementById("exit").classList.add("exitshow")
+        document.getElementById("exit").classList.remove("exithide")
+    },2200);
+}
+
+function exitChangeLayout() {
+
+    document.getElementById("exit").classList.remove("exitshow")
+    document.getElementById("exit").classList.add("exithide")
+    setTimeout(function(){
+        location.reload();
+    },300);
 }
 
 
@@ -354,9 +416,9 @@ function getCurrentWeather () {
      document.getElementById("wicon").src = currenticonend;
      document.getElementById("desc").innerHTML = (capitalizeFirstLetter(currenticonstart));
      document.getElementById("temp").innerHTML = currenttemp + "° " + data["temp"]["units"];
-     document.getElementById("stat1").innerHTML = currenthumidity + " " + data["humidity"]["units"];
-     document.getElementById("stat3").innerHTML = currentwindspeed + " " + data["wind_speed"]["units"];
-     document.getElementById("stat4").innerHTML = currentairpFinal + " " + data["baro_pressure"]["units"];
+     //document.getElementById("stat1").innerHTML = currenthumidity + " " + data["humidity"]["units"];
+     //document.getElementById("stat3").innerHTML = currentwindspeed + " " + data["wind_speed"]["units"];
+     //document.getElementById("stat4").innerHTML = currentairpFinal + " " + data["baro_pressure"]["units"];
 
  });
 } getCurrentWeather();
