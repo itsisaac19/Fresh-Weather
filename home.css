@@ -1,6 +1,29 @@
 body {
   overflow: hidden; /* Hide scrollbars */
 }
+#backwhite {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+}
+.backwhiteshow {
+  transition: ease-in 1.5s;
+  filter: opacity(1);
+} 
+.backwhitehide {
+  transition: ease-out 1.5s;
+  filter: opacity(0);
+} 
+.backwhitehidedisplay {
+  display: none;
+}
+.backwhiteshowdisplay {
+  display: block;
+}
 #minheight {
   position: absolute;
   left: 0;
@@ -12,17 +35,15 @@ body {
 
   text-align: center;
 }
-@media only screen and (max-height: 640px){
-  #minheight {
-    z-index: 1000;
-  }
+.fadeawayminheight {
+  transition: ease-in 0.9s;
+  filter: opacity(0);
+  z-index: 0;
 }
-@media only screen and (max-width: 760px){
-  #minheight {
-    z-index: 1000;
-  }
+.blockminheight {
+  z-index: 1000;
 }
-#minheight p {
+#uhoh {
   display: none;
   position: absolute;
   font-family: 'Barlow', sans-serif;
@@ -32,15 +53,52 @@ body {
   margin-top: -9.5px;
 }
 
-@media only screen and (max-width: 760px){
-  #minheight p {
+@media only screen and (max-width: 700px){
+  #uhoh {
     display: block; 
+    z-index: 1000;
   }
 }
 @media only screen and (max-height: 640px){
-  #minheight p {
+  #uhoh {
     display: block; 
+    z-index: 1000;
   }
+}
+#welcometext {
+  display: none;
+  position: absolute;
+  font-family: 'Barlow', sans-serif;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.hideWelcomeText {
+  transition: ease-out 0.6s;
+  filter: opacity(0);
+}
+.showWelcomeText {
+  transition: ease-in 0.6s;
+  filter: opacity(1);
+}
+#freshWelcomeLogo {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  z-index: 1000;
+  width: 400px;
+  height: 400px;
+}
+.logodown {
+  transition: ease-in-out 1.6s;
+  top: 50%;
+  filter: opacity(1);
+}
+.logoup {
+  transition: ease-in-out 1.2s;
+  top: 30%;
+  filter: opacity(0);
 }
 @keyframes fadeIn {
     0% {
@@ -178,7 +236,7 @@ body {
 }
 .notidown {
   transition: ease-out 0.7s;
-  top: 55px;
+  top: 45px;
   filter: opacity(1);
 }
 #exit {
@@ -189,7 +247,7 @@ body {
   height: 60px;
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
-  box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.06);
+  box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.10);
   z-index: 1000;
 
   text-align: center;
@@ -237,7 +295,7 @@ body {
     margin: 0;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 51.5%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
@@ -262,7 +320,7 @@ body {
     margin: 0;
     position: absolute;
     top: 50%;
-    left: 5.3%;
+    left: 55px;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 
@@ -322,7 +380,7 @@ body {
     height: 90px;
     margin: 0;
     top: 50%;
-    left: 13.5%;
+    left: 155px;
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
     border-radius: 7px;
@@ -634,4 +692,83 @@ body {
   top: 192px;
   transition: ease-in-out 0.2s;
   box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.06);
+}
+#dottedboxleft {
+  display: none;
+  position: absolute;
+  left:22px;
+  top: 410px;
+  margin-top: -16.7%;
+  height: 58%;
+  width: 3%;
+  border: solid;
+  border-style: dashed;
+  border-radius: 5px;
+  border-color: rgb(95, 95, 95);
+}
+#dottedboxleft{
+	-webkit-animation: flash linear 1s infinite;
+	animation: flash linear 1s infinite;
+}
+#dottedboxright {
+  display: none;
+  position: absolute;
+  right: 22px;
+  top: 410px;
+  margin-top: -16.7%;
+  height: 58%;
+  width: 3%;
+  border: solid;
+  border-style: dashed;
+  border-radius: 5px;
+  border-color: rgb(95, 95, 95);
+}
+#dottedboxright{
+	-webkit-animation: flash linear 1s infinite;
+  animation: flash linear 1s infinite;
+}
+@-webkit-keyframes flash {
+	0% { opacity: 1; } 
+	50% { opacity: .1; } 
+	100% { opacity: 1; }
+}
+@keyframes flash {
+	0% { opacity: 1; } 
+	50% { opacity: .1; } 
+	100% { opacity: 1; }
+}
+
+
+.css-input {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  transform: translate(-50%, -50%);
+
+  padding: 15px;
+  font-size: 16px;
+  border-width: 0px;
+  border-radius: 6px;
+  border-color: #CCCCCC;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-style: solid;
+  /*box-shadow: 1px 1px 15px rgba(66,66,66,.12);*/
+  text-align: center;
+  font-family: 'Barlow', sans-serif;
+  color: gray;
+}
+.css-input:focus {
+  outline:none;
+}
+.hidename {
+  transition: 0.6s;
+  filter: opacity(0);
+}
+.hidenamedisplay {
+  display: none;
+}
+.showname {
+  transition: 0.6s;
+  filter: opacity(1);
 }

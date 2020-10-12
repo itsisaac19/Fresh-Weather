@@ -2,6 +2,170 @@
 
 var currtime = document.getElementById("clock");
 
+
+//Welcome:
+
+function welcome() {
+
+    document.getElementById("name").classList.add("hidename")
+
+    if (localStorage.getItem("name") === null) {
+        newVisitor();
+        return;
+    }
+    showHome();
+    document.getElementById("notibubble").innerHTML = "Welcome, " + localStorage.getItem("name") 
+
+    document.getElementById("notibubble").classList.add("notidown")
+    document.getElementById("notibubble").classList.remove("notiup")
+
+    setTimeout(function(){
+        document.getElementById("notibubble").classList.remove("notidown")
+        document.getElementById("notibubble").classList.add("notiup")
+    },3000);
+}
+
+function newVisitor () {
+
+    document.getElementById("notibubble").innerHTML = "Welcome" 
+
+    var backwhite = document.getElementById("backwhite")
+    backwhite.classList.add("backwhiteshow")
+
+    document.getElementById("uhoh").style.zIndex = "0"
+    document.getElementById("welcometext").style.zIndex = "1000"
+    document.getElementById("welcometext").style.display = "block"
+
+    document.getElementById("welcometext").innerHTML = "Welcome to Fresh."
+
+    //Welcome text in view
+    setTimeout(function() {
+        document.getElementById("welcometext").classList.remove("hideWelcomeText")
+        document.getElementById("welcometext").classList.add("showWelcomeText")
+    },200);
+
+    //Welcome text fades away, logo fades in
+    setTimeout(function() {
+        document.getElementById("freshWelcomeLogo").classList.add("logodown")
+        document.getElementById("freshWelcomeLogo").classList.remove("logoup")
+
+        document.getElementById("welcometext").classList.add("hideWelcomeText")
+        document.getElementById("welcometext").classList.remove("showWelcomeText")
+    },3300);
+
+    //Logo fades away, name query is presented
+    setTimeout(function() {
+        document.getElementById("name").classList.remove("hidename")
+        document.getElementById("name").classList.add("showname")
+
+        document.getElementById("welcometext").innerHTML = "First off, what would you like to be called?"
+        document.getElementById("name").focus();
+        
+        document.getElementById("freshWelcomeLogo").classList.remove("logodown")
+        document.getElementById("freshWelcomeLogo").classList.add("logoup")
+        
+        //Welcome text shown as query
+      setTimeout(function() {
+        document.getElementById("welcometext").classList.remove("hideWelcomeText")
+        document.getElementById("welcometext").classList.add("showWelcomeText")
+        },200);
+
+    },7300);
+
+    //listening for when user enters name in
+    var input = document.getElementById("name");
+    input.addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+          // Cancel the default action, if needed
+          event.preventDefault();
+          //Get Data Quick
+          enteredname = input.value
+          localStorage.setItem("name", enteredname)
+          console.log(localStorage.getItem("name"))
+          // Trigger the showHome
+          setTimeout(function() {
+            showHome()
+          },100);
+        }
+      });
+
+}
+
+function showHome () {
+
+    document.getElementById("welcometext").classList.add("hideWelcomeText")
+    document.getElementById("welcometext").classList.remove("showWelcomeText")
+
+    document.getElementById("name").classList.add("hidename")
+    document.getElementById("name").classList.remove("showname")
+
+    var backwhite = document.getElementById("backwhite")
+    backwhite.classList.remove("backwhiteshow")
+    backwhite.classList.add("backwhitehide")
+
+    if (localStorage.getItem("name") === null) {
+        document.getElementById("notibubble").innerHTML = "Welcome"
+    } else {
+        document.getElementById("notibubble").innerHTML = "Welcome, " + localStorage.getItem("name") 
+    }
+    
+    setTimeout(function(){
+        document.getElementById("backwhite").classList.add("backwhitehidedisplay")
+        document.getElementById("name").classList.add("hidenamedisplay")
+    },1600);
+
+    setTimeout(function(){
+        document.getElementById("notibubble").classList.add("notidown")
+        document.getElementById("notibubble").classList.remove("notiup")
+    },1000);
+
+
+
+    setTimeout(function(){
+        document.getElementById("notibubble").classList.remove("notidown")
+        document.getElementById("notibubble").classList.add("notiup")
+    },5000);
+}
+
+
+function responsivewarning(x) {
+    if (width.matches) { // If media query matches
+      document.getElementById("backwhite").classList.remove("backwhitehide")
+      document.getElementById("backwhite").classList.add("backwhiteshowdisplay")
+      document.getElementById("backwhite").classList.remove("backwhitehidedisplay")
+    } else {
+      document.getElementById("backwhite").classList.add("backwhitehidedisplay")
+      document.getElementById("backwhite").classList.remove("backwhiteshowdisplay")
+    }
+  }
+  
+  var width = window.matchMedia("(max-width: 700px)")
+  responsivewarning(width) // Call listener function at run time
+  width.addListener(responsivewarning) // Attach listener function on state changes
+
+
+  function responsivewarning(height) {
+    if (height.matches) { // If media query matches
+      document.getElementById("backwhite").classList.remove("backwhitehide")
+      document.getElementById("backwhite").classList.add("backwhiteshowdisplay")
+      document.getElementById("backwhite").classList.remove("backwhitehidedisplay")
+    } else {
+      document.getElementById("backwhite").classList.add("backwhitehidedisplay")
+      document.getElementById("backwhite").classList.remove("backwhiteshowdisplay")
+    }
+  }
+  
+  var height = window.matchMedia("(max-height: 640px)")
+  responsivewarning(height) // Call listener function at run time
+  height.addListener(responsivewarning) // Attach listener function on state changes
+
+
+
+
+
+
+
 //Animations:
 
 //customize page
@@ -100,9 +264,21 @@ function pulldots() {
 
 function changeLayout () {
     freshdashboard();
-    document.getElementById("temp").innerHTML = "temperature"
-    document.getElementById("desc").innerHTML = "description"
-    document.getElementById("date").innerHTML = "today's date"
+
+    document.getElementById('leftopbodygrid').setAttribute('draggable', true);
+    document.getElementById('leftbottombodygrid').setAttribute('draggable', true);
+    document.getElementById('rightbodygrid').setAttribute('draggable', true);
+
+    document.getElementById('dottedboxleft').style.display = "block"
+    document.getElementById('dottedboxright').style.display = "block"
+
+    document.getElementById("temp").innerHTML = ""
+    document.getElementById("wicon").style.display = "none"
+    document.getElementById("desc").innerHTML = ""
+    document.getElementById("date").innerHTML = ""
+    document.getElementById("clock").style.display = "none"
+    document.getElementById("logo").style.display = "none"
+    document.getElementById("dots").style.display = "none"
     document.getElementById("notibubble").innerHTML = "Layout Mode"
     
     document.getElementById("notibubble").classList.add("notidown")
@@ -127,11 +303,16 @@ function changeLayout () {
 
 function exitChangeLayout() {
 
+    document.getElementById('dottedboxleft').style.display = "none"
+    document.getElementById('dottedboxright').style.display = "none"
+
     document.getElementById("exit").classList.remove("exitshow")
     document.getElementById("exit").classList.add("exithide")
+
     setTimeout(function(){
         location.reload();
     },300);
+
 }
 
 
@@ -276,8 +457,9 @@ function getCurrentWeather () {
 
 //----------------------------------------------------------------------
 
-
-
+    localStorage.setItem("lat", 45)
+    localStorage.setItem("lon", -93)
+    localStorage.setItem("units", "us")
 
  //REALTIME
  fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=temp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey=oATA14jpsO1MdhKOjKCscL6Aym7N6QAn')
