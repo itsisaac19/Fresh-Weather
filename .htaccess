@@ -1,4 +1,4 @@
 AuthType Basic
 AuthName "Protected Site"
-AuthUserFile //.htpasswd
+AuthUserFile /Users/isaactsai/Documents/GitHub/Fresh-Weather/.htpasswd
 require valid-user
