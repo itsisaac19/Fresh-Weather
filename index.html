@@ -6,47 +6,83 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <title>FRESH</title>
     <link rel="stylesheet" href="/home.css" type="text/css">
+    <link rel="icon" href="/FreshLogos/LightTree.png" id="light-scheme-icon">
+    <link rel="icon" href="/FreshLogos/DarkTree.png" id="dark-scheme-icon">
+    <link rel="stylesheet/less" type="text/css" href="/home.less" />
 </head>
-<body onload="welcome()">
+<body onload="testerror()" onload="welcome()" oncontextmenu="return false">
     <div id="back"></div>
     <div id="minheight">
-        <p id="uhoh">uh-oh! make your browser size bigger to view this website</p>
+        <p id="uhoh">Woah there! We aren't that responsive yet. Make your browser size bigger.</p>
         <p class="hideWelcomeText" id="welcometext">Welcome to Fresh.</p>
     </div>
-    <img class="logoup" id="freshWelcomeLogo" src="/FreshLogos/Fresh Logo-01.png"></img>
+    <img class="logoup FreshLogodisplaynone" id="freshWelcomeLogo" src="/FreshLogos/Fresh Logo-01.png"></img>
     <div id="greensplit" class="greensplitshow"></div>
     <div id="notibubble" class="notiup">Notification</div>
     <div id="exit" class="exithide" onclick="exitChangeLayout()">Exit</div>
     <div id="flowers" class="flowersshown"></div>
     <div id="biggrid">
-        <div id="topgrid">
-            <div id="logosquare">
-                <div id="expandthelogo" class="closedhoriztranslatelogo">
-                    <p id="settings">settings</p>
-                </div>
-                <img id="logo" src="./FreshLogos/LightTree.png" onmouseover="expandthelogo()" onmouseout="closethelogo()"/>
-            </div>
-            <div id="dotsquare" class="pulldots">
-                <div id="expandthedots" class="closedhoriztranslate">
-                    <p id="customize">customize</p>
-                </div>
-                <img id="dots" onclick="customize()" onmouseover="expandthedots()" onmouseout="closethedots()" src="./FreshLogos/DotsMenu.png" style="width: 60px; height: 55px; border-radius: 7px;">
-            </div>
-            <div id="clocksquare">
-                <div id="clock"></div>
-            </div>
+
+        <div id="logosquare">
+            <!--<div id="expandthelogo" class="closedhoriztranslatelogo">
+                <p id="settings">settings</p>
+            </div> -->
+            <img id="logo" onclick="showUpdates()" src="./FreshLogos/LightTree.png" onmouseover="expandthelogo()" onmouseout="closethelogo()"/>
         </div>
+        <div id="dotsquare" class="pulldots">
+            <!--<div id="expandthedots" class="closedhoriztranslate">
+                <p id="customize">customize</p>
+            </div> -->
+            <img id="dots" onclick="customize()" onmouseover="expandthedots()" onmouseout="closethedots()" src="./FreshLogos/DotsMenu.png" style="width: 60px; height: 55px; border-radius: 7px;">
+        </div>
+        <div id="clocksquare">
+            <div id="clock"></div>
+        </div>
+
         <div id="bodygrid" class="goback">
+            <div href="javascript:void(0);"  onclick="window.location.href='https://www.climacell.co/weather-api/';" id="climacell">Powered by</div>
             <div id="leftopbodygrid">
                 <p id="temp">70°</p>
+                <div id="temphighlow"></div>
                 <p id="desc">Sunny</p>
                 <img id="wicon"/>
                 <p id="date">July 4th, 2020</p>
+                <p id="city">Shoreview, MN</p>
             </div>
             <div id="leftbottombodygrid">
                 <div id="leftbottomrightbodygrid"></div>
             </div>
-            <div id="rightbodygrid"></div>
+            <div id="rightbodygrid">
+                <div id="statsgrid">
+ 
+                <div id="iconsgrid">
+                    <div id="stat1container">
+                        <h1>Humidity
+                            <div id="stat1"></div>
+                        </h1>
+                    </div>
+                    <img id="stat1icon" src="https://img.icons8.com/small/96/000000/humidity.png"/>
+                    <div id="stat2container">
+                        <h1>Rain Chance
+                            <div id="stat2"></div>
+                        </h1>
+                    </div>
+                    <img id="stat2icon" src="https://img.icons8.com/android/96/000000/light-rain-2.png"/>
+                    <div id="stat3container">
+                        <h1>Wind Speed
+                            <div id="stat3"></div>                       
+                        </h1>
+                    </div>
+                    <img id="stat3icon" src="https://img.icons8.com/small/96/000000/windy-weather.png"/>
+                    <div id="stat4container">
+                        <h1>Air Pressure
+                            <div id="stat4"></div>
+                        </h1>
+                    </div>
+                    <img id="stat4icon" src="https://img.icons8.com/small/96/000000/pressure.png"/>
+                </div>
+                </div>
+            </div>
         </div> 
 
         <div id="customizesquare" class="swingout" class="displaynone">
@@ -58,21 +94,58 @@
             <img id="divideline" src="Dividerline.png">
             <div id="bodytext">
                 <div id="headerbasic">
-                    <p id="backgroundcolor">Background Color</p>
+                    <p id="backgroundcolor">Background</p>
+                    <p id="colorselect">Color</p>
+                    <div id="colorstrip">
+                        <div id="colorgrid">
+                            <input type="color" id="bgcolorpicker">
+                            <div id="auto" onclick="autobgcolor()">AUTO</div>
+                        </div>
+                        
+                    </div>
+                    <p id="imgselect">Image</p>
+                    <div id="imgstrip">
+                        <div class="parent">
+                            <div id="default" onclick="defaultbg()"></div>
+                            <div id="rainbow" onclick="rainbowbg()"></div>
+                            <div id="tropical" onclick="tropicalbg()"></div>
+                            <div id="goldblue" onclick="goldblue()"></div>
+                        </div> 
+                    </div>
+                    
                     <p id="theme">Theme</p>
                 </div>
                 <div id="headeradvanced">
-                    <p onclick="changeLayout()" id="layout">Layout (Beta)</p>
+                    <p id="layout">Layout (Beta)</p>
+                    <button id="changeLayout" onclick="changeLayout()">Try it</button>
                 </div>
             </div>
         </div>
     </div>
     
-
+    <div id="buttonhold" class="buttonholdfadeout buttonholdhidedisplay">
+        <button onclick="contNewVisitor()" id="bubbly-button">lets go!</button>
+    </div>
     <div id="dottedboxleft"></div>
     <div id="dottedboxright"></div>
     <div id="backwhite"></div>
+    <div id="backwhiteHeight"></div>
     <input id="name" type="text" class="css-input"/>
+
+    <div id="updates">
+        <div id="updatesBox" style="display: none;" onscroll="hideArrow()">
+        </div>
+        <div name="arrow" class="arrow bounce"></div>
+        <div id="scrollText"></div>
+        <button onclick="showHome()" class="updateButtonHide" id="updateButton" type="button">Awesome!</button>
+    </div>
+    
+    
+    <div id="tutbox"><div>Customize your experience by clicking the 3 green dots. You can change the 
+        background color, image, and more.</div></div>
 </body>
-<script src="./home.js"></script>
+<script src="./securejs/home.js"></script>
+<script src="./errCatch.js"></script>
+<script src="./updates.js"></script>
+<script src="./weather2.js"></script>
 </html>
