@@ -6,7 +6,15 @@ if (window.matchMedia &&
 
 var currtime = document.getElementById("clock");
 
+//Disable Tab
 
+document.onkeydown = function (t) {
+    if(t.which == 9){
+     return false;
+    }
+   }
+
+   
 //Welcome:
 
 function welcome() {
@@ -14,7 +22,7 @@ function welcome() {
     localStorage.setItem("showingUpdates", "no");
 
     //localStorage.removeItem("name")
-    //localStorage.removeItem("updatesOctober10")
+    //localStorage.removeItem("updatesOctober19")
 
     document.getElementById("name").classList.add("hidename")
     document.getElementById("minheight").style.backgroundColor = localStorage.getItem("bgcolor")
@@ -39,13 +47,14 @@ function welcome() {
         newVisitor();
         return;
     }
-    if (localStorage.getItem("updatesOctober10") === null) {
+    if (localStorage.getItem("updatesOctober19") === null) {
         showUpdates ()
+        localStorage.setItem("updatesOctober19", "seen")
         return;
     }
 
     localStorage.getItem("userChooseAuto")
-    //console.log(localStorage.getItem("userChooseAuto"))
+    //console.log(localStorage.getItem("updatesOctober19"))
     //console.log(document.getElementById("minheight").style.backgroundColor)
 
     switch (localStorage.getItem("userChooseAuto")) {
@@ -79,6 +88,10 @@ function showUpdates () {
     //Change the showing updates to yes (for things that need to know whether the user is viewing the updates)
     localStorage.setItem("showingUpdates", "yes");
 
+    //Blur background 
+    document.getElementById("upBlur").classList.remove("updateBlurHide")
+    document.getElementById("upBlur").classList.add("updateBlurShow")
+
     //Show the update box
     document.getElementById("updates").style.display = "block" 
     var updatesBox = document.getElementById("updatesBox") 
@@ -98,10 +111,9 @@ function showUpdates () {
     //when the update button is clicked, hide the update box + set random lcl strg. values
     updateButton.addEventListener("click", function() {
         hideUpdates();
-        localStorage.setItem("updatesOctober10", "no")
 
         //Logs whether the user has seen the update
-        console.log(localStorage.getItem("updatesOctober10"))
+        //console.log(localStorage.getItem("updatesOctober10"))
     });
 
 
@@ -110,7 +122,7 @@ function showUpdates () {
 
         //alert("hideingupdates")
         //lcl strg. for user
-        localStorage.setItem("showingUpdates", "no");
+        //localStorage.setItem("showingUpdates", "no");
 
         //hide button + box
         setTimeout(function() {
@@ -126,6 +138,34 @@ function showUpdates () {
     }
 
 }
+
+function hideUpdates () {
+
+    var aB = document.getElementsByClassName("arrow")[0];
+    var updateButton = document.getElementById("updateButton");
+
+    //alert("hideingupdates")
+    //lcl strg. for user
+    localStorage.setItem("showingUpdates", "no");
+
+    document.getElementById("upBlur").classList.add("updateBlurHide")
+    document.getElementById("upBlur").classList.remove("updateBlurShow")
+
+    //hide button + box
+    setTimeout(function() {
+        aB.style.display = "none"
+        updateButton.classList.remove("updateButtonShow");
+        updateButton.classList.add("updateButtonHide");
+        updatesBox.style.display = "none"
+
+        document.getElementById("updates").style.display = "none" 
+    }, 300)
+    
+    
+}
+
+
+
 
     //Hide the bouncing arrow when the user scrolls down:
     function hideArrow () {
@@ -259,7 +299,7 @@ function contNewVisitor () {
               //Get Data Quick
               enteredname = input.value
               localStorage.setItem("name", enteredname)
-              console.log(localStorage.getItem("name"))
+              //console.log(localStorage.getItem("name"))
               // Trigger the showHome
               setTimeout(function() {
                 localStorage.setItem("tutorial", "yes")
@@ -271,6 +311,10 @@ function contNewVisitor () {
 
 }
 
+function hideTutorial () {
+    tutbox.classList.remove("tutboxShow")
+    tutbox.classList.add("tutboxHide")
+}
 
 function showHome () {
     //alert("showinghome")
@@ -290,14 +334,7 @@ function showHome () {
     } else {
         document.getElementById("notibubble").innerHTML = "Welcome, " + localStorage.getItem("name") 
     }
-    if (localStorage.getItem("tutorial", "yes")) {
-        setTimeout(function() {
-            tutbox = document.getElementById("tutbox");
 
-            tutbox.style.display = "block"
-            localStorage.setItem("tutorial", "no")
-        }, 2500);
-    }
     
     setTimeout(function(){
         document.getElementById("backwhite").classList.add("backwhitehidedisplay")
@@ -315,17 +352,39 @@ function showHome () {
         document.getElementById("notibubble").classList.remove("notidown")
         document.getElementById("notibubble").classList.add("notiup")
     },5000);
+
+    if (localStorage.getItem("tutorial", "yes")) {
+        document.getElementById('flowers').style.backgroundImage = "url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg)"
+    }
+
+    if (localStorage.getItem("updatesOctober19") === null) {
+        localStorage.setItem("updatesOctober19", "seen")
+        showUpdates ()
+        return;
+    }
+    if (localStorage.getItem("tutorial", "yes")) {
+
+        document.getElementById('flowers').style.backgroundImage = "url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg)"
+
+        setTimeout(function() {
+            tutbox = document.getElementById("tutbox");
+
+            tutbox.classList.add("tutboxShow")
+            tutbox.classList.remove("tutboxHide")
+            localStorage.setItem("tutorial", "no")
+        }, 1500);
+    }
 }
 switch (localStorage.getItem("showingUpdates")) {
     case "yes":
-        console.log("bruh")
+        //console.log("bruh")
 }        
 
 function responsivewarning(x) {
 
     switch (localStorage.getItem("showingUpdates")) {
         case "yes":
-            console.log("disabledresponsive")
+            //console.log("disabledresponsive")
             break;
         case "no":
             if (width.matches) { // If media query matches
@@ -352,7 +411,7 @@ function responsivewarning(x) {
 
     switch (localStorage.getItem("showingUpdates")) {
         case "yes":
-            console.log("disabledresponsive")
+            //console.log("disabledresponsive")
             break;
         case "no":
             if (Height.matches) { // If media query matches
@@ -524,6 +583,7 @@ function changeLayout () {
     document.getElementById('clocksquare').innerHTML = ""
     document.getElementById('logosquare').innerHTML = ""
     document.getElementById('dotsquare').innerHTML = ""
+    document.getElementById('leftbottombodygrid').innerHTML = ""
 
 
     document.getElementById("notibubble").classList.add("notidown")
@@ -579,6 +639,10 @@ function tropicalbg () {
 function goldblue() {
     bg.style.backgroundImage = "url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg)"
     localStorage.setItem("bgimage", "url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg")
+}
+function darkModern () {
+    bg.style.backgroundImage = "url(/Bimages/GeometricDark1.png)"
+    localStorage.setItem("bgimage", "url(/Bimages/GeometricDark1.png)")
 }
 //Color bgchange 
 
@@ -673,17 +737,19 @@ function getCurrentWeather () {
 
     var f = new Date();
 	var u = f.getMonth()+1;
-	var c = f.getDate()+4;
+    var c = f.getDate()+4;
+    var cForDaily = f.getDate()+10;
 
 	if (c > 31) {
 		if (u=="01") {
 			console.log("ALERT OVERFLOWING FROM JANUARY TO FEBRUARY");
-			c = (c - 31);
+            c = (c - 31);
+            cForDaily = (cForDaily - 31);
 		}
 	}
 
 	// LEAP YEAR WUT BELOW
-	if (u > 28) {
+	if (c > 28) {
 		if (u=="02") {
 			console.log("ALERT OVERFLOWING FROM FEBRUARY TO MARCH");
 			c = (c - 28);
@@ -693,75 +759,88 @@ function getCurrentWeather () {
 	if (c > 31) {
 		if (u=="03") {
 			console.log("ALERT OVERFLOWING FROM MARCH TO APRIL");
-			c = (c - 31);
+            c = (c - 31);
+            cForDaily = (cForDaily - 31);
 			u = (u+1);
 		}
 	} 
 	if (c > 30) {
 		if (u=="04") {
 			console.log("ALERT OVERFLOWING FROM APRIL TO MAY");
-			c = (c - 30);
+            c = (c - 30);
+            cForDaily = (cForDaily - 31);
 			u = (u+1);
 		}
 	} 
 	if (c > 31) {
 		if (u=="05") {
 			console.log("ALERT OVERFLOWING FROM MAY TO JUNE");
-			c = (c - 31);
+            c = (c - 31);
+            cForDaily = (cForDaily - 31);
 			u = (u+1);
 		}
 	} 
 	if (c > 30) {
 		if (u=="06") {
 			console.log("ALERT OVERFLOWING FROM JUNE TO JULY");
-			c = (c - 30);
+            c = (c - 30);
+            cForDaily = (cForDaily - 31);
 			u = (u+1);
 		}
 	} 
 	if (c > 31) {
 		if (u=="07") {
 			console.log("ALERT OVERFLOWING FROM JULY TO AUGUST");
-			c = (c - 31);
+            c = (c - 31);
+            cForDaily = (cForDaily - 31);
 			u = (u+1);
 		}
 	} 
 	if (c > 31) {
 		if (u=="08") {
 			console.log("ALERT OVERFLOWING FROM AUGUST TO SEPTEMBER");
-			c = (c - 31);
+            c = (c - 31);
+            cForDaily = (cForDaily - 31);
 			u = (u+1);
 		}
 	} 
 	if (c > 30) {
 		if (u=="09") {
 			console.log("ALERT OVERFLOWING FROM SEPTEMBER TO OCTOBER");
-			c = (c - 30);
+            c = (c - 30);
+            cForDaily = (cForDaily - 31);
 			u = (u+1);
 		}
 	} 
 	if (c > 31) {
 		if (u=="10") {
 			console.log("ALERT OVERFLOWING FROM OCTOBER TO NOVEMBER");
-			c = (c - 31);
+            c = (c - 31);
+            cForDaily = (cForDaily - 31);
 			u = (u+1);
 		}
 	} 
 	if (c > 30) {
 		if (u=="11") {
 			console.log("ALERT OVERFLOWING FROM NOVEMBER TO DECEMBER");
-			c = (c - 30);
+            c = (c - 30);
+            cForDaily = (cForDaily - 31);
 			u = (u+1);
 		}
 	} 
 	if (c > 31) {
 		if (u=="12") {
 			console.log("ALERT OVERFLOWING FROM DECEMBER TO JANUARY");
-			c = (c - 31);
+            c = (c - 31);
+            cForDaily = (cForDaily - 31);
 			u = (01);
 		}
 	}
 	if (c < 10) {
 		c = "0" + c;
+    }
+    if (cForDaily < 10) {
+		cForDaily = "0" + cForDaily;
 	}
 	if (u < 10) {
 		u = "0" + u;
@@ -773,21 +852,33 @@ function getCurrentWeather () {
     var figger = digger.getDate();
 
     var next4days = gigger + "-" + u + "-"+ c  
+    var next10days = gigger + "-" + u + "-"+ cForDaily  
+    localStorage.setItem("next10days", gigger + "-" + u + "-"+ cForDaily )
     document.getElementById("date").innerHTML = rigger + " " + figger + ", " + gigger
-    //console.log(next4days)
+    //console.log(next10days)
 
     //fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=temp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
     //.then(response => response.json())
     //.then(data => (console.log(data)))
 
-//----------------------------------------------------------------------
-
     localStorage.setItem("lat", 45.086650)
     localStorage.setItem("lon", -93.118200)
     localStorage.setItem("units", "us")
+    
+    //fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&units=imperial&appid=024402f357b3f2165dff5e013cebfd7b')
+	//.then(response => response.json())
+    //.then(data => (console.log(data)))
+
+    //fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&location_id=shoreview&unit_system='+localStorage.getItem("units")+'&start_time=now&end_time='+next4days+'T14%3A09%3A50Z&fields=precipitation%2Ctemp%2Chumidity%2Cwind_speed%2Cweather_code%2Cbaro_pressure%2Cfeels_like%2Cprecipitation_probability&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
+	//.then(response => response.json())
+    //.then(data => (console.log(data)))
+
+//----------------------------------------------------------------------
+
+
 
  //REALTIME
- fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=temp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey=oATA14jpsO1MdhKOjKCscL6Aym7N6QAn')
+ fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=temp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
  .then(response => response.json())
  .then(data => {
 
@@ -801,23 +892,321 @@ function getCurrentWeather () {
      iconDesc();
 
 //HOURLY (for precip probability)
-    fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&location_id=shoreview&unit_system='+localStorage.getItem("units")+'&start_time=now&end_time='+next4days+'T14%3A09%3A50Z&fields=precipitation_probability&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
+    fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&location_id=shoreview&unit_system='+localStorage.getItem("units")+'&start_time=now&end_time='+next4days+'T14%3A09%3A50Z&fields=precipitation%2Ctemp%2Chumidity%2Cwind_speed%2Cweather_code%2Cbaro_pressure%2Cfeels_like%2Cprecipitation_probability&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
 	.then(response => response.json())
 	.then(data => {
-        var currentrainchance = data[0]["precipitation_probability"]["value"]
+
+        var now = new Date();
+    	var TwentyFourHour = now.getHours();
+    	var hour = now.getHours();
+
+    	var mid = 'PM';
+  
+    	if (hour > 12) {
+      	hour = hour - 12;
+    	}    
+    	if(hour==0){ 
+      	hour=12;
+    	}
+    	if(TwentyFourHour < 12) {
+       	mid = 'AM';
+		}
+		if((TwentyFourHour == 24)) {
+		mid = 'AM'
+		}
+
+        var currentrainchance = data[0]["precipitation_probability"]["value"];
+        var temphour1 = Math.floor(data[0]['temp']['value']);
+        var temphour2 = Math.floor(data[1]['temp']['value']);
+        var temphour3 = Math.floor(data[2]['temp']['value']);
+        var temphour4 = Math.floor(data[3]['temp']['value']);
+        var temphour5 = Math.floor(data[4]['temp']['value']);
+        var temphour6 = Math.floor(data[5]['temp']['value']);
+        var temphour7 = Math.floor(data[6]['temp']['value']);
+        var temphour8 = Math.floor(data[7]['temp']['value']);
+        //var hour9 = Math.floor(data[8]['temp']['value']);
+
+        var weatherCode1 = data[0]['weather_code']['value']
+        var weatherCode2 = data[1]['weather_code']['value']
+        var weatherCode3 = data[2]['weather_code']['value']
+        var weatherCode4 = data[3]['weather_code']['value']
+        var weatherCode5 = data[4]['weather_code']['value']
+        var weatherCode6 = data[5]['weather_code']['value']
+        var weatherCode7 = data[6]['weather_code']['value']
+        var weatherCode8 = data[7]['weather_code']['value']
+
+        icon1 = iconSelect(weatherCode1)
+        icon2 = iconSelect(weatherCode2)
+        icon3 = iconSelect(weatherCode3)
+        icon4 = iconSelect(weatherCode4)
+        icon5 = iconSelect(weatherCode5)
+        icon6 = iconSelect(weatherCode6)
+        icon7 = iconSelect(weatherCode7)
+        icon8 = iconSelect(weatherCode8)
+
+
+        ///ISAAC LOOK HERe!!! Wanna know where YOU LEFT OFF EH? Make a grid for the left bottom square, then place inital
+        //text so you can see the houly data. GLFH!!! LMAO
+
+        //Temp
+
+        document.getElementById("temphour1").innerHTML = temphour1 + "°"
+        document.getElementById("temphour2").innerHTML = temphour2 + "°"
+        document.getElementById("temphour3").innerHTML = temphour3 + "°"
+        document.getElementById("temphour4").innerHTML = temphour4 + "°"
+        document.getElementById("temphour5").innerHTML = temphour5 + "°"
+        document.getElementById("temphour6").innerHTML = temphour6 + "°"
+        document.getElementById("temphour7").innerHTML = temphour7 + "°"
+        document.getElementById("temphour8").innerHTML = temphour8 + "°"
+
+        //Icons
+
+        document.getElementById("wiconhour1").src = icon1
+        document.getElementById("wiconhour2").src = icon2
+        document.getElementById("wiconhour3").src = icon3
+        document.getElementById("wiconhour4").src = icon4
+        document.getElementById("wiconhour5").src = icon5
+        document.getElementById("wiconhour6").src = icon6
+        document.getElementById("wiconhour7").src = icon7
+        document.getElementById("wiconhour8").src = icon8
+
+        //Hour display
+
+        document.getElementById("hour1").innerHTML = hour + " " + mid
+
+        var hour1 = (hour+1)
+		if (hour1 > 12) {
+			hour1 = hour1 - 12
+		}
+		var TwentyFourHour1 = (TwentyFourHour + 1)
+		var mid1 = mid 
+		if (TwentyFourHour1 > 24) {
+			TwentyFourHour1 = TwentyFourHour1 - 24
+		}
+		if (TwentyFourHour1 == 24) {
+			mid1 = "AM"
+		}
+		if (TwentyFourHour1 >= 1) {
+			if (TwentyFourHour1 < 12) {
+				mid1 = "AM"
+			}
+		}
+		if (TwentyFourHour1 > 11) {
+			mid1 = "PM"
+        }
+        
+        document.getElementById("hour2").innerHTML = hour1 + " " + mid1
+
+        var hour2 = (hour+2)
+		if (hour2 > 12) {
+			hour2 = hour2 - 12
+		}
+		var TwentyFourHour2 = (TwentyFourHour + 2)
+		var mid2 = mid 
+		if (TwentyFourHour2 > 24) {
+			TwentyFourHour2 = TwentyFourHour2 - 24
+		}
+		if (TwentyFourHour2 == 24) {
+			mid2 = "AM"
+		}
+		if (TwentyFourHour2 >= 1) {
+			if (TwentyFourHour2 < 12) {
+				mid2 = "AM"
+			}
+		}
+		if (TwentyFourHour2 > 11) {
+			mid2 = "PM"
+        }
+        
+        document.getElementById("hour3").innerHTML = hour2 + " " + mid2
+
+        var hour3 = (hour+3)
+		if (hour3 > 12) {
+			hour3 = hour3 - 12
+		}
+		var TwentyFourHour3 = (TwentyFourHour + 3)
+		var mid3 = mid 
+		if (TwentyFourHour3 > 24) {
+			TwentyFourHour3 = TwentyFourHour3 - 24
+		}
+		if (TwentyFourHour3 == 24) {
+			mid3 = "AM"
+		}
+		if (TwentyFourHour3 >= 1) {
+			if (TwentyFourHour3 < 12) {
+				mid3 = "AM"
+			}
+		}
+		if (TwentyFourHour3 > 11) {
+			mid3 = "PM"
+        }
+        
+        document.getElementById("hour4").innerHTML = hour3 + " " + mid3
+
+        var hour4 = (hour+4)
+		if (hour4 > 12) {
+			hour4 = hour4 - 12
+		}
+		var TwentyFourHour4 = (TwentyFourHour + 4)
+		var mid4 = mid 
+		if (TwentyFourHour4 > 24) {
+			TwentyFourHour4 = TwentyFourHour4 - 24
+		}
+		if (TwentyFourHour4 == 24) {
+			mid4 = "AM"
+		}
+		if (TwentyFourHour4 >= 1) {
+			if (TwentyFourHour4 < 12) {
+				mid4 = "AM"
+			}
+		}
+		if (TwentyFourHour4 > 11) {
+			mid4 = "PM"
+        }
+        
+        document.getElementById("hour5").innerHTML = hour4 + " " + mid4
+
+        var hour5 = (hour+5)
+		if (hour5 > 12) {
+			hour5 = hour5 - 12
+		}
+		var TwentyFourHour5 = (TwentyFourHour + 5)
+		var mid5 = mid 
+		if (TwentyFourHour5 > 24) {
+			TwentyFourHour5 = TwentyFourHour5 - 24
+		}
+		if (TwentyFourHour5 == 24) {
+			mid5 = "AM"
+		}
+		if (TwentyFourHour5 >= 1) {
+			if (TwentyFourHour5 < 12) {
+				mid5 = "AM"
+			}
+		}
+		if (TwentyFourHour5 > 11) {
+			mid5 = "PM"
+        }
+        
+        document.getElementById("hour6").innerHTML = hour5 + " " + mid5
+
+        var hour6 = (hour+6)
+		if (hour6 > 12) {
+			hour6 = hour6 - 12
+		}	
+		var TwentyFourHour6 = (TwentyFourHour + 6)
+		var mid6 = mid 
+		if (TwentyFourHour6 > 24) {
+			TwentyFourHour6 = TwentyFourHour6 - 24
+		}
+		if (TwentyFourHour6 == 24) {
+			mid6 = "AM"
+		}
+		if (TwentyFourHour6 >= 1) {
+			if (TwentyFourHour6 < 12) {
+				mid6 = "AM"
+			}
+		}
+		if (TwentyFourHour6 > 11) {
+			mid6 = "PM"
+        }
+        
+        document.getElementById("hour7").innerHTML = hour6 + " " + mid6
+
+        var hour7 = (hour+7)
+		if (hour7 > 12) {
+			hour7 = hour7 - 12
+		}	
+		var TwentyFourHour7 = (TwentyFourHour + 7)
+		var mid7 = mid 
+		if (TwentyFourHour7 > 24) {
+			TwentyFourHour7 = TwentyFourHour7 - 24
+		}
+		if (TwentyFourHour7 == 24) {
+			mid7 = "AM"
+		}
+		if (TwentyFourHour7 >= 1) {
+			if (TwentyFourHour7 < 12) {
+				mid7 = "AM"
+			}
+		}
+		if (TwentyFourHour7 > 11) {
+			mid7 = "PM"
+        }
+        
+        document.getElementById("hour8").innerHTML = hour7 + " " + mid7
+
+
+
+        //--------------------------------
+
+
         document.getElementById("stat2").innerHTML = currentrainchance + " %";
     })    
 
 
+    //fetch('https://api.climacell.co/v3/weather/forecast/daily?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time=now&end_time='+next10days+'T14%3A00%3A00Z&fields=temp%2Cweather_code&apikey=oATA14jpsO1MdhKOjKCscL6Aym7N6QAn')
+	//.then(response => response.json())
+    //.then(data => (console.log(data)))
+    
 //DAILY (for temp high/low)
-    fetch('https://api.climacell.co/v3/weather/forecast/daily?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time=now&end_time=2020-10-21T14%3A00%3A00Z&fields=temp&apikey=oATA14jpsO1MdhKOjKCscL6Aym7N6QAn')
+    fetch('https://api.climacell.co/v3/weather/forecast/daily?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time=now&end_time='+next10days+'T14%3A00%3A00Z&fields=temp%2Cweather_code&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
 	.then(response => response.json())
 	.then(data => {
         var templow = Math.floor(data[0]["temp"][0]['min']["value"])
         var temphigh = Math.floor(data[0]["temp"][1]['max']["value"])
 
         document.getElementById("temphighlow").innerHTML = temphigh + "° / " + templow + "°";
+
+        //Daily Weather Box ----------------------------------------------------
+        //----------------------------------------------------------------------
+        //----------------------------------------------------------------------
+
+        var dailyTempMin1 = Math.floor(data[0]["temp"][0]['min']["value"])
+        var dailyTempMin2 = Math.floor(data[1]["temp"][0]['min']["value"])
+        var dailyTempMin3 = Math.floor(data[2]["temp"][0]['min']["value"])
+        var dailyTempMin4 = Math.floor(data[3]["temp"][0]['min']["value"])
+        var dailyTempMin5 = Math.floor(data[4]["temp"][0]['min']["value"])
+        var dailyTempMin6 = Math.floor(data[5]["temp"][0]['min']["value"])
+        var dailyTempMin7 = Math.floor(data[6]["temp"][0]['min']["value"])
+
+        var dailyTempMax1 = Math.floor(data[0]["temp"][1]['max']["value"])
+        var dailyTempMax2 = Math.floor(data[1]["temp"][1]['max']["value"])
+        var dailyTempMax3 = Math.floor(data[2]["temp"][1]['max']["value"])
+        var dailyTempMax4 = Math.floor(data[3]["temp"][1]['max']["value"])
+        var dailyTempMax5 = Math.floor(data[4]["temp"][1]['max']["value"])
+        var dailyTempMax6 = Math.floor(data[5]["temp"][1]['max']["value"])
+        var dailyTempMax7 = Math.floor(data[6]["temp"][1]['max']["value"])
+
+        document.getElementById("tempDaily1").innerHTML = dailyTempMax1 + "° / " + dailyTempMin1 + "°";
+        document.getElementById("tempDaily2").innerHTML = dailyTempMax2 + "° / " + dailyTempMin2 + "°";
+        document.getElementById("tempDaily3").innerHTML = dailyTempMax3 + "° / " + dailyTempMin3 + "°";
+        document.getElementById("tempDaily4").innerHTML = dailyTempMax4 + "° / " + dailyTempMin4 + "°";
+        document.getElementById("tempDaily5").innerHTML = dailyTempMax5 + "° / " + dailyTempMin5 + "°";
+        document.getElementById("tempDaily6").innerHTML = dailyTempMax6 + "° / " + dailyTempMin6 + "°";
+        document.getElementById("tempDaily7").innerHTML = dailyTempMax7 + "° / " + dailyTempMin7 + "°";
+
+        var dailyIcon1 = iconSelect(data[0]['weather_code']['value']);
+        var dailyIcon2 = iconSelect(data[1]['weather_code']['value']);
+        var dailyIcon3 = iconSelect(data[2]['weather_code']['value']);
+        var dailyIcon4 = iconSelect(data[3]['weather_code']['value']);
+        var dailyIcon5 = iconSelect(data[4]['weather_code']['value']);
+        var dailyIcon6 = iconSelect(data[5]['weather_code']['value']);
+        var dailyIcon7 = iconSelect(data[6]['weather_code']['value']);
+
+        document.getElementById("iconDaily1").src = dailyIcon1
+        document.getElementById("iconDaily2").src = dailyIcon2
+        document.getElementById("iconDaily3").src = dailyIcon3
+        document.getElementById("iconDaily4").src = dailyIcon4
+        document.getElementById("iconDaily5").src = dailyIcon5
+        document.getElementById("iconDaily6").src = dailyIcon6
+        document.getElementById("iconDaily7").src = dailyIcon7
+
+
+
+
     }) 
+
+
 
 //----------------------------------------------------------------------
 
@@ -834,3 +1223,64 @@ function getCurrentWeather () {
 
  });
 } getCurrentWeather();
+
+
+function weekdays() {
+    var d = new Date();
+    var weekday = new Array(7);
+    weekday[0] = "SUN";
+    weekday[1] = "MON";
+    weekday[2] = "TUES";
+    weekday[3] = "WED";
+    weekday[4] = "THU";
+    weekday[5] = "FRI";
+    weekday[6] = "SAT";
+    weekday[7] = "SUN";
+    weekday[8] = "MON";
+    weekday[9] = "TUES";
+    weekday[10] = "WED";
+    weekday[11] = "THU";
+    weekday[12] = "FRI";
+    weekday[13] = "SAT";
+    weekday[14] = "SUN";
+    weekday[15] = "MON";
+    weekday[16] = "TUES";
+    weekday[17] = "WED";
+    weekday[18] = "THU";
+    weekday[19] = "FRI";
+    weekday[20] = "SAT";
+    weekday[21] = "SUN";
+    weekday[22] = "MON";
+
+  
+    var numberday = weekday[d.getDay()];
+    document.getElementById("dateDaily1").innerHTML = numberday;
+  
+    var twose = weekday[d.getDay()+1];
+    document.getElementById("dateDaily2").innerHTML = twose
+  
+    var threese = weekday[d.getDay()+2];
+    document.getElementById("dateDaily3").innerHTML = threese
+  
+    var fourse = weekday[d.getDay()+3];
+    document.getElementById("dateDaily4").innerHTML = fourse
+
+    var fivese = weekday[d.getDay()+1];
+    document.getElementById("dateDaily5").innerHTML = fivese
+  
+    var sixse = weekday[d.getDay()+2];
+    document.getElementById("dateDaily6").innerHTML = sixse
+  
+    var sevense = weekday[d.getDay()+3];
+    document.getElementById("dateDaily7").innerHTML = sevense
+
+    //var eightse = weekday[d.getDay()+1];
+    //document.getElementById("dateDaily8").innerHTML = eightse
+  
+    //var ninese = weekday[d.getDay()+2];
+    //document.getElementById("dateDaily9").innerHTML = ninese
+  
+    //var tense = weekday[d.getDay()+3];
+    //document.getElementById("dateDaily10").innerHTML = tense
+  }
+  weekdays();

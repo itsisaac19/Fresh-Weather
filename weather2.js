@@ -129,3 +129,124 @@ function iconDesc() {
 
         document.getElementById("desc").innerHTML = (capitalizeFirstLetter(currenticonstart));
 }    
+
+
+
+        //Quick Weather ICONS ----------------------------------------------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------------------------
+
+
+        //Explanation: Call this function when needing a path to the weather icon. Example: var icon = iconSelect(*INSERT WEATHER CODE HERE*)
+
+
+        function iconSelect(string) {
+
+
+
+            var weatherCode = string
+
+            switch (weatherCode) {
+                default:
+                    iconPath = "color/clear_day.svg"
+                    console.warn("iconSelect couldn't find: " + weatherCode)
+                    break;
+                case "clear": 
+                //day/night
+                iconPath = "color/clear_day.svg"
+                    break;
+        
+                case "cloudy":   
+                iconPath = "color/cloudy.svg" 
+                    break;
+        
+                case "drizzle":   
+                iconPath = "color/drizzle.svg" 
+                    break;
+        
+                case "flurries":   
+                iconPath = "color/flurries.svg" 
+                    break;
+        
+                case "fog":   
+                iconPath = "color/fog.svg" 
+                    break;
+        
+                case "fog_light":  
+                    iconPath = "color/fog_light.svg" 
+                    break;
+        
+                case "freezing_drizzle":  
+                    iconPath = "color/freezing_drizzle.svg" 
+                    break;
+        
+                case "freezing_rain_light":  
+                    iconPath = "color/freezing_rain_light.svg" 
+                    break;    
+        
+                case "freezing_rain":   
+                iconPath = "color/freezing_rain.svg" 
+                    break;    
+                    
+                case "freezing_rain_heavy": 
+                iconPath = "color/freezing_rain_heavy.svg" 
+                    break;  
+                    
+                case "ice_pellets_light": 
+                iconPath = "color/ice_pellets_light.svg" 
+                    break;
+        
+                case "ice_pellets":   
+                iconPath = "color/ice_pellets.svg" 
+                    break;
+        
+                case "ice_pellets_heavy":   
+                iconPath = "color/ice_pellets_heavy.svg" 
+                    break;
+        
+                case "mostly_clear":
+                    //day/night
+                    iconPath = "color/mostly_clear_day.svg"
+                    break;
+        
+                case "mostly_cloudy":
+                    iconPath =  "color/mostly_cloudy.svg"
+                    break;    
+        
+                case "partly_cloudy":
+                    //day/night
+                    iconPath =  "color/partly_cloudy_day.svg"
+                    break; 
+            
+                case "rain_light":
+                   iconPath =  "color/rain_light.svg"
+                    break;
+        
+                case "rain":
+                    iconPath =  "color/rain.svg"
+                    break; 
+        
+                case "rain_heavy":
+                   iconPath =  "color/rain_heavy.svg"
+                    break;  
+                    
+                case "snow_light":
+                    iconPath =  "color/snow_light.svg"
+                    break;  
+        
+                case "snow":
+                    iconPath =  "color/snow.svg"
+                    break;  
+                    
+                case "snow_heavy":
+                   iconPath =  "color/snow_heavy.svg"
+                    break;   
+        
+                case "tstorm":
+                   iconPath =  "color/tstorm.svg"
+                    break;   
+                }
+
+
+                return  (iconPath) 
+
+        }

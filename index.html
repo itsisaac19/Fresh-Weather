@@ -23,24 +23,105 @@
     <div id="flowers" class="flowersshown"></div>
     <div id="biggrid">
 
-        <div id="logosquare">
-            <!--<div id="expandthelogo" class="closedhoriztranslatelogo">
-                <p id="settings">settings</p>
-            </div> -->
-            <img id="logo" onclick="showUpdates()" src="./FreshLogos/LightTree.png" onmouseover="expandthelogo()" onmouseout="closethelogo()"/>
-        </div>
-        <div id="dotsquare" class="pulldots">
-            <!--<div id="expandthedots" class="closedhoriztranslate">
-                <p id="customize">customize</p>
-            </div> -->
-            <img id="dots" onclick="customize()" onmouseover="expandthedots()" onmouseout="closethedots()" src="./FreshLogos/DotsMenu.png" style="width: 60px; height: 55px; border-radius: 7px;">
-        </div>
-        <div id="clocksquare">
-            <div id="clock"></div>
-        </div>
+
 
         <div id="bodygrid" class="goback">
-            <div href="javascript:void(0);"  onclick="window.location.href='https://www.climacell.co/weather-api/';" id="climacell">Powered by</div>
+            
+            <div id="clocksquare" class="freeOffdetect">
+                <div id="clock"></div>
+    
+                <div id="logosquare">
+                    <!--<div id="expandthelogo" class="closedhoriztranslatelogo">
+                        <p id="settings">settings</p>
+                    </div> -->
+                    <img id="logo" onclick="showUpdates()" src="./FreshLogos/LightTree.png" onmouseover="expandthelogo()" onmouseout="closethelogo()"/>
+                </div>
+                <div id="dotsquare" class="pulldots">
+                    <!--<div id="expandthedots" class="closedhoriztranslate">
+                        <p id="customize">customize</p>
+                    </div> -->
+                    <img id="dots" onclick="customize()" onmouseover="expandthedots()" onmouseout="closethedots()" src="./FreshLogos/DotsMenu.png" style="width: 60px; height: 55px; border-radius: 7px;">
+                </div>
+    
+            </div>
+            <div id="rightbodygrid" class="freeOffdetect">
+                <div id="statsgrid">
+                    <div id="sedge"></div>
+                    <div id="stat1container">
+                        <h1>HUMIDITY
+                            <div id="stat1"></div>
+                        </h1>
+                    </div>
+                    <img class="fourStatIcon" id="stat1icon" src="https://img.icons8.com/small/96/000000/humidity.png"/>
+                    <div id="stat2container">
+                        <h1>RAIN CHANCE
+                            <div id="stat2"></div>
+                        </h1>
+                    </div>
+                    <img class="fourStatIcon" id="stat2icon" src="https://img.icons8.com/android/96/000000/light-rain-2.png"/>
+                    <div id="stat3container">
+                        <h1>WIND SPEED
+                            <div id="stat3"></div>                       
+                        </h1>
+                    </div>
+                    <img class="fourStatIcon" id="stat3icon" src="https://img.icons8.com/small/96/000000/windy-weather.png"/>
+                    <div id="stat4container">
+                        <h1>AIR PRESSURE
+                            <div id="stat4"></div>
+                        </h1>
+                    </div>
+                    <img class="fourStatIcon" id="stat4icon" src="https://img.icons8.com/small/96/000000/pressure.png"/>
+                </div>
+            </div>
+
+            <div id="dailyBox" class="freeOffdetect">
+                <div id="dailyGrid">
+
+                    <div id="currentDay"></div>
+                    <div id="futureDays"></div>
+
+                    <div id="dateDaily1" class="dateDaily">tt</div>
+                    <div id="dateDaily2" class="dateDaily">tt</div>
+                    <div id="dateDaily3" class="dateDaily">tt</div>
+                    <div id="dateDaily4" class="dateDaily">tt</div>
+                    <div id="dateDaily5" class="dateDaily">tt</div>
+                    <div id="dateDaily6" class="dateDaily">tt</div>
+                    <div id="dateDaily7" class="dateDaily">tt</div>
+                    <!--
+                    <div id="dateDaily8" class="dateDaily">tt</div>
+                    <div id="dateDaily9" class="dateDaily">tt</div>
+                    <div id="dateDaily10" class="dateDaily">tt</div>
+                    -->
+
+                    <img id="iconDaily1" class="iconDaily"/>
+                    <img id="iconDaily2" class="iconDaily"/>
+                    <img id="iconDaily3" class="iconDaily"/>
+                    <img id="iconDaily4" class="iconDaily"/>
+                    <img id="iconDaily5" class="iconDaily"/>
+                    <img id="iconDaily6" class="iconDaily"/>
+                    <img id="iconDaily7" class="iconDaily"/>
+                    <!--                    
+                    <img id="iconDaily8" class="iconDaily"/>
+                    <img id="iconDaily9" class="iconDaily"/>
+                    <img id="iconDaily10" class="iconDaily"/>
+                    -->
+
+                    <div class="tempDaily" id="tempDaily1"></div>
+                    <div class="tempDaily" id="tempDaily2"></div>
+                    <div class="tempDaily" id="tempDaily3"></div>
+                    <div class="tempDaily" id="tempDaily4"></div>
+                    <div class="tempDaily" id="tempDaily5"></div>
+                    <div class="tempDaily" id="tempDaily6"></div>
+                    <div class="tempDaily" id="tempDaily7"></div>
+                    <!--                    
+                    <div id="tempDaily8"></div>
+                    <div id="tempDaily9"></div>
+                    <div id="tempDaily10"></div>
+                    -->
+                </div>
+            </div>
+
+            <div class="freeOffdetect" href="javascript:void(0);"  onclick="window.location.href='https://www.climacell.co/weather-api/';" id="climacell">Powered by</div>            
             <div id="leftopbodygrid">
                 <p id="temp">70°</p>
                 <div id="temphighlow"></div>
@@ -49,47 +130,53 @@
                 <p id="date">July 4th, 2020</p>
                 <p id="city">Shoreview, MN</p>
             </div>
-            <div id="leftbottombodygrid">
-                <div id="leftbottomrightbodygrid"></div>
-            </div>
-            <div id="rightbodygrid">
-                <div id="statsgrid">
- 
-                <div id="iconsgrid">
-                    <div id="stat1container">
-                        <h1>Humidity
-                            <div id="stat1"></div>
-                        </h1>
+            <div id="leftbottombodygrid" class="freeOffdetect">
+                <div id="HourlyGrid">
+
+                        <div id="temphour1">test</div>
+                        <img class="bruh1" id="wiconhour1"/>  
+                        <div id="hour1">3pm</div>           
+
+                        <img class="bruh2" id="wiconhour2"/>
+                        <div id="temphour2">test</div>
+                        <div id="hour2">4pm</div>   
+
+                        <img class="bruh3" id="wiconhour3"/>
+                        <div id="temphour3">test</div>
+                        <div id="hour3">5pm</div>   
+
+                        <img class="bruh4" id="wiconhour4"/>
+                        <div id="temphour4">test</div>
+                        <div id="hour4">6pm</div>   
+                        
+                        <img class="bruh5" id="wiconhour5"/>
+                        <div id="temphour5">test</div>
+                        <div id="hour5">7pm</div>   
+
+                        <img class="bruh6" id="wiconhour6"/>
+                        <div id="temphour6">test</div>
+                        <div id="hour6">8pm</div>   
+
+                        <img class="bruh7" id="wiconhour7"/>
+                        <div id="temphour7">test</div>
+                        <div id="hour7">9pm</div>   
+
+                        <img class="bruh8" id="wiconhour8"/>
+                        <div id="temphour8">test</div>
+                        <div id="hour8">10pm</div>   
+
                     </div>
-                    <img id="stat1icon" src="https://img.icons8.com/small/96/000000/humidity.png"/>
-                    <div id="stat2container">
-                        <h1>Rain Chance
-                            <div id="stat2"></div>
-                        </h1>
-                    </div>
-                    <img id="stat2icon" src="https://img.icons8.com/android/96/000000/light-rain-2.png"/>
-                    <div id="stat3container">
-                        <h1>Wind Speed
-                            <div id="stat3"></div>                       
-                        </h1>
-                    </div>
-                    <img id="stat3icon" src="https://img.icons8.com/small/96/000000/windy-weather.png"/>
-                    <div id="stat4container">
-                        <h1>Air Pressure
-                            <div id="stat4"></div>
-                        </h1>
-                    </div>
-                    <img id="stat4icon" src="https://img.icons8.com/small/96/000000/pressure.png"/>
                 </div>
-                </div>
             </div>
+
         </div> 
 
         <div id="customizesquare" class="swingout" class="displaynone">
+            <div id="return" onclick="freshdashboard()">Return</div>
             <div id="leftcolumntext">
                 <p id="basic">Basic</p>
                 <p id="advanced">Advanced (Beta)</p>
-                <div id="return" onclick="freshdashboard()">Return</div>
+                
             </div>
             <img id="divideline" src="Dividerline.png">
             <div id="bodytext">
@@ -110,6 +197,7 @@
                             <div id="rainbow" onclick="rainbowbg()"></div>
                             <div id="tropical" onclick="tropicalbg()"></div>
                             <div id="goldblue" onclick="goldblue()"></div>
+                            <div id="darkModern" onclick="darkModern()"></div>
                         </div> 
                     </div>
                     
@@ -117,7 +205,7 @@
                 </div>
                 <div id="headeradvanced">
                     <p id="layout">Layout (Beta)</p>
-                    <button id="changeLayout" onclick="changeLayout()">Try it</button>
+                    <button id="changeLayout">Under Construction</button>
                 </div>
             </div>
         </div>
@@ -129,23 +217,32 @@
     <div id="dottedboxleft"></div>
     <div id="dottedboxright"></div>
     <div id="backwhite"></div>
-    <div id="backwhiteHeight"></div>
+    <div id="backwhiteHeight" class="backwhiteHeighthidedisplay"></div>
     <input id="name" type="text" class="css-input"/>
 
-    <div id="updates">
-        <div id="updatesBox" style="display: none;" onscroll="hideArrow()">
+    <div class="updateBlurHide" id="upBlur" onclick="hideUpdates()">
+        <div id="updates">
+        
+            <div id="updatesBox" style="display: none;" onscroll="hideArrow()">
+            </div>
+            <div name="arrow" class="arrow bounce"></div>
+            <div id="scrollText"></div>
+            <button onclick="showHome()" class="updateButtonHide" id="updateButton" type="button">Awesome!</button>
         </div>
-        <div name="arrow" class="arrow bounce"></div>
-        <div id="scrollText"></div>
-        <button onclick="showHome()" class="updateButtonHide" id="updateButton" type="button">Awesome!</button>
     </div>
+
+
     
-    
-    <div id="tutbox"><div>Customize your experience by clicking the 3 green dots. You can change the 
-        background color, image, and more.</div></div>
+
+
+    <div class="tutboxHide" id="tutbox" onclick="hideTutorial()">
+        <div id="tutboxText">Customize your experience by clicking the 3 green dots in the top right corner. You can change the 
+            background color, image, and more.</div>
+        <div>
 </body>
 <script src="./securejs/home.js"></script>
 <script src="./errCatch.js"></script>
 <script src="./updates.js"></script>
 <script src="./weather2.js"></script>
+<script src="./animations.js"></script>
 </html>
