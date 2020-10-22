@@ -768,7 +768,7 @@ function getCurrentWeather () {
 		if (u=="04") {
 			console.log("ALERT OVERFLOWING FROM APRIL TO MAY");
             c = (c - 30);
-            cForDaily = (cForDaily - 31);
+            cForDaily = (cForDaily - 30);
 			u = (u+1);
 		}
 	} 
@@ -784,7 +784,7 @@ function getCurrentWeather () {
 		if (u=="06") {
 			console.log("ALERT OVERFLOWING FROM JUNE TO JULY");
             c = (c - 30);
-            cForDaily = (cForDaily - 31);
+            cForDaily = (cForDaily - 30);
 			u = (u+1);
 		}
 	} 
@@ -808,7 +808,7 @@ function getCurrentWeather () {
 		if (u=="09") {
 			console.log("ALERT OVERFLOWING FROM SEPTEMBER TO OCTOBER");
             c = (c - 30);
-            cForDaily = (cForDaily - 31);
+            cForDaily = (cForDaily - 30);
 			u = (u+1);
 		}
 	} 
@@ -824,7 +824,7 @@ function getCurrentWeather () {
 		if (u=="11") {
 			console.log("ALERT OVERFLOWING FROM NOVEMBER TO DECEMBER");
             c = (c - 30);
-            cForDaily = (cForDaily - 31);
+            cForDaily = (cForDaily - 30);
 			u = (u+1);
 		}
 	} 
@@ -839,9 +839,7 @@ function getCurrentWeather () {
 	if (c < 10) {
 		c = "0" + c;
     }
-    if (cForDaily < 10) {
-		cForDaily = "0" + cForDaily;
-	}
+
 	if (u < 10) {
 		u = "0" + u;
     }
@@ -853,7 +851,7 @@ function getCurrentWeather () {
 
     var next4days = gigger + "-" + u + "-"+ c  
     var next10days = gigger + "-" + u + "-"+ cForDaily  
-    localStorage.setItem("next10days", gigger + "-" + u + "-"+ cForDaily )
+    
     document.getElementById("date").innerHTML = rigger + " " + figger + ", " + gigger
     //console.log(next10days)
 
@@ -890,6 +888,100 @@ function getCurrentWeather () {
      var currentairpFinal = currentairp.toFixed(2)
 
      iconDesc();
+
+     if (cForDaily > 31) {
+		if (u=="01") {
+			console.log("ALERT OVERFLOWING FROM JANUARY TO FEBRUARY");
+            cForDaily = (cForDaily - 31);
+		}
+	}
+
+	// cForDaily
+	if (cForDaily > 28) {
+		if (u=="02") {
+			console.log("ALERT OVERFLOWING FROM FEBRUARY TO MARCH");
+			cForDaily = (cForDaily - 28);
+			u = (u+1);
+		}
+	} 
+	if (cForDaily > 31) {
+		if (u=="03") {
+			console.log("ALERT OVERFLOWING FROM MARCH TO APRIL");
+            cForDaily = (cForDaily - 31);
+			u = (u+1);
+		}
+	} 
+	if (cForDaily > 30) {
+		if (u=="04") {
+			console.log("ALERT OVERFLOWING FROM APRIL TO MAY");
+            cForDaily = (cForDaily - 30);
+			u = (u+1);
+		}
+	} 
+	if (cForDaily > 31) {
+		if (u=="05") {
+			console.log("ALERT OVERFLOWING FROM MAY TO JUNE");
+            cForDaily = (cForDaily - 31);
+			u = (u+1);
+		}
+	} 
+	if (cForDaily > 30) {
+		if (u=="06") {
+			console.log("ALERT OVERFLOWING FROM JUNE TO JULY");
+            cForDaily = (cForDaily - 30);
+			u = (u+1);
+		}
+	} 
+	if (cForDaily > 31) {
+		if (u=="07") {
+			console.log("ALERT OVERFLOWING FROM JULY TO AUGUST");
+            cForDaily = (cForDaily - 31);
+			u = (u+1);
+		}
+	} 
+	if (cForDaily > 31) {
+		if (u=="08") {
+			console.log("ALERT OVERFLOWING FROM AUGUST TO SEPTEMBER");
+            cForDaily = (cForDaily - 31);
+			u = (u+1);
+		}
+	} 
+	if (cForDaily > 30) {
+		if (u=="09") {
+			console.log("ALERT OVERFLOWING FROM SEPTEMBER TO OCTOBER");
+            cForDaily = (cForDaily - 30);
+			u = (u+1);
+		}
+	} 
+	if (cForDaily > 31) {
+		if (u=="10") {
+			console.log("ALERT OVERFLOWING FROM OCTOBER TO NOVEMBER");
+            cForDaily = (cForDaily - 31);
+			u = (u+1);
+		}
+	} 
+	if (cForDaily > 30) {
+		if (u=="11") {
+			console.log("ALERT OVERFLOWING FROM NOVEMBER TO DECEMBER");
+            cForDaily = (cForDaily - 30);
+			u = (u+1);
+		}
+	} 
+	if (cForDaily > 31) {
+		if (u=="12") {
+			console.log("ALERT OVERFLOWING FROM DECEMBER TO JANUARY");
+            cForDaily = (cForDaily - 31);
+			u = (01);
+		}
+    }
+    if (cForDaily < 10) {
+		cForDaily = "0" + cForDaily;
+	}
+    localStorage.setItem("next10days", gigger + "-" + u + "-"+ cForDaily )
+    //console.log(localStorage.getItem("next10days"))
+
+    
+
 
 //HOURLY (for precip probability)
     fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&location_id=shoreview&unit_system='+localStorage.getItem("units")+'&start_time=now&end_time='+next4days+'T14%3A09%3A50Z&fields=precipitation%2Ctemp%2Chumidity%2Cwind_speed%2Cweather_code%2Cbaro_pressure%2Cfeels_like%2Cprecipitation_probability&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
@@ -1148,8 +1240,10 @@ function getCurrentWeather () {
 	//.then(response => response.json())
     //.then(data => (console.log(data)))
     
+
+    //console.log(localStorage.getItem("next10days"))
 //DAILY (for temp high/low)
-    fetch('https://api.climacell.co/v3/weather/forecast/daily?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time=now&end_time='+next10days+'T14%3A00%3A00Z&fields=temp%2Cweather_code&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
+    fetch('https://api.climacell.co/v3/weather/forecast/daily?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time=now&end_time='+localStorage.getItem("next10days")+'T14%3A00%3A00Z&fields=temp%2Cweather_code&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
 	.then(response => response.json())
 	.then(data => {
         var templow = Math.floor(data[0]["temp"][0]['min']["value"])
