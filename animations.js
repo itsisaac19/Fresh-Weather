@@ -111,6 +111,7 @@ setTimeout(function() {
 var squareColor = document.getElementById("clocksquare").style.backgroundColor 
 localStorage.setItem("squareColor", squareColor) 
 
+var nonebg = document.getElementById("nonebg")
 var darkThemeButton = document.getElementById("darkModern")
 var rainbow = document.getElementById("rainbow")
 var jungle = document.getElementById("tropical")
@@ -119,6 +120,22 @@ var Monkey = document.getElementById("goldblue")
 
 darkThemeButton.addEventListener("click", darkTheme) 
 
+nonebg.addEventListener("click", function() {
+    nonebg1();
+    switch(localStorage.getItem("squareColor")) {
+        default :
+
+        break;
+        case "" :
+
+        break;
+        case "black" :
+
+            DarkThemeForOtherBg();
+
+        break;
+    }
+}) 
 rainbow.addEventListener("click", function() {
     switch(localStorage.getItem("squareColor")) {
         default :
@@ -199,6 +216,8 @@ function darkTheme () {
 
     var clock = document.getElementById("clock")
 
+    var notiBubble = document.getElementById("notibubble")
+
 
     
     
@@ -252,11 +271,12 @@ function darkTheme () {
             cUSlayout.style.backgroundColor = "rgb(90 90 90)"
             cUSlayout.style.boxShadow = "3px 4px 15px black"
             cUStheme.style.backgroundColor = "rgb(90 90 90)"
-            cUStheme.style.boxShadow = "3px 4px 15px black"
 
             lBBG.style.backgroundColor = "rgb(121 121 121)"
 
             clock.style.color = "rgb(255, 255, 255)"
+
+            notiBubble.style.backgroundColor = "rgb(10 10 10)"
 
             localStorage.setItem("squareColor", "black") 
         break;
@@ -305,11 +325,12 @@ function darkTheme () {
             cUSlayout.style.backgroundColor = "rgb(90 90 90)"
             cUSlayout.style.boxShadow = "3px 4px 15px black"
             cUStheme.style.backgroundColor = "rgb(90 90 90)"
-            cUStheme.style.boxShadow = "3px 4px 15px black"
 
             lBBG.style.backgroundColor = "rgb(121 121 121)"
 
             clock.style.color = "rgb(255, 255, 255)"
+
+            notiBubble.style.backgroundColor = "rgb(10 10 10)"
 
             localStorage.setItem("squareColor", "black") 
         break;
@@ -335,6 +356,8 @@ function DarkThemeForOtherBg () {
     var cUStheme = document.getElementById("theme")
     var cUSlayout = document.getElementById("layout")
 
+    var notiBubble = document.getElementById("notibubble")
+
     var clock = document.getElementById("clock")
 
         //alert("squares detected  black, going to light mode")
@@ -346,13 +369,13 @@ function DarkThemeForOtherBg () {
 
         // Apply CSS styles to the selected <div> elements
         for (div3 of divs3) {
-            div3.style.color = "black"
+            div3.style.color = null
         }
         for (h13 of h1s3) {
-            h13.style.color = "rgb(0 0 0)"
+            h13.style.color = null
         }
         for (p3 of ps3) {
-            p3.style.color = "rgb(0 0 0)"
+            p3.style.color = null
         }
 
         dB.style.backgroundColor = null
@@ -379,9 +402,10 @@ function DarkThemeForOtherBg () {
         cUSlayout.style.backgroundColor = null
         cUSlayout.style.boxShadow = null
         cUStheme.style.backgroundColor = null
-        cUStheme.style.boxShadow = null
 
         clock.style.color = null
+
+        notiBubble.style.backgroundColor = null
 
         lBBG.style.backgroundColor = null
 

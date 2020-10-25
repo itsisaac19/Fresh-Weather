@@ -19,13 +19,14 @@ function alertbuddy() {
 }
 
 
-fetch('https://api.climacell.co/v3/weather/forecast/daily?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time=now&end_time='+localStorage.getItem("next10days")+'T14%3A00%3A00Z&fields=temp%2Cweather_code&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
+/*fetch('https://api.climacell.co/v3/weather/forecast/daily?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time=now&end_time='+localStorage.getItem("next10days")+'T14%3A00%3A00Z&fields=temp%2Cweather_code&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
   .then(handleErrors)
   .then(function(response) {
       //console.log("ok");
   }).catch(function(error) {
       console.log(error);
-      localstorage.setItem("apiKey") = "gjkSy3KHmWy7xWUrToVJA24shlhC5w5z"
+      alert("hru")
+      localStorage.setItem("apiKey", "gjkSy3KHmWy7xWUrToVJA24shlhC5w5z")  
   });
 
 function handleErrors(response) {
@@ -34,3 +35,4 @@ function handleErrors(response) {
   }
   return response;
 }
+*/

@@ -1,6 +1,7 @@
 // GLOBAL VARIABLES:
 
 var currtime = document.getElementById("clock");
+var bg = document.getElementById("flowers")
 
 //Disable Tab
 
@@ -41,20 +42,26 @@ function welcome() {
         localStorage.setItem("updatesOctober19", "seen")
         return;
     }
+    if (localStorage.getItem("bgimage") == "url(/Bimages/GeometricDark1.png)") {
+        alert("whaa")
+        darkTheme()
+    }
+
 
 
     // PUT CONSOLE LOGS BELOW
-    console.log(localStorage.getItem("bgimage"))
+    //console.log(localStorage.getItem("bgimage"))
     //console.log(localStorage.getItem("updatesOctober19"))
-    console.log(document.getElementById("minheight").style.backgroundColor)
+    //console.log(document.getElementById("minheight").style.backgroundColor)
+    //console.log(localStorage.getItem("squareColor"))
 
     //UN-COMMENT THE BELOW LINE FOR UNNESSACARY API CALLS
-    getCurrentWeather();
+    //getCurrentWeather();
 
 
     // PUT LCL STRG ITEMS BELOW
     localStorage.setItem("showingUpdates", "no");
-    localStorage.setItem("bgimage", bg.style.backgroundImage); 
+    //localStorage.setItem("bgimage", bg.style.backgroundImage); 
     localStorage.setItem("layoutMode", "no")
     //localStorage.removeItem("name")
     //localStorage.removeItem("updatesOctober19")
@@ -68,6 +75,7 @@ function welcome() {
     document.getElementById("bgcolorpicker").value = localStorage.getItem("bgcolor")
     document.getElementById("nonebg").style.backgroundColor = localStorage.getItem("bgcolor")
 
+    bg.style.backgroundImage = localStorage.getItem("bgimage")
 
     updateButton.classList.add("updateButtonHide");   
     document.getElementById("name").classList.add("hidename")
@@ -651,10 +659,11 @@ function exitChangeLayout() {
 }
 //Background Image Change Functions  -----------------------------------------
 
-var bg = document.getElementById("flowers")
+
 var backgroundColorAuto = document.getElementById("minheight").style.backgroundColor
 
-function nonebg() {
+function nonebg1 () {
+    //alert("dw")
     bg.style.backgroundImage = null
     localStorage.setItem("bgimage", "null")
 }

@@ -1068,7 +1068,7 @@ body {
   top: 10px;
   left: 250px;
   padding: 25px;
-  padding-bottom: 120px;
+  padding-bottom: 190px;
   width: 50vw;
   background-color: rgb(255, 255, 255);
   box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
@@ -1150,7 +1150,7 @@ body {
 #imgstrip {
   position: absolute;
   top: 143px;
-  left: 390px;
+  left: 470px;
   width: 40vw;
   height: 30px;
   background-color: rgb(0, 0, 0, 0.0001);
@@ -1201,22 +1201,58 @@ body {
   #goldblue {
     background-image: url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg);
   }
-  #darkModern {
-    background-image: url(/Bimages/GeometricDark1.png);
-  }
-/* test */
 
+/* test */
 
 #theme {
   position: absolute;
-  top: 190px;
+  top: 185px;
   left: 250px;
-  padding: 25px;
-  width: 50vw;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
-  border-radius: 5px;
+  padding-left: 25px;
+  color: #3f3f3f;
+  font-weight: 200;
 }
+#imgstrip2 {
+  position: absolute;
+  top: 203px;
+  left: 470px;
+  width: 40vw;
+  height: 30px;
+  background-color: rgb(0, 0, 0, 0.001);
+}
+.dThemeImgs {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 30px);
+  grid-template-rows: 30px;
+  grid-column-gap: 15px;
+  grid-row-gap: 0px; 
+  background-color: rgb(255, 255, 255, 0.0001);
+  z-index: 1000;
+}
+#darkModern {
+  background-image: url(/Bimages/GeometricDark1.png);
+}
+.dThemeImgs > div:hover {
+  cursor: pointer;
+  transition: 0.1s ease-in;
+}
+.dThemeImgs > div:active {
+  top: 2px;
+  box-shadow: none;
+  transform: scale(0.95);
+}
+.dThemeImgs > div {
+  border-radius: 3px;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
+}
+
+
+
 #headeradvanced {
   font-family: 'Barlow', sans-serif;
   font-size: 20px;
