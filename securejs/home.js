@@ -56,7 +56,7 @@ function welcome() {
     //console.log(localStorage.getItem("squareColor"))
 
     //UN-COMMENT THE BELOW LINE FOR UNNESSACARY API CALLS
-    //getCurrentWeather();
+    getCurrentWeather();
 
 
     // PUT LCL STRG ITEMS BELOW
