@@ -1,7 +1,3 @@
-if (window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  // “Fear is the path to the Dark Side" - Yoda
-}
 // GLOBAL VARIABLES:
 
 var currtime = document.getElementById("clock");
@@ -14,35 +10,28 @@ document.onkeydown = function (t) {
     }
    }
 
+//Error Catch
+
+   function testForErr () {
+       var s = "o"
+   }
    
+
+   function consoleLog () {
+       //console.log(localStorage.getItem("bgcolor"))
+   }
+
+
 //Welcome:
 
 function welcome() {
 
-    localStorage.setItem("showingUpdates", "no");
+    // NULL/EMPTY CONDITIONS
 
-    //localStorage.removeItem("name")
-    //localStorage.removeItem("updatesOctober19")
-
-    document.getElementById("name").classList.add("hidename")
-    document.getElementById("minheight").style.backgroundColor = localStorage.getItem("bgcolor")
-    bg.style.backgroundImage = localStorage.getItem("bgimage")
-
-    updateButton.classList.add("updateButtonHide");
-    document.getElementsByClassName("arrow")[0].style.display = "none"
-    document.getElementById("updates").style.display = "none" 
-    
-    if (document.getElementById("bgcolorpicker").value === null) {
-        localStorage.setItem("bgcolor", "#ffffff")
+    if (document.getElementById("minheight").style.backgroundColor == "") {
+        //alert("ccd")
+        document.getElementById("minheight").style.backgroundColor = localStorage.getItem("bgcolor")
     }
-    if (document.getElementById("bgcolorpicker").value === "") {
-        localStorage.setItem("bgcolor", "#ffffff")
-    }
-    if (document.getElementById("bgcolorpicker").value === "#000000") {
-        localStorage.setItem("bgcolor", "#ffffff")
-    }
-    document.getElementById("bgcolorpicker").value = localStorage.getItem("bgcolor")
-
     if (localStorage.getItem("name") === null) {
         newVisitor();
         return;
@@ -53,10 +42,40 @@ function welcome() {
         return;
     }
 
-    localStorage.getItem("userChooseAuto")
-    //console.log(localStorage.getItem("updatesOctober19"))
-    //console.log(document.getElementById("minheight").style.backgroundColor)
 
+    // PUT CONSOLE LOGS BELOW
+    console.log(localStorage.getItem("bgimage"))
+    //console.log(localStorage.getItem("updatesOctober19"))
+    console.log(document.getElementById("minheight").style.backgroundColor)
+
+    //UN-COMMENT THE BELOW LINE FOR UNNESSACARY API CALLS
+    getCurrentWeather();
+
+
+    // PUT LCL STRG ITEMS BELOW
+    localStorage.setItem("showingUpdates", "no");
+    localStorage.setItem("bgimage", bg.style.backgroundImage); 
+    localStorage.setItem("layoutMode", "no")
+    //localStorage.removeItem("name")
+    //localStorage.removeItem("updatesOctober19")
+
+    //SET DEFAULTS
+    document.getElementById("freshWelcomeLogo").style.display = "none"
+    document.getElementById("minheight").style.backgroundColor = localStorage.getItem("bgcolor")
+    document.getElementsByClassName("arrow")[0].style.display = "none"
+    document.getElementById("updates").style.display = "none"    
+    document.getElementById("notibubble").innerHTML = "Welcome, " + localStorage.getItem("name") 
+    document.getElementById("bgcolorpicker").value = localStorage.getItem("bgcolor")
+    document.getElementById("nonebg").style.backgroundColor = localStorage.getItem("bgcolor")
+
+
+    updateButton.classList.add("updateButtonHide");   
+    document.getElementById("name").classList.add("hidename")
+    document.getElementById("notibubble").classList.add("notidown")
+    document.getElementById("notibubble").classList.remove("notiup")
+
+
+    // AUTO COLOR BG 
     switch (localStorage.getItem("userChooseAuto")) {
         case "active":
             document.getElementById("auto").style.color = "white"
@@ -66,18 +85,12 @@ function welcome() {
             break;
     }
 
-
-    document.getElementById("freshWelcomeLogo").style.display = "none"
-    showHome();
-    document.getElementById("notibubble").innerHTML = "Welcome, " + localStorage.getItem("name") 
-
-    document.getElementById("notibubble").classList.add("notidown")
-    document.getElementById("notibubble").classList.remove("notiup")
-
     setTimeout(function(){
         document.getElementById("notibubble").classList.remove("notidown")
         document.getElementById("notibubble").classList.add("notiup")
-    },3000);
+    },2000);
+
+    showHome();
 }
 
 function showUpdates () {
@@ -105,8 +118,6 @@ function showUpdates () {
     //Show the bouncing arrow
     var aB = document.getElementsByClassName("arrow")[0];
     aB.style.display = "block"
-
-
 
     //when the update button is clicked, hide the update box + set random lcl strg. values
     updateButton.addEventListener("click", function() {
@@ -160,8 +171,6 @@ function hideUpdates () {
 
         document.getElementById("updates").style.display = "none" 
     }, 300)
-    
-    
 }
 
 
@@ -364,6 +373,8 @@ function showHome () {
     }
     if (localStorage.getItem("tutorial", "yes")) {
 
+        alert("tut")
+
         document.getElementById('flowers').style.backgroundImage = "url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg)"
 
         setTimeout(function() {
@@ -564,6 +575,7 @@ function pulldots() {
 
 function changeLayout () {
     freshdashboard();
+    localStorage.setItem("layoutMode", "yes")
 
     //Set the squares to be dragggable
     document.getElementById('leftopbodygrid').setAttribute('draggable', true);
@@ -581,9 +593,11 @@ function changeLayout () {
     document.getElementById('rightbodygrid').innerHTML = ""
     document.getElementById('leftopbodygrid').innerHTML = ""
     document.getElementById('clocksquare').innerHTML = ""
-    document.getElementById('logosquare').innerHTML = ""
-    document.getElementById('dotsquare').innerHTML = ""
     document.getElementById('leftbottombodygrid').innerHTML = ""
+    document.getElementById('dailyGrid').innerHTML = ""
+    document.getElementById('madeWithLove').innerHTML = ""
+
+    
 
 
     document.getElementById("notibubble").classList.add("notidown")
@@ -606,7 +620,23 @@ function changeLayout () {
     },2200);
 }
 
+//function allowDrop(ev) {
+  //  ev.preventDefault();
+  //}
+  
+  //function drag(ev) {
+    //ev.dataTransfer.setData("text", ev.target.id);
+  //}
+  
+  //function drop(ev) {
+    //ev.preventDefault();
+    //var data = ev.dataTransfer.getData("text");
+    //ev.target.appendChild(document.getElementById(data));
+  //}
+
 function exitChangeLayout() {
+
+    localStorage.setItem("layoutMode", "no")
 
     document.getElementById('dottedboxleft').style.display = "none"
     document.getElementById('dottedboxright').style.display = "none"
@@ -624,6 +654,10 @@ function exitChangeLayout() {
 var bg = document.getElementById("flowers")
 var backgroundColorAuto = document.getElementById("minheight").style.backgroundColor
 
+function nonebg() {
+    bg.style.backgroundImage = null
+    localStorage.setItem("bgimage", "null")
+}
 function defaultbg () {
     bg.style.backgroundImage = "url(/FlowersandStuff-01.png)"
     localStorage.setItem("bgimage", "url(/FlowersandStuff-01.png)")
@@ -648,6 +682,7 @@ function darkModern () {
 
 document.getElementById("bgcolorpicker").addEventListener('change', function() {
     document.getElementById("minheight").style.backgroundColor = this.value
+    document.getElementById("nonebg").style.backgroundColor = this.value
     
     document.getElementById("auto").style.color = "black"
     localStorage.setItem("bgcolor", this.value)
@@ -657,50 +692,36 @@ document.getElementById("bgcolorpicker").addEventListener('change', function() {
 
 function autobgcolor () {
 
+    if (document.getElementById("auto").style.color == "black") {
 
-    switch (document.getElementById("auto").style.color) {
-        default :
-            if (backgroundColorAuto == "#d6f5f5") {
-                localStorage.setItem("userChooseAuto", "active")
-            } 
-            if (backgroundColorAuto == "#ffffff") {
-                localStorage.setItem("userChooseAuto", "unactive")
-            } 
-            break;
-        case "black":
-            localStorage.setItem("userChooseAuto", "unactive")
-            break;
+        document.getElementById("auto").style.color = "white"
+        localStorage.setItem("userChooseAuto", "active")
 
-        case "white":
-            localStorage.setItem("userChooseAuto", "active")
+        switch (localStorage.getItem("bgimage")) {
+            default:
+                document.getElementById("minheight").style.backgroundColor = "#d6f5f5"
+                document.getElementById("bgcolorpicker").value = "#d6f5f5"
+    
+                localStorage.setItem("bgcolor", "#d6f5f5")
+    
+                document.getElementById("nonebg").style.backgroundColor = localStorage.getItem("bgcolor")
+                break;
+    
+            case "url(/FlowersandStuff-01.png)": 
+                document.getElementById("minheight").style.backgroundColor = "#d6f5f5"
+                document.getElementById("bgcolorpicker").value = "#d6f5f5"
+    
+                localStorage.setItem("bgcolor", "#d6f5f5")
+    
+                document.getElementById("nonebg").style.backgroundColor = localStorage.getItem("bgcolor")
             break;
+        }
+    } else {
+        document.getElementById("auto").style.color = "black"
+        localStorage.setItem("userChooseAuto", "unactive")
     }
 
-    switch (localStorage.getItem("userChooseAuto")) {
-        case "unactive":
-            //alert("assigingwhite")
-            document.getElementById("auto").style.color = "white"
-            break;
-        case "active":
-            document.getElementById("auto").style.color = "black"
-            break;
-    }
 
- 
-
-    switch (localStorage.getItem("bgimage")) {
-        default:
-            document.getElementById("minheight").style.backgroundColor = "#d6f5f5"
-            document.getElementById("bgcolorpicker").value = "#d6f5f5"
-            localStorage.setItem("bgcolor", "#d6f5f5")
-            break;
-
-        case "url(/FlowersandStuff-01.png)": 
-            document.getElementById("minheight").style.backgroundColor = "#d6f5f5"
-            document.getElementById("bgcolorpicker").value = "#d6f5f5"
-            localStorage.setItem("bgcolor", "#d6f5f5")
-        break;
-    }
 }
 
 //Clock
@@ -1316,7 +1337,7 @@ function getCurrentWeather () {
      document.getElementById("stat4").innerHTML = currentairpFinal + " " + data["baro_pressure"]["units"];
 
  });
-} getCurrentWeather();
+} 
 
 
 function weekdays() {
