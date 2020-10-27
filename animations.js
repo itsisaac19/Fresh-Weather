@@ -1,10 +1,100 @@
-document.getElementById('leftopbodygrid').addEventListener("click", function(){
-    localStorage.setItem("whichHardPress", "leftopbodygrid")
-    localStorage.setItem("pressing", "yes")
-    //alert("wdwd")
-    hardPress();
-    return;
+
+localStorage.removeItem("whichHardPress")
+localStorage.removeItem("animateFocus")
+
+document.getElementById('flowers').addEventListener("click", function(){
+    //console.log(localStorage.getItem("whichHardPress"))
 })
+
+//When each of the squares is clicked:
+
+document.getElementById('leftopbodygrid').addEventListener("click", function(){
+    
+    //console.log(localStorage.getItem("whichHardPress"))
+
+
+    //This switch case prevents users from clicking another square WHILE focused in on another square
+    switch(localStorage.getItem("whichHardPress")) {
+        default :
+
+        break;
+        case "leftopbodygrid" :
+            localStorage.setItem("whichHardPress", "leftopbodygrid")
+            localStorage.setItem("pressing", "yes")
+            //alert("wdwd")
+            hardPress();
+            return;
+        break
+        case null :
+            localStorage.setItem("whichHardPress", "leftopbodygrid")
+            localStorage.setItem("pressing", "yes")
+            //alert("wdwd")
+            hardPress();
+            return;
+        break
+    }
+})
+
+
+
+document.getElementById('leftbottombodygrid').addEventListener("click", function(){
+
+    //console.log(localStorage.getItem("whichHardPress"))
+
+     //This switch case prevents users from clicking another square WHILE focused in on another square
+    switch(localStorage.getItem("whichHardPress")) {
+        default :
+            
+        break;
+        case "leftbottombodygrid" :
+            localStorage.setItem("whichHardPress", "leftbottombodygrid")
+            localStorage.setItem("pressing", "yes")
+            //alert("wdwd")
+            hardPress();
+            return;
+        break
+        case null :
+            localStorage.setItem("whichHardPress", "leftbottombodygrid")
+            localStorage.setItem("pressing", "yes")
+            //alert("wdwd")
+            hardPress();
+            return;
+        break
+    }
+})
+
+
+
+document.getElementById('rightbodygrid').addEventListener("click", function(){
+
+    //console.log(localStorage.getItem("whichHardPress"))
+
+     //This switch case prevents users from clicking another square WHILE focused in on another square
+     switch(localStorage.getItem("whichHardPress")) {
+        default :
+            
+        break;
+        case "rightbodygrid" :
+            localStorage.setItem("whichHardPress", "rightbodygrid")
+            localStorage.setItem("pressing", "yes")
+            //alert("wdwd")
+            hardPress();
+            return;
+        break
+        case null :
+            localStorage.setItem("whichHardPress", "rightbodygrid")
+            localStorage.setItem("pressing", "yes")
+            //alert("wdwd")
+            hardPress();
+            return;
+        break
+    }
+})
+
+
+
+
+//If the escape key is pressed while currentFocus is yes, it will unfocus the square
 document.addEventListener('keydown', function(event){
 	if(event.key === "Escape"){
         if(localStorage.getItem("currentFocus") == "yes") {
@@ -13,6 +103,8 @@ document.addEventListener('keydown', function(event){
         }
     }
 })
+
+//If the area around the square is clicked while currentFocus is yes, it will unfocus the square
 document.addEventListener("click", function() {
     setTimeout(function() {
 
@@ -31,6 +123,9 @@ document.addEventListener("click", function() {
 
 
 })
+
+
+//If the squares are not detected, the focus is set to no
 if (document.getElementById('clocksquare').classList.value == "freeOffdetect") {
 
     localStorage.setItem("currentFocus", "no")
@@ -39,13 +134,18 @@ if (document.getElementById('clocksquare').classList.value == "freeOffdetect") {
 
 } 
 
+
+//Universal Function for all squares
 function hardPress () {
 
+    //If layout mode is active, cancel the function
     if (localStorage.getItem("layoutMode") ==  "yes") {
         //alert("uhoh");
         return;
     }
 
+
+    //document vars
     var s = document.getElementById('flowers')
 
     var dB = document.getElementById('dailyBox');
@@ -53,10 +153,14 @@ function hardPress () {
     var cS = document.getElementById('clocksquare');
     var cC = document.getElementById('climacell');
     var lBBG = document.getElementById('leftbottombodygrid');
+    var lTBG = document.getElementById('leftopbodygrid');
 
     setTimeout(function() {
 
+        //Identify the square that was pressed
         switch(localStorage.getItem("whichHardPress")) {
+
+            //If the leftopbodygrid square was pressed:
             case "leftopbodygrid":
                 if (document.getElementById('clocksquare').classList.value == "freeOffdetect") {
 
@@ -75,33 +179,266 @@ function hardPress () {
                     lBBG.classList.remove('freeOffdetect')
             
                     localStorage.setItem("currentFocus", "yes")
+                    localStorage.setItem("animateFocus", "yes")
+
+                    document.getElementById('leftopbodygrid').classList.add("bounceFocus")
+
+                    setTimeout(function() {
+                        document.getElementById('leftopbodygrid').style.transform = "translateY(-10px)"
+                        localStorage.setItem("animateFocus", "no")
+                        //console.log("NOW")
+                    }, 900);
                     
 
                     //console.log(localStorage.getItem("currentFocus"))
             
                 } else {
             
-                    cS.classList.add('freeOffdetect')
-                    s.classList.remove('freeUniversalBlurOn')
-                
-                    dB.classList.remove('freeUniversalBlurOn')
-                    rBG.classList.remove('freeUniversalBlurOn')
-                    cS.classList.remove('freeUniversalBlurOn')
-                    cC.classList.remove('freeUniversalBlurOn')
-                    lBBG.classList.remove('freeUniversalBlurOn')
+                    switch (localStorage.getItem("animateFocus")) {
+                        case "yes":
+                            //alert("you have clicked while this animation is active.")
+                            return;
+                        break;
+                        case "no":
+                            //alert("you have clicked while this animation is  NOT active.")
+                            cS.classList.add('freeOffdetect')
+                            s.classList.remove('freeUniversalBlurOn')
+                        
+                            dB.classList.remove('freeUniversalBlurOn')
+                            lBBG.classList.remove('freeUniversalBlurOn')
+                            cS.classList.remove('freeUniversalBlurOn')
+                            cC.classList.remove('freeUniversalBlurOn')
+                            rBG.classList.remove('freeUniversalBlurOn')
+        
+                            document.getElementById('leftopbodygrid').classList.remove("bounceFocus")
+                            document.getElementById('leftopbodygrid').style.transform = null
+    
+                            localStorage.removeItem("whichHardPress")
+                        break
+                        case null :
+                            cS.classList.add('freeOffdetect')
+                            s.classList.remove('freeUniversalBlurOn')
+                        
+                            dB.classList.remove('freeUniversalBlurOn')
+                            lBBG.classList.remove('freeUniversalBlurOn')
+                            cS.classList.remove('freeUniversalBlurOn')
+                            cC.classList.remove('freeUniversalBlurOn')
+                            rBG.classList.remove('freeUniversalBlurOn')
+        
+                            document.getElementById('leftopbodygrid').classList.remove("bounceFocus")
+                            document.getElementById('leftopbodygrid').style.transform = null
+    
+                            localStorage.removeItem("whichHardPress")
+                        break
+                    }
                 }
                 break;
+
+
+
+
+
+
+                //if the leftbottombodygrid square was pressed:
+                case "leftbottombodygrid":
+                    if (document.getElementById('clocksquare').classList.value == "freeOffdetect") {
+    
+                        s.classList.add('freeUniversalBlurOn')
+                    
+                        dB.classList.add('freeUniversalBlurOn')
+                        rBG.classList.add('freeUniversalBlurOn')
+                        cS.classList.add('freeUniversalBlurOn')
+                        cC.classList.add('freeUniversalBlurOn')
+                        lTBG.classList.add('freeUniversalBlurOn')
+                
+                        dB.classList.remove('freeOffdetect')
+                        rBG.classList.remove('freeOffdetect')
+                        cS.classList.remove('freeOffdetect')
+                        cC.classList.remove('freeOffdetect')
+                        lTBG.classList.remove('freeOffdetect')
+                
+                        localStorage.setItem("currentFocus", "yes")
+                        localStorage.setItem("animateFocus", "yes")
+    
+                        document.getElementById('leftbottombodygrid').classList.add("bounceFocus")
+    
+                        setTimeout(function() {
+                            document.getElementById('leftbottombodygrid').style.transform = "translateY(-10px)"
+                            localStorage.setItem("animateFocus", "no")
+                            //console.log("NOW")
+                        }, 900);
+                        
+    
+                        //console.log(localStorage.getItem("currentFocus"))
+                
+                    } else {
+                
+                        switch (localStorage.getItem("animateFocus")) {
+                            case "yes":
+                                //alert("you have clicked while this animation is active.")
+                                return;
+                            break;
+                            case "no":
+                                //alert("you have clicked while this animation is  NOT active.")
+                                cS.classList.add('freeOffdetect')
+                                s.classList.remove('freeUniversalBlurOn')
+                            
+                                dB.classList.remove('freeUniversalBlurOn')
+                                lTBG.classList.remove('freeUniversalBlurOn')
+                                cS.classList.remove('freeUniversalBlurOn')
+                                cC.classList.remove('freeUniversalBlurOn')
+                                rBG.classList.remove('freeUniversalBlurOn')
+            
+                                document.getElementById('leftbottombodygrid').classList.remove("bounceFocus")
+                                document.getElementById('leftbottombodygrid').style.transform = null
+        
+                                localStorage.removeItem("whichHardPress")
+                            break
+                            case null :
+                                cS.classList.add('freeOffdetect')
+                                s.classList.remove('freeUniversalBlurOn')
+                            
+                                dB.classList.remove('freeUniversalBlurOn')
+                                lTBG.classList.remove('freeUniversalBlurOn')
+                                cS.classList.remove('freeUniversalBlurOn')
+                                cC.classList.remove('freeUniversalBlurOn')
+                                rBG.classList.remove('freeUniversalBlurOn')
+            
+                                document.getElementById('leftbottombodygrid').classList.remove("bounceFocus")
+                                document.getElementById('leftbottombodygrid').style.transform = null
+        
+                                localStorage.removeItem("whichHardPress")
+                            break
+                        }
+                    }
+                    break;
+
+
+
+
+
+
+
+
+                //if the rightbodygrid square was pressed:
+                case "rightbodygrid":
+                    if (document.getElementById('clocksquare').classList.value == "freeOffdetect") {
+    
+                        s.classList.add('freeUniversalBlurOn')
+                    
+                        dB.classList.add('freeUniversalBlurOn')
+                        lBBG.classList.add('freeUniversalBlurOn')
+                        cS.classList.add('freeUniversalBlurOn')
+                        cC.classList.add('freeUniversalBlurOn')
+                        lTBG.classList.add('freeUniversalBlurOn')
+                
+                        dB.classList.remove('freeOffdetect')
+                        lBBG.classList.remove('freeOffdetect')
+                        cS.classList.remove('freeOffdetect')
+                        cC.classList.remove('freeOffdetect')
+                        lTBG.classList.remove('freeOffdetect')
+                
+                        localStorage.setItem("currentFocus", "yes")
+                        localStorage.setItem("animateFocus", "yes")
+    
+                        document.getElementById('rightbodygrid').classList.add("bounceFocus")
+    
+                        setTimeout(function() {
+                            document.getElementById('rightbodygrid').style.transform = "translateY(-10px)"
+                            localStorage.setItem("animateFocus", "no")
+                            //console.log("NOW")
+                        }, 900);
+                        
+    
+                        //console.log(localStorage.getItem("currentFocus"))
+                
+                    } else {
+                        switch (localStorage.getItem("animateFocus")) {
+                            case "yes":
+                                //alert("you have clicked while this animation is active.")
+                                return;
+                            break;
+                            case "no":
+                                //alert("you have clicked while this animation is  NOT active.")
+                                cS.classList.add('freeOffdetect')
+                                s.classList.remove('freeUniversalBlurOn')
+                            
+                                dB.classList.remove('freeUniversalBlurOn')
+                                lBBG.classList.remove('freeUniversalBlurOn')
+                                cS.classList.remove('freeUniversalBlurOn')
+                                cC.classList.remove('freeUniversalBlurOn')
+                                lTBG.classList.remove('freeUniversalBlurOn')
+            
+                                document.getElementById('rightbodygrid').classList.remove("bounceFocus")
+                                document.getElementById('rightbodygrid').style.transform = null
+        
+                                localStorage.removeItem("whichHardPress")
+                            break
+                            case null :
+                                cS.classList.add('freeOffdetect')
+                                s.classList.remove('freeUniversalBlurOn')
+                            
+                                dB.classList.remove('freeUniversalBlurOn')
+                                lBBG.classList.remove('freeUniversalBlurOn')
+                                cS.classList.remove('freeUniversalBlurOn')
+                                cC.classList.remove('freeUniversalBlurOn')
+                                lTBG.classList.remove('freeUniversalBlurOn')
+            
+                                document.getElementById('rightbodygrid').classList.remove("bounceFocus")
+                                document.getElementById('rightbodygrid').style.transform = null
+        
+                                localStorage.removeItem("whichHardPress")
+                            break
+                        }
+                
+
+                    }
+                    break;
+
+
+
+
         }
     }, 10);
 
+    //Set the mode pressing to no
 setTimeout(function() {
     localStorage.setItem("pressing", "no")
-    console.log("set to no")
+    //console.log("set to no")
 }, 500);
-
-
-
 }
+
+
+
+function orderForever () {
+    switch (localStorage.getItem("animateFocus")) {
+        default :
+        document.getElementById('leftopbodygrid').style.cursor = "not-allowed"
+        document.getElementById('leftbottombodygrid').style.cursor = "not-allowed"
+        document.getElementById('rightbodygrid').style.cursor = "not-allowed"
+        break;
+        case null :
+            document.getElementById('leftopbodygrid').style.cursor = null
+            document.getElementById('leftbottombodygrid').style.cursor = null
+            document.getElementById('rightbodygrid').style.cursor = null
+        break;
+        case "yes" :
+            document.getElementById('leftopbodygrid').style.cursor = "not-allowed"
+            document.getElementById('leftbottombodygrid').style.cursor = "not-allowed"
+            document.getElementById('rightbodygrid').style.cursor = "not-allowed"
+        break;
+        case "no" :
+            document.getElementById('leftopbodygrid').style.cursor = null
+            document.getElementById('leftbottombodygrid').style.cursor = null
+            document.getElementById('rightbodygrid').style.cursor = null
+        break;
+    }
+
+setTimeout(orderForever, 1);
+}
+
+orderForever()
+
 
 //Dark Theme 
 
