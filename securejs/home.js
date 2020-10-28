@@ -757,6 +757,380 @@ updateTime();
 //---------------------------------------------------------------------------
 
 
+function expandTimeHourly () {
+
+    var now = new Date();
+    var TwentyFourHour = now.getHours();
+    var hour = now.getHours();
+
+    var mid = 'PM';
+
+    if (hour > 12) {
+      hour = hour - 12;
+    }    
+    if(hour==0){ 
+      hour=12;
+    }
+    if(TwentyFourHour < 12) {
+       mid = 'AM';
+    }
+    if((TwentyFourHour == 24)) {
+    mid = 'AM'
+    }
+
+            //Hour display
+
+            document.getElementById("hour1").innerHTML = hour + " " + mid
+
+            var hour1 = (hour+1)
+            if (hour1 > 12) {
+                hour1 = hour1 - 12
+            }
+            var TwentyFourHour1 = (TwentyFourHour + 1)
+            var mid1 = mid 
+            if (TwentyFourHour1 > 24) {
+                TwentyFourHour1 = TwentyFourHour1 - 24
+            }
+            if (TwentyFourHour1 == 24) {
+                mid1 = "AM"
+            }
+            if (TwentyFourHour1 >= 1) {
+                if (TwentyFourHour1 < 12) {
+                    mid1 = "AM"
+                }
+            }
+            if (TwentyFourHour1 > 11) {
+                mid1 = "PM"
+            }
+            
+            document.getElementById("hour2").innerHTML = hour1 + " " + mid1
+    
+            var hour2 = (hour+2)
+            if (hour2 > 12) {
+                hour2 = hour2 - 12
+            }
+            var TwentyFourHour2 = (TwentyFourHour + 2)
+            var mid2 = mid 
+            if (TwentyFourHour2 > 24) {
+                TwentyFourHour2 = TwentyFourHour2 - 24
+            }
+            if (TwentyFourHour2 == 24) {
+                mid2 = "AM"
+            }
+            if (TwentyFourHour2 >= 1) {
+                if (TwentyFourHour2 < 12) {
+                    mid2 = "AM"
+                }
+            }
+            if (TwentyFourHour2 > 11) {
+                mid2 = "PM"
+            }
+            
+            document.getElementById("hour3").innerHTML = hour2 + " " + mid2
+    
+            var hour3 = (hour+3)
+            if (hour3 > 12) {
+                hour3 = hour3 - 12
+            }
+            var TwentyFourHour3 = (TwentyFourHour + 3)
+            var mid3 = mid 
+            if (TwentyFourHour3 > 24) {
+                TwentyFourHour3 = TwentyFourHour3 - 24
+            }
+            if (TwentyFourHour3 == 24) {
+                mid3 = "AM"
+            }
+            if (TwentyFourHour3 >= 1) {
+                if (TwentyFourHour3 < 12) {
+                    mid3 = "AM"
+                }
+            }
+            if (TwentyFourHour3 > 11) {
+                mid3 = "PM"
+            }
+            
+            document.getElementById("hour4").innerHTML = hour3 + " " + mid3
+    
+            var hour4 = (hour+4)
+            if (hour4 > 12) {
+                hour4 = hour4 - 12
+            }
+            var TwentyFourHour4 = (TwentyFourHour + 4)
+            var mid4 = mid 
+            if (TwentyFourHour4 > 24) {
+                TwentyFourHour4 = TwentyFourHour4 - 24
+            }
+            if (TwentyFourHour4 == 24) {
+                mid4 = "AM"
+            }
+            if (TwentyFourHour4 >= 1) {
+                if (TwentyFourHour4 < 12) {
+                    mid4 = "AM"
+                }
+            }
+            if (TwentyFourHour4 > 11) {
+                mid4 = "PM"
+            }
+            
+            document.getElementById("hour5").innerHTML = hour4 + " " + mid4
+    
+            var hour5 = (hour+5)
+            if (hour5 > 12) {
+                hour5 = hour5 - 12
+            }
+            var TwentyFourHour5 = (TwentyFourHour + 5)
+            var mid5 = mid 
+            if (TwentyFourHour5 > 24) {
+                TwentyFourHour5 = TwentyFourHour5 - 24
+            }
+            if (TwentyFourHour5 == 24) {
+                mid5 = "AM"
+            }
+            if (TwentyFourHour5 >= 1) {
+                if (TwentyFourHour5 < 12) {
+                    mid5 = "AM"
+                }
+            }
+            if (TwentyFourHour5 > 11) {
+                mid5 = "PM"
+            }
+            
+            document.getElementById("hour6").innerHTML = hour5 + " " + mid5
+    
+            var hour6 = (hour+6)
+            if (hour6 > 12) {
+                hour6 = hour6 - 12
+            }	
+            var TwentyFourHour6 = (TwentyFourHour + 6)
+            var mid6 = mid 
+            if (TwentyFourHour6 > 24) {
+                TwentyFourHour6 = TwentyFourHour6 - 24
+            }
+            if (TwentyFourHour6 == 24) {
+                mid6 = "AM"
+            }
+            if (TwentyFourHour6 >= 1) {
+                if (TwentyFourHour6 < 12) {
+                    mid6 = "AM"
+                }
+            }
+            if (TwentyFourHour6 > 11) {
+                mid6 = "PM"
+            }
+            
+            document.getElementById("hour7").innerHTML = hour6 + " " + mid6
+    
+            var hour7 = (hour+7)
+            if (hour7 > 12) {
+                hour7 = hour7 - 12
+            }	
+            var TwentyFourHour7 = (TwentyFourHour + 7)
+            var mid7 = mid 
+            if (TwentyFourHour7 > 24) {
+                TwentyFourHour7 = TwentyFourHour7 - 24
+            }
+            if (TwentyFourHour7 == 24) {
+                mid7 = "AM"
+            }
+            if (TwentyFourHour7 >= 1) {
+                if (TwentyFourHour7 < 12) {
+                    mid7 = "AM"
+                }
+            }
+            if (TwentyFourHour7 > 11) {
+                mid7 = "PM"
+            }
+            
+            document.getElementById("hour8").innerHTML = hour7 + " " + mid7
+    
+
+    var hour8 = (hour+8)
+    if (hour8 > 12) {
+        hour8 = hour8 - 12
+    }	
+    var TwentyFourHour8 = (TwentyFourHour + 8)
+    var mid8 = mid 
+    if (TwentyFourHour8 > 24) {
+        TwentyFourHour8 = TwentyFourHour8 - 24
+    }
+    if (TwentyFourHour8 == 24) {
+        mid8 = "AM"
+    }
+    if (TwentyFourHour8 >= 1) {
+        if (TwentyFourHour8 < 12) {
+            mid8 = "AM"
+        }
+    }
+    if (TwentyFourHour8 > 11) {
+        mid8 = "PM"
+    }
+    
+    document.getElementById("hour9").innerHTML = hour8 + " " + mid8
+
+    var hour9 = (hour+9)
+    if (hour9 > 12) {
+        hour9 = hour9 - 12
+    }	
+    var TwentyFourHour9 = (TwentyFourHour9 + 9)
+    var mid9 = mid
+    if (TwentyFourHour9 > 24) {
+        TwentyFourHour9 = TwentyFourHour9 - 24
+    }
+    if (TwentyFourHour9 == 24) {
+        mid9 = "AM"
+    }
+    if (TwentyFourHour9 >= 1) {
+        if (TwentyFourHour9 < 12) {
+            mid9 = "AM"
+        }
+    }
+    if (TwentyFourHour9 > 11) {
+        mid9 = "PM"
+    }
+    
+    document.getElementById("hour10").innerHTML = hour9 + " " + mid9
+
+    var hour10 = (hour+10)
+    if (hour10 > 12) {
+        hour10 = hour10 - 12
+    }	
+    var TwentyFourHour10 = (TwentyFourHour + 10)
+    var mid10 = mid 
+    if (TwentyFourHour10 > 24) {
+        TwentyFourHour10 = TwentyFourHour10 - 24
+    }
+    if (TwentyFourHour10 == 24) {
+        mid10 = "AM"
+    }
+    if (TwentyFourHour10 >= 1) {
+        if (TwentyFourHour10 < 12) {
+            mid10 = "AM"
+        }
+    }
+    if (TwentyFourHour10 > 11) {
+        mid10 = "PM"
+    }
+    
+    document.getElementById("hour11").innerHTML = hour10 + " " + mid10
+
+    var hour11 = (hour+11)
+    if (hour11 > 12) {
+        hour11 = hour11 - 12
+    }	
+    var TwentyFourHour11 = (TwentyFourHour11 + 8)
+    var mid11 = mid 
+    if (TwentyFourHour11 > 24) {
+        TwentyFourHour11 = TwentyFourHour11 - 24
+    }
+    if (TwentyFourHour11 == 24) {
+        mid11 = "AM"
+    }
+    if (TwentyFourHour11 >= 1) {
+        if (TwentyFourHour11 < 12) {
+            mid11 = "AM"
+        }
+    }
+    if (TwentyFourHour > 11) {
+        mid11 = "PM"
+    }
+    
+    document.getElementById("hour12").innerHTML = hour11 + " " + mid11
+
+    var hour12 = (hour+12)
+    if (hour12 > 12) {
+        hour12 = hour12 - 12
+    }	
+    var TwentyFourHour12 = (TwentyFourHour12 + 8)
+    var mid12 = mid 
+    if (TwentyFourHour12 > 24) {
+        TwentyFourHour12 = TwentyFourHour12 - 24
+    }
+    if (TwentyFourHour12 == 24) {
+        mid12 = "AM"
+    }
+    if (TwentyFourHour12 >= 1) {
+        if (TwentyFourHour12 < 12) {
+            mid12 = "AM"
+        }
+    }
+    if (TwentyFourHour12 > 11) {
+        mid12 = "PM"
+    }
+    
+    document.getElementById("hour13").innerHTML = hour12 + " " + mid12
+
+    var hour13 = (hour+13)
+    if (hour13 > 12) {
+        hour13 = hour13 - 12
+    }	
+    var TwentyFourHour13 = (TwentyFourHour13 + 8)
+    var mid13 = mid 
+    if (TwentyFourHour13 > 24) {
+        TwentyFourHour13 = TwentyFourHour13 - 24
+    }
+    if (TwentyFourHour13 == 24) {
+        mid13 = "AM"
+    }
+    if (TwentyFourHour13 >= 1) {
+        if (TwentyFourHour13 < 12) {
+            mid13 = "AM"
+        }
+    }
+    if (TwentyFourHour13 > 11) {
+        mid13 = "PM"
+    }
+    
+    document.getElementById("hour14").innerHTML = hour13 + " " + mid13
+
+    var hour14 = (hour+14)
+    if (hour14 > 12) {
+        hour14 = hour14 - 12
+    }	
+    var TwentyFourHour14 = (TwentyFourHour14 + 8)
+    var mid14 = mid 
+    if (TwentyFourHour14 > 24) {
+        TwentyFourHour14 = TwentyFourHour14 - 24
+    }
+    if (TwentyFourHour14 == 24) {
+        mid14 = "AM"
+    }
+    if (TwentyFourHour14 >= 1) {
+        if (TwentyFourHour14 < 12) {
+            mid14 = "AM"
+        }
+    }
+    if (TwentyFourHour14 > 11) {
+        mid14 = "PM"
+    }
+    
+    document.getElementById("hour15").innerHTML = hour14 + " " + mid14
+
+    var hour15 = (hour+15)
+    if (hour15 > 12) {
+        hour15 = hour15 - 12
+    }	
+    var TwentyFourHour15 = (TwentyFourHour15 + 8)
+    var mid15 = mid 
+    if (TwentyFourHour15 > 24) {
+        TwentyFourHour15 = TwentyFourHour15 - 24
+    }
+    if (TwentyFourHour15 == 24) {
+        mid15 = "AM"
+    }
+    if (TwentyFourHour15 >= 1) {
+        if (TwentyFourHour15 < 12) {
+            mid15 = "AM"
+        }
+    }
+    if (TwentyFourHour15 > 11) {
+        mid15 = "PM"
+    }
+    
+    //document.getElementById("hour16").innerHTML = hour15 + " " + mid15
+
+}
+
+
 function getCurrentWeather () {
 
 
@@ -1013,7 +1387,7 @@ function getCurrentWeather () {
     
 
 
-//HOURLY (for precip probability)
+//HOURLY WEATHER
     fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&location_id=shoreview&unit_system='+localStorage.getItem("units")+'&start_time=now&end_time='+next4days+'T14%3A09%3A50Z&fields=precipitation%2Ctemp%2Chumidity%2Cwind_speed%2Cweather_code%2Cbaro_pressure%2Cfeels_like%2Cprecipitation_probability&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
 	.then(response => response.json())
 	.then(data => {
@@ -1046,7 +1420,15 @@ function getCurrentWeather () {
         var temphour6 = Math.floor(data[5]['temp']['value']);
         var temphour7 = Math.floor(data[6]['temp']['value']);
         var temphour8 = Math.floor(data[7]['temp']['value']);
-        //var hour9 = Math.floor(data[8]['temp']['value']);
+
+        var temphour9 = Math.floor(data[8]['temp']['value']);
+        var temphour10 = Math.floor(data[9]['temp']['value']);
+        var temphour11 = Math.floor(data[10]['temp']['value']);
+        var temphour12 = Math.floor(data[11]['temp']['value']);
+        var temphour13 = Math.floor(data[12]['temp']['value']);
+        var temphour14 = Math.floor(data[13]['temp']['value']);
+        var temphour15 = Math.floor(data[14]['temp']['value']);
+        var temphour16 = Math.floor(data[15]['temp']['value']);
 
         var weatherCode1 = data[0]['weather_code']['value']
         var weatherCode2 = data[1]['weather_code']['value']
@@ -1066,196 +1448,80 @@ function getCurrentWeather () {
         icon7 = iconSelect(weatherCode7)
         icon8 = iconSelect(weatherCode8)
 
+        var weatherCode9 = data[8]['weather_code']['value']
+        var weatherCode10 = data[9]['weather_code']['value']
+        var weatherCode11 = data[10]['weather_code']['value']
+        var weatherCode12 = data[11]['weather_code']['value']
+        var weatherCode13 = data[12]['weather_code']['value']
+        var weatherCode14 = data[13]['weather_code']['value']
+        var weatherCode15 = data[14]['weather_code']['value']
+        var weatherCode16 = data[15]['weather_code']['value']
+
+        icon9 = iconSelect(weatherCode9)
+        icon10 = iconSelect(weatherCode10)
+        icon11 = iconSelect(weatherCode11)
+        icon12 = iconSelect(weatherCode12)
+        icon13 = iconSelect(weatherCode13)
+        icon14 = iconSelect(weatherCode14)
+        icon15 = iconSelect(weatherCode15)
+        icon16 = iconSelect(weatherCode16)
+
+        localStorage.setItem("icon9", icon9)
+        localStorage.setItem("icon10", icon10)
+        localStorage.setItem("icon11", icon11)
+        localStorage.setItem("icon12", icon12)
+        localStorage.setItem("icon13", icon13)
+        localStorage.setItem("icon14", icon14)
+        localStorage.setItem("icon15", icon15)
+        localStorage.setItem("icon16", icon16)
 
         ///ISAAC LOOK HERe!!! Wanna know where YOU LEFT OFF EH? Make a grid for the left bottom square, then place inital
         //text so you can see the houly data. GLFH!!! LMAO
 
         //Temp
 
-        document.getElementById("temphour1").innerHTML = temphour1 + "°"
-        document.getElementById("temphour2").innerHTML = temphour2 + "°"
-        document.getElementById("temphour3").innerHTML = temphour3 + "°"
-        document.getElementById("temphour4").innerHTML = temphour4 + "°"
-        document.getElementById("temphour5").innerHTML = temphour5 + "°"
-        document.getElementById("temphour6").innerHTML = temphour6 + "°"
-        document.getElementById("temphour7").innerHTML = temphour7 + "°"
-        document.getElementById("temphour8").innerHTML = temphour8 + "°"
+        function setTempHourDefault () {
+
+            document.getElementById("temphour1").innerHTML = temphour1 + "°"
+            document.getElementById("temphour2").innerHTML = temphour2 + "°"
+            document.getElementById("temphour3").innerHTML = temphour3 + "°"
+            document.getElementById("temphour4").innerHTML = temphour4 + "°"
+            document.getElementById("temphour5").innerHTML = temphour5 + "°"
+            document.getElementById("temphour6").innerHTML = temphour6 + "°"
+            document.getElementById("temphour7").innerHTML = temphour7 + "°"
+            document.getElementById("temphour8").innerHTML = temphour8 + "°"
+
+            setTimeout(setTempHourDefault, 100)
+        }
+        setTempHourDefault();
+
+        localStorage.setItem("temphour9", temphour9 + "°")  
+        localStorage.setItem("temphour10", temphour10 + "°")
+        localStorage.setItem("temphour11", temphour11 + "°")
+        localStorage.setItem("temphour12", temphour12 + "°")
+        localStorage.setItem("temphour13", temphour13 + "°")
+        localStorage.setItem("temphour14", temphour14 + "°")
+        localStorage.setItem("temphour15", temphour15 + "°")
+        localStorage.setItem("temphour16", temphour16 + "°")
 
         //Icons
 
-        document.getElementById("wiconhour1").src = icon1
-        document.getElementById("wiconhour2").src = icon2
-        document.getElementById("wiconhour3").src = icon3
-        document.getElementById("wiconhour4").src = icon4
-        document.getElementById("wiconhour5").src = icon5
-        document.getElementById("wiconhour6").src = icon6
-        document.getElementById("wiconhour7").src = icon7
-        document.getElementById("wiconhour8").src = icon8
+        function setIconHourDefault () {
 
-        //Hour display
+            document.getElementById("wiconhour1").src = icon1
+            document.getElementById("wiconhour2").src = icon2
+            document.getElementById("wiconhour3").src = icon3
+            document.getElementById("wiconhour4").src = icon4
+            document.getElementById("wiconhour5").src = icon5
+            document.getElementById("wiconhour6").src = icon6
+            document.getElementById("wiconhour7").src = icon7
+            document.getElementById("wiconhour8").src = icon8
 
-        document.getElementById("hour1").innerHTML = hour + " " + mid
-
-        var hour1 = (hour+1)
-		if (hour1 > 12) {
-			hour1 = hour1 - 12
-		}
-		var TwentyFourHour1 = (TwentyFourHour + 1)
-		var mid1 = mid 
-		if (TwentyFourHour1 > 24) {
-			TwentyFourHour1 = TwentyFourHour1 - 24
-		}
-		if (TwentyFourHour1 == 24) {
-			mid1 = "AM"
-		}
-		if (TwentyFourHour1 >= 1) {
-			if (TwentyFourHour1 < 12) {
-				mid1 = "AM"
-			}
-		}
-		if (TwentyFourHour1 > 11) {
-			mid1 = "PM"
+            setTimeout(setIconHourDefault, 100)
         }
-        
-        document.getElementById("hour2").innerHTML = hour1 + " " + mid1
+        setIconHourDefault();
 
-        var hour2 = (hour+2)
-		if (hour2 > 12) {
-			hour2 = hour2 - 12
-		}
-		var TwentyFourHour2 = (TwentyFourHour + 2)
-		var mid2 = mid 
-		if (TwentyFourHour2 > 24) {
-			TwentyFourHour2 = TwentyFourHour2 - 24
-		}
-		if (TwentyFourHour2 == 24) {
-			mid2 = "AM"
-		}
-		if (TwentyFourHour2 >= 1) {
-			if (TwentyFourHour2 < 12) {
-				mid2 = "AM"
-			}
-		}
-		if (TwentyFourHour2 > 11) {
-			mid2 = "PM"
-        }
-        
-        document.getElementById("hour3").innerHTML = hour2 + " " + mid2
 
-        var hour3 = (hour+3)
-		if (hour3 > 12) {
-			hour3 = hour3 - 12
-		}
-		var TwentyFourHour3 = (TwentyFourHour + 3)
-		var mid3 = mid 
-		if (TwentyFourHour3 > 24) {
-			TwentyFourHour3 = TwentyFourHour3 - 24
-		}
-		if (TwentyFourHour3 == 24) {
-			mid3 = "AM"
-		}
-		if (TwentyFourHour3 >= 1) {
-			if (TwentyFourHour3 < 12) {
-				mid3 = "AM"
-			}
-		}
-		if (TwentyFourHour3 > 11) {
-			mid3 = "PM"
-        }
-        
-        document.getElementById("hour4").innerHTML = hour3 + " " + mid3
-
-        var hour4 = (hour+4)
-		if (hour4 > 12) {
-			hour4 = hour4 - 12
-		}
-		var TwentyFourHour4 = (TwentyFourHour + 4)
-		var mid4 = mid 
-		if (TwentyFourHour4 > 24) {
-			TwentyFourHour4 = TwentyFourHour4 - 24
-		}
-		if (TwentyFourHour4 == 24) {
-			mid4 = "AM"
-		}
-		if (TwentyFourHour4 >= 1) {
-			if (TwentyFourHour4 < 12) {
-				mid4 = "AM"
-			}
-		}
-		if (TwentyFourHour4 > 11) {
-			mid4 = "PM"
-        }
-        
-        document.getElementById("hour5").innerHTML = hour4 + " " + mid4
-
-        var hour5 = (hour+5)
-		if (hour5 > 12) {
-			hour5 = hour5 - 12
-		}
-		var TwentyFourHour5 = (TwentyFourHour + 5)
-		var mid5 = mid 
-		if (TwentyFourHour5 > 24) {
-			TwentyFourHour5 = TwentyFourHour5 - 24
-		}
-		if (TwentyFourHour5 == 24) {
-			mid5 = "AM"
-		}
-		if (TwentyFourHour5 >= 1) {
-			if (TwentyFourHour5 < 12) {
-				mid5 = "AM"
-			}
-		}
-		if (TwentyFourHour5 > 11) {
-			mid5 = "PM"
-        }
-        
-        document.getElementById("hour6").innerHTML = hour5 + " " + mid5
-
-        var hour6 = (hour+6)
-		if (hour6 > 12) {
-			hour6 = hour6 - 12
-		}	
-		var TwentyFourHour6 = (TwentyFourHour + 6)
-		var mid6 = mid 
-		if (TwentyFourHour6 > 24) {
-			TwentyFourHour6 = TwentyFourHour6 - 24
-		}
-		if (TwentyFourHour6 == 24) {
-			mid6 = "AM"
-		}
-		if (TwentyFourHour6 >= 1) {
-			if (TwentyFourHour6 < 12) {
-				mid6 = "AM"
-			}
-		}
-		if (TwentyFourHour6 > 11) {
-			mid6 = "PM"
-        }
-        
-        document.getElementById("hour7").innerHTML = hour6 + " " + mid6
-
-        var hour7 = (hour+7)
-		if (hour7 > 12) {
-			hour7 = hour7 - 12
-		}	
-		var TwentyFourHour7 = (TwentyFourHour + 7)
-		var mid7 = mid 
-		if (TwentyFourHour7 > 24) {
-			TwentyFourHour7 = TwentyFourHour7 - 24
-		}
-		if (TwentyFourHour7 == 24) {
-			mid7 = "AM"
-		}
-		if (TwentyFourHour7 >= 1) {
-			if (TwentyFourHour7 < 12) {
-				mid7 = "AM"
-			}
-		}
-		if (TwentyFourHour7 > 11) {
-			mid7 = "PM"
-        }
-        
-        document.getElementById("hour8").innerHTML = hour7 + " " + mid7
 
 
 
@@ -1389,13 +1655,13 @@ function weekdays() {
     var fourse = weekday[d.getDay()+3];
     document.getElementById("dateDaily4").innerHTML = fourse
 
-    var fivese = weekday[d.getDay()+1];
+    var fivese = weekday[d.getDay()+4];
     document.getElementById("dateDaily5").innerHTML = fivese
   
-    var sixse = weekday[d.getDay()+2];
+    var sixse = weekday[d.getDay()+5];
     document.getElementById("dateDaily6").innerHTML = sixse
   
-    var sevense = weekday[d.getDay()+3];
+    var sevense = weekday[d.getDay()+6];
     document.getElementById("dateDaily7").innerHTML = sevense
 
     //var eightse = weekday[d.getDay()+1];
