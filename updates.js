@@ -1,4 +1,19 @@
 document.getElementById("updatesBox").innerHTML = `
+<h1>Update (V 1.4)</h1>
+<p id="pastUpdates">October 31, 2020</p>
+<p>Hi loyal testers!</p>
+<li>Content</li>
+<dd> - Added <b>gray and white areas to inform the user where to look.</b> Typically the gray areas are in the future, and the white areas are the present.</dd>
+<dd> - The <b>customization page</b> is now much simpler, allowing for easier use, and more seamless and clean transitions. </dd>
+<dd> - <b>Underneath the weather icon</b> in the top left square (the one that displays current temperature), if you click on the <b>paragraph icon</b> it will give you a short weather description <b>in text.</b> </dd>
+<li>Responsiveness</li><dd> - <b>Mobile is here!</b> Visit weather-clear.com on your device now.</dd>
+    <li>Bug Fixes</li>
+    <dd> - Squashed a lot of em. Again. And Again. And Again.</dd>
+    <li>Other Features</li>
+    <dd> - <b>More clickable squares-</b>Each square that is displaying information will be able to be clicked, and expanded. So far the top left, bottom left, and middle squares are able to be clicked. Try it out!</dd>
+</p>
+<hr>
+<p id="pastUpdates">PAST UPDATES</p>
 <h1>Update (V 1.3)</h1>
 <p id="pastUpdates">October 19, 2020</p>
 <p>Heyo! Back with another update!</p>
@@ -12,7 +27,6 @@ document.getElementById("updatesBox").innerHTML = `
     <dd> - Each square on the homepage that is displaying information will be able to be clicked, and expanded. So far only the top left square (the one with the current temperature) is able to be clicked. Try it out!</dd>
 </p>
 <hr>
-<p id="pastUpdates">PAST UPDATES</p>
 <h1>Update (V 1.2)</h1>
 <p id="pastUpdates">October 19, 2020</p>
 <p>Gee! More weather more weather!
