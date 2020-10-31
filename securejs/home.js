@@ -33,7 +33,7 @@ function welcome() {
         //alert("ccd")
         document.getElementById("minheight").style.backgroundColor = localStorage.getItem("bgcolor")
     }
-    if (localStorage.getItem("name") === null) {
+    /*if (localStorage.getItem("name") === null) {
         newVisitor();
         return;
     }
@@ -41,7 +41,7 @@ function welcome() {
         showUpdates ()
         localStorage.setItem("updatesOctober19", "seen")
         return;
-    }
+    }*/
     if (localStorage.getItem("bgimage") == "url(/Bimages/GeometricDark1.png)") {
         //alert("whaa")
         darkTheme()
@@ -374,24 +374,24 @@ function showHome () {
         document.getElementById('flowers').style.backgroundImage = "url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg)"
     }
 
-    if (localStorage.getItem("updatesOctober19") === null) {
+    /*if (localStorage.getItem("updatesOctober19") === null) {
         localStorage.setItem("updatesOctober19", "seen")
         showUpdates ()
         return;
-    }
+    }*/
     if (localStorage.getItem("tutorial", "yes")) {
 
         //alert("tut")
 
         document.getElementById('flowers').style.backgroundImage = "url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg)"
 
-        setTimeout(function() {
+        /*setTimeout(function() {
             tutbox = document.getElementById("tutbox");
 
             tutbox.classList.add("tutboxShow")
             tutbox.classList.remove("tutboxHide")
             localStorage.setItem("tutorial", "no")
-        }, 1500);
+        }, 1500);*/
     }
 }
 switch (localStorage.getItem("showingUpdates")) {
