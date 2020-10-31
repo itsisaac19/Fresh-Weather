@@ -11,6 +11,8 @@
     <link rel="stylesheet/less" type="text/css" href="/home.less" />
 </head>
 <body onload="testerror()" onload="welcome()" oncontextmenu="return false">
+
+    
     <div id="back"></div>
     <div id="minheight">
         <p id="uhoh">Woah there! We aren't that responsive yet. Make your browser size bigger.</p>
@@ -26,8 +28,13 @@
 
 
         <div id="bodygrid" class="goback">
+
+
+            
+
             
             <div id="clocksquare" class="freeOffdetect">
+
                 <div id="clock"></div>
     
                 <div id="logosquare">
@@ -52,25 +59,25 @@
                             <div id="stat1"></div>
                         </h1>
                     </div>
-                    <img class="fourStatIcon" id="stat1icon" src="https://img.icons8.com/small/96/000000/humidity.png"/>
+                    <img class="fourStatIcon" id="stat1icon" src="/color/fog_light.svg"/>
                     <div id="stat2container">
                         <h1>RAIN CHANCE
                             <div id="stat2"></div>
                         </h1>
                     </div>
-                    <img class="fourStatIcon" id="stat2icon" src="https://img.icons8.com/android/96/000000/light-rain-2.png"/>
+                    <img class="fourStatIcon" id="stat2icon" src="/color/rain_light.svg"/>
                     <div id="stat3container">
                         <h1>WIND SPEED
                             <div id="stat3"></div>                       
                         </h1>
                     </div>
-                    <img class="fourStatIcon" id="stat3icon" src="https://img.icons8.com/small/96/000000/windy-weather.png"/>
+                    <img class="fourStatIcon" id="stat3icon" src="/color/flurries.svg"/>
                     <div id="stat4container">
-                        <h1>AIR PRESSURE
+                        <h1>FEELS LIKE
                             <div id="stat4"></div>
                         </h1>
                     </div>
-                    <img class="fourStatIcon" id="stat4icon" src="https://img.icons8.com/small/96/000000/pressure.png"/>
+                    <img class="fourStatIcon" id="stat4icon"/>
                 </div>
             </div>
 
@@ -120,20 +127,29 @@
                     -->
                 </div>
             </div>
-            <div id="madeWithLove">
-                <div onclick="consoleLog()" id="mWLtext">Made with love from</div> 
+            <div id="madeWithLove" style="display: none;">
+                <div onclick="consoleLog()" id="mWLtext"></div> 
             </div>
-            <div class="freeOffdetect" href="javascript:void(0);"  onclick="window.location.href='https://www.climacell.co/weather-api/';" id="climacell">Powered by</div>            
+            <div class="freeOffdetect" href="javascript:void(0);"  onclick="window.location.href='https://www.climacell.co/weather-api/';" id="climacell">Powered by
+                <a id="typeButton" class="typeform-share button" href="https://form.typeform.com/to/Bz7Iyn1W" data-mode="popup"  target="_blank">Give Feedback</a> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm_share", b="https://embed.typeform.com/"; if(!gi.call(d,id)){ js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script>
+            </div>            
             <div id="leftopbodygrid">
+                <div id="farLeftGray" class="closeGrayAdvanced"> 
+                    <img id="wicon"/>
+                    <img id="paragraphIcon" src="/FreshLogos/Paragraph-justify-left-01.png"/>
+                    <div id="textDescCurrent"></div>
+                </div>
                 <p id="temp">70°</p>
                 <div id="temphighlow"></div>
                 <p id="desc">Sunny</p>
-                <img id="wicon"/>
                 <p id="date">July 4th, 2020</p>
                 <p id="city">Shoreview, MN</p>
             </div>
             <div id="leftbottombodygrid" class="freeOffdetect lBBGnormal">
+                <div id="HourlyCurrentGray"></div>
                 <div id="HourlyGrid" class="normalHourlyGrid">
+
+
 
                         <div id="temphour1">test</div>
                         <img class="bruh1" id="wiconhour1"/>  
@@ -176,44 +192,51 @@
         </div> 
 
         <div id="customizesquare" class="swingout" class="displaynone">
-            <div id="return" onclick="freshdashboard()">Return</div>
+
+            <!--
             <div id="leftcolumntext">
                 <p id="basic">Basic</p>
                 <p id="advanced">Advanced (Beta)</p>
                 
             </div>
             <img id="divideline" src="Dividerline.png">
+            -->
             <div id="bodytext">
                 <div id="headerbasic">
-                    <p id="backgroundcolor">Background</p>
-                    <p id="colorselect">Color</p>
-                    <div id="colorstrip">
-                        <div id="colorgrid">
-                            <input type="color" id="bgcolorpicker">
-                            <div id="auto" onclick="autobgcolor()">AUTO</div>
+                    <div id="backgroundcolor">Background
+
+                        <p id="colorselect">Color</p>
+                        <div id="colorstrip">
+                            <div id="colorgrid">
+                                <input type="color" id="bgcolorpicker">
+                                <div id="auto" onclick="autobgcolor()">AUTO</div>
+                            </div>
+                            
                         </div>
-                        
+                        <p id="imgselect">Light Theme Images</p>
+                        <div id="imgstrip">
+                            <div class="parent">
+                                <div id="nonebg" onclick="nonebg1()"></div>
+                                <div id="default" onclick="defaultbg()"></div>
+                                <div id="rainbow" onclick="rainbowbg()"></div>
+                                <div id="tropical" onclick="tropicalbg()"></div>
+                                <div id="goldblue" onclick="goldblue()"></div>
+                            </div> 
+                        </div>
+                        <p id="theme">Dark Theme Images</p>
+                        <div id="imgstrip2">
+                            <div class="dThemeImgs">
+                                <div id="darkModern" onclick="darkModern()"></div>
+                            </div> 
+                        </div>
                     </div>
-                    <p id="imgselect">Light Theme Images</p>
-                    <div id="imgstrip">
-                        <div class="parent">
-                            <div id="nonebg" onclick="nonebg1()"></div>
-                            <div id="default" onclick="defaultbg()"></div>
-                            <div id="rainbow" onclick="rainbowbg()"></div>
-                            <div id="tropical" onclick="tropicalbg()"></div>
-                            <div id="goldblue" onclick="goldblue()"></div>
-                        </div> 
-                    </div>
-                    <p id="theme">Dark Theme Images</p>
-                    <div id="imgstrip2">
-                        <div class="dThemeImgs">
-                            <div id="darkModern" onclick="darkModern()"></div>
-                        </div> 
-                    </div>
+
                 </div>
                 <div id="headeradvanced">
-                    <p id="layout">Layout (Beta)</p>
-                    <button id="changeLayout">Under Construction</button>
+                    <p id="layout">Layout (Beta)
+                        <button id="changeLayout" onclick="changeLayout()">Under Construction</button>
+                        <button id="return" onclick="freshdashboard()">Return</button>
+                    </p>
                 </div>
             </div>
         </div>
@@ -243,15 +266,15 @@
     
 
 
-    <div class="tutboxHide" id="tutbox" onclick="hideTutorial()">
-        <div id="tutboxText">Customize your experience by clicking the 3 green dots in the top right corner. You can change the 
-            background color, image, and more.</div>
-        <div>
+    <div id="spacerBottom"></div>
+
+
+
+
 </body>
 <script src="./securejs/home.js"></script>
 <script src="./errCatch.js"></script>
 <script src="./updates.js"></script>
 <script src="./weather2.js"></script>
 <script src="./animations.js"></script>
-<script src="https://sak.userreport.com/freshweather/launcher.js" async id="userreport-launcher-script"></script>
 </html>

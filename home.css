@@ -1,5 +1,33 @@
 body {
   overflow: hidden; /* Hide scrollbars */
+  overflow-x: hidden; /* Hide scrollbars */
+}
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+@media only screen and (max-width: 800px) {
+  html {
+    background: url(/Bimages/flat-design-floral-wallpaper-design/GoldBlue.jpg) no-repeat center center fixed; 
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow-x: hidden; /* Hide scrollbars */
+  }
+  #flowers {
+    display: none;
+  }
+  #minheight {
+    display: none;
+  }
+  #back {
+    display: none;
+  }
+  body {
+    overflow: visible; /* Hide scrollbars */
+  }
 }
 #backwhite {
   position: absolute;
@@ -79,12 +107,12 @@ body {
 .zerozindex {
   z-index: 0;
 }
-@media only screen and (max-width: 800px){
+/*@media only screen and (max-width: 800px){
   #uhoh {
     display: block; 
     z-index: 1000;
   }
-}
+}*/
 @media only screen and (max-height: 640px){
   #uhoh {
     display: block; 
@@ -480,7 +508,7 @@ body {
 #clocksquare {
   position: absolute;
   display: flex;
-  top: -23%;
+  bottom: 101%;
   left:  48%;
   transform: translate(-50%);
 
@@ -543,6 +571,13 @@ body {
     font-family: 'Barlow', sans-serif;
 
 }
+@media only screen and (max-width: 800px){
+  #leftopbodygrid {
+    transition: 0.3s ease-in-out;
+    width: 86.5vw;
+    height: 30vh;
+  }
+}
 #leftopbodygrid:hover {
   cursor: pointer;
 }
@@ -591,21 +626,84 @@ body {
   bottom: 10px;
   padding-left: 20px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 400;
 }
 #city {
   position: absolute;
-  bottom: 10px;
-  right: 25px;
+  bottom: 35px;
+  padding-left: 20px;
+
+  width: 100px;
+
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
 }
 #wicon {
   position: absolute;
   top: 30px;
-  right: 35px;
+  right: 50%;
+  margin-right: -40px;
+  
   width: 80px;
   height: 80px;
+}
+#paragraphIcon {
+  position: absolute;
+
+  bottom: 10%;
+  margin-top: -15px;
+  left: 50%;
+  margin-left: -15px;
+
+  width: 30px;
+  height: 30px;
+
+  animation: wiggle 2.5s 2;
+}
+#paragraphIcon:hover {
+  cursor: pointer;
+
+  animation: wiggle 1s infinite;
+}
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+ 80% { transform: rotate(0deg); }
+ 85% { transform: rotate(5deg); }
+ 95% { transform: rotate(-5deg); }
+100% { transform: rotate(0deg); }
+}
+#textDescCurrent {
+  position: absolute;
+
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%);
+
+  height: 30%;
+  width: 70%;
+
+  font-family: 'Barlow', sans-serif;
+  font-size: calc(10px + (15 - 10) * ((100vw - 300px) / (1600 - 300)));
+  text-align: left;
+}
+#farLeftGray {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+
+  height: 100%;
+
+
+  border-radius: 0px 7px 7px 0px;
+  background-color: rgb(244, 244, 244);
+}
+.closeGrayAdvanced {
+  transition: 0.5s ease-out;
+  width: 30%;
+}
+.expandGrayAdvanced {
+  transition: 0.5s ease-in;
+  width: 60%;
 }
 #leftbottombodygrid {
     background-color: rgb(255, 255, 255);
@@ -613,6 +711,14 @@ body {
     border-radius: 7px;
     margin: 0;
     position: absolute;
+}
+@media only screen and (max-width: 800px){
+  #leftbottombodygrid {
+    transition: 0.3s ease-in-out;
+    width: 86.5vw;
+    height: 15vh;
+    top: 33.2vh;
+  }
 }
 #leftbottombodygrid:hover {
   cursor: pointer;
@@ -635,15 +741,26 @@ body {
   top: 2.3vh;
   left: 1.4%;
 }
+#HourlyCurrentGray {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+
+  height: 100%;
+  width: 87%;
+
+  border-radius: 0px 7px 7px 0px;
+  background-color: rgb(244, 244, 244);
+}
 #HourlyGrid {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
 
   font-family: 'Barlow', sans-serif;
-  font-size: calc(6px + (15 - 6) * ((100vw - 300px) / (1600 - 300)));
+  font-size: calc(10px + (15 - 10) * ((100vw - 300px) / (1600 - 300)));
 
-  width: 95%;
+  width: 98%;
   height: 95%;
 
   display: grid;
@@ -658,7 +775,7 @@ body {
   left: 50%;
 }
 .fullExpandHourlyGrid {
-  left: 55%;
+  left: 56%;
 }
   .hour1 { grid-area: 1 / 1 / 4 / 2; }
   .hour2 { grid-area: 1 / 2 / 4 / 3; }
@@ -786,6 +903,14 @@ body {
 }
 #rightbodygrid:hover {
   cursor: pointer;
+}
+@media only screen and (max-width: 800px) {
+  #rightbodygrid {
+    top: 50.2vh;
+    left: 53%;
+    width: 38.3vw;
+    height: 51vh;
+  }
 }
 #statsgrid {
 
@@ -935,7 +1060,15 @@ body {
   grid-row-gap: 0px;
 
 }
-
+@media only screen and (max-width: 800px){
+  #dailyBox {
+    transition: 0.3s ease-in-out;
+    width: 46.5vw;
+    height: 51vh;
+    top: 50.2vh;
+    left: 1.3%;
+  }
+}
 #currentDay {
   background-color: rgb(255, 255, 255);
   border-radius: 7px 7px 0px 0px;
@@ -1018,48 +1151,40 @@ body {
 
 #madeWithLove {
   position: absolute;
-  bottom: -6px;
+  bottom: -2%;
   right: 5.4%;
 
-  width: 250px;
+  width: 59px;
   height: 59px;
 
   background-color: white;
   border-radius: 5px;
   box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
   
-  font-family: HandWrite;
-  font-size: 19px;
-
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+  transition: 0.5s ease-out;
 }
 #mWLtext {
   position: absolute;
-  display: flex;
-
-  left: 42%;
+  left: 50%;
+  margin-left: -22.5px;
   top: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: -22.5px;
 
-  width: 100%;
-  height: 100%;
+  width: 45px;
+  height: 45px;
 
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+  background-image: url(/MNoutline.png);
+  background-size: cover;
+  background-position: center;
+
+  transition: 0.5s ease-out;
 }
-#mWLtext:after { content: '';
-  height: 30px;
-  width: 30px;
-  background: url(/MNoutline.png) no-repeat;
-  position: absolute;
-  margin-left: 195px;
-  background-size: 31px;
-  margin-top: 2px;
-}
+#madeWithLove:hover {
+  transition: 0.5s ease-in;
+  box-shadow: 2px 3px 20px rgb(98, 98, 98, 0.26);
 
+  cursor: pointer;
+}
 
 
 
@@ -1076,9 +1201,7 @@ body {
   transform: translate(-50%, -50%);
   width: 86.5vw;
   height: 88%;
-  background-color: rgb(255, 255, 255);
   border-radius: 8px;
-  box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
 }
 .swingin {
   transition: ease-in-out 0.7s;
@@ -1112,28 +1235,42 @@ body {
   color: rgb(122, 122, 122);
 }
 #return {
-  padding: 30px;
-  font-family: 'Barlow', sans-serif;
+
   position: absolute;
-  margin-left: -15px;
-  bottom: 0vh;
+  left: 0px;
+  top: 170px;
+
+  width: 140px;
+  height: 50px;
+
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
+
+  font-family: 'Barlow', sans-serif;
   font-weight: 600;
-  transition: ease-in 0.3s;
+  font-size: 15px;
+
+  transition: ease-in 0.1s;
+
+  outline: none;
+  border: none;
+
 }
-#return:before {
-  content: '←';
-  opacity: 0;  
+#return:hover:before {
+  content: '← ';  
   top: 14px;
   right: -20px;
   transition: 0.5s;
 }
 #return:hover {
-  margin-left: 0px;
+  transition: ease-in 0.1s;
+  top: 168px;
   cursor: pointer;
 }
-#return:hover:before {
-  opacity: 1;
-  right: 10px;
+#return:active {
+  transition: ease-in 0.1s;
+  top: 170px;
 }
 #divideline {
   position: absolute;
@@ -1147,11 +1284,13 @@ body {
 }
 #backgroundcolor {
   position: absolute;
-  top: 10px;
-  left: 250px;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%);
+
   padding: 25px;
-  padding-bottom: 190px;
-  width: 50vw;
+  padding-bottom: 200px;
+  width: 90%;
   background-color: rgb(255, 255, 255);
   box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
   border-radius: 5px;
@@ -1159,16 +1298,16 @@ body {
 }
 #colorselect {
   position: absolute;
-  top: 80px;
-  left: 250px;
+  top: 62px;
+  left: 12px;
   padding-left: 25px;
   color: #3f3f3f;
   font-weight: 200;
 }
 #colorstrip {
   position: absolute;
-  top: 98px;
-  left: 390px;
+  top: 78px;
+  left: 252px;
   width: 40vw;
   height: 30px;
   background-color: rgb(0, 0, 0, 0.0001);
@@ -1223,16 +1362,16 @@ body {
   }
 #imgselect {
   position: absolute;
-  top: 125px;
-  left: 250px;
+  top: 115px;
+  left: 12px;
   padding-left: 25px;
   color: #3f3f3f;
   font-weight: 200;
 }
 #imgstrip {
   position: absolute;
-  top: 143px;
-  left: 470px;
+  top: 134px;
+  left: 252px;
   width: 40vw;
   height: 30px;
   background-color: rgb(0, 0, 0, 0.0001);
@@ -1261,6 +1400,13 @@ body {
   grid-column-gap: 15px;
   grid-row-gap: 0px; 
   background-color: rgb(255, 255, 255, 0.001);
+
+  width: 100%;
+  }
+  @media only screen and (max-width: 800px) {
+    .parent {
+      grid-template-columns: auto auto auto auto auto auto;
+    }
   }
   .parent > div {
     border-radius: 3px;
@@ -1288,16 +1434,16 @@ body {
 
 #theme {
   position: absolute;
-  top: 185px;
-  left: 250px;
+  top: 170px;
+  left: 12px;
   padding-left: 25px;
   color: #3f3f3f;
   font-weight: 200;
 }
 #imgstrip2 {
   position: absolute;
-  top: 203px;
-  left: 470px;
+  top: 193px;
+  left: 252px;
   width: 40vw;
   height: 30px;
   background-color: rgb(0, 0, 0, 0.001);
@@ -1340,11 +1486,12 @@ body {
   font-size: 20px;
 }
 #layout {
-  left: 250px;
+  left: 50%;
+  transform: translate(-50%);
   position: absolute;
   top: 278.7px;
   padding: 25px;
-  width: 50vw;
+  width: 90%;
   padding-bottom: 100px;
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
@@ -1353,8 +1500,8 @@ body {
 }
 #changeLayout {
   position: absolute;
-  left: 275px;
-  top: 368.7px;
+  left: 23px;
+  top: 70px;
 
   width: 140px;
   height: 50px;
@@ -1705,6 +1852,7 @@ body {
 
   font-family: 'Barlow', sans-serif;
   font-weight: 500;
+  transition: 0.2s ease-out;
 }
 #climacell:after {
   content: " ClimaCell";
@@ -1713,7 +1861,15 @@ body {
 #climacell:hover {
   cursor: pointer;
 }
-
+#climacell:active {
+  transition: 0.1s ease-in;
+  box-shadow: none;
+}
+@media only screen and (max-width: 800px){
+  #climacell {
+    bottom: -56%;
+  }
+}
 #leftopBlur {
   position: absolute;
   left: 0;
@@ -1847,5 +2003,52 @@ body {
   }
 }
 
+#typeButton {
+  position: absolute;
+  right: -82%;
+  bottom: 0%;
 
+  display: inline-block;
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #99c1cc;
+  cursor: pointer;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  text-align: center;
+
+  margin: 0;
+  padding: 20px; 
+
+  border-radius: 5px;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  z-index: 1000;
+
+  transition: 0.5s ease-out;
+  box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
+}
+#typeButton:hover {
+  transition: 0.5s ease-in;
+  box-shadow: 2px 3px 20px rgb(98, 98, 98, 0.26);
+}
+#typeButton:active {
+  transition: 0.1s ease-in;
+  bottom: -2%;
+  box-shadow: none;
+}
+
+
+#spacerBottom {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: -35vh;
+
+  width: 100px;
+  height: 50px;
+}
 

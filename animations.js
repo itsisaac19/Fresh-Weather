@@ -187,6 +187,8 @@ function hardPress () {
                         document.getElementById('leftopbodygrid').style.transform = "translateY(-10px)"
                         localStorage.setItem("animateFocus", "no")
                         //console.log("NOW")
+
+                        expandCurrentWeatherSquare ()
                     }, 900);
                     
 
@@ -214,6 +216,8 @@ function hardPress () {
                             document.getElementById('leftopbodygrid').style.transform = null
     
                             localStorage.removeItem("whichHardPress")
+
+                            closeCurrentWeatherSquare ()
                         break
                         case null :
                             cS.classList.add('freeOffdetect')
@@ -229,6 +233,8 @@ function hardPress () {
                             document.getElementById('leftopbodygrid').style.transform = null
     
                             localStorage.removeItem("whichHardPress")
+
+                            closeCurrentWeatherSquare ()
                         break
                     }
                 }
@@ -761,9 +767,64 @@ function DarkThemeForOtherBg () {
 
 
 
+/* CURRENT WEATHER SQUARE ANIMATION -----------------------------
+
+EXPLANATION: WHEN THE USER CLICKS ON THE CURRENT WEATHER SQUARE, A SERIES OF STEPS
+WILL HAPPEN; 
+
+1. THE BACKGROUND AND ALL OTHER ELEMENTS WILL BLUR
+
+2. THE CURRENT WEATHER SQUARE WILL HAVE AN EXPANSION ANIMATION (THIS) 
+
+3. THE CSS GRID WITHIN #leftopbodygrid WILL CHANGE TO ENCOMPASS MORE
+ADVANCED WEATHER DATA FOR EACH HOUR
+
+4. THE ELEMENTS WILL ALL BE ASSIGNED A GRID POSITION AND A MARGIN-AUTO IF POSSIBLE
+
+5. ALL OF THESE PROPERTIES SHOULD BE REASSIGNED A NULL VALUE IF POSSIBLE WHEN CLOSING THE SQUARE */
 
 
+function expandCurrentWeatherSquare () {
 
+    //Vars:
+
+    var lTBG = document.getElementById("leftopbodygrid")
+    var rightGray = document.getElementById("farLeftGray")
+    var textDesc = document.getElementById("textDescCurrent")
+    var paraIcon = document.getElementById("paragraphIcon")
+
+    //Change the rightGray square to expand 
+
+    rightGray.classList.remove("closeGrayAdvanced")
+    rightGray.classList.add("expandGrayAdvanced")
+
+    //Change the innerHtml of textDesc to the desc
+
+    paraIcon.style.display = "none"
+
+    textDesc.innerHTML = localStorage.getItem("currentTextDesc")
+
+}
+
+function closeCurrentWeatherSquare () {
+    //Vars:
+
+    var lTBG = document.getElementById("leftopbodygrid")
+    var rightGray = document.getElementById("farLeftGray")
+    var textDesc = document.getElementById("textDescCurrent")
+    var paraIcon = document.getElementById("paragraphIcon")
+
+    //Change the rightGray square to expand 
+
+    rightGray.classList.add("closeGrayAdvanced")
+    rightGray.classList.remove("expandGrayAdvanced")
+
+    //Change the innerHtml of textDesc to the desc
+
+    paraIcon.style.display = null
+
+    textDesc.innerHTML = null
+}
 
 
 
@@ -943,4 +1004,6 @@ function closeHourlyAdvanced () {
     <div id="temphour8">test</div>
     <div id="hour8">10pm</div>   
     `
+    DefaultHours();
 }
+

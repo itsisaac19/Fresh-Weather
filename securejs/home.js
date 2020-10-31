@@ -399,6 +399,7 @@ switch (localStorage.getItem("showingUpdates")) {
         //console.log("bruh")
 }        
 
+/*
 function responsivewarning(x) {
 
     switch (localStorage.getItem("showingUpdates")) {
@@ -421,7 +422,7 @@ function responsivewarning(x) {
 
   var width = window.matchMedia("(max-width: 800px)")
   responsivewarning(width) // Call listener function at run time
-  width.addListener(responsivewarning) // Attach listener function on state changes
+  width.addListener(responsivewarning) // Attach listener function on state changes*/
 
 
 
@@ -497,7 +498,7 @@ function customize() {
 
    localStorage.setItem("customizePage", "true")
    tutbox = document.getElementById("tutbox");
-   tutbox.style.display = "none"
+   //tutbox.style.display = "none"
 }
 //dashboard
 
@@ -756,6 +757,192 @@ updateTime();
 //WEATHER API AND DATA ------------------------------------------------------
 //---------------------------------------------------------------------------
 
+function DefaultHours () {
+    var now = new Date();
+    var TwentyFourHour = now.getHours();
+    var hour = now.getHours();
+
+    var mid = 'PM';
+
+    if (hour > 12) {
+      hour = hour - 12;
+    }    
+    if(hour==0){ 
+      hour=12;
+    }
+    if(TwentyFourHour < 12) {
+       mid = 'AM';
+    }
+    if((TwentyFourHour == 24)) {
+    mid = 'AM'
+    }
+
+            //Hour display
+
+            document.getElementById("hour1").innerHTML = hour + " " + mid
+
+            var hour1 = (hour+1)
+            if (hour1 > 12) {
+                hour1 = hour1 - 12
+            }
+            var TwentyFourHour1 = (TwentyFourHour + 1)
+            var mid1 = mid 
+            if (TwentyFourHour1 > 24) {
+                TwentyFourHour1 = TwentyFourHour1 - 24
+            }
+            if (TwentyFourHour1 == 24) {
+                mid1 = "AM"
+            }
+            if (TwentyFourHour1 >= 1) {
+                if (TwentyFourHour1 < 12) {
+                    mid1 = "AM"
+                }
+            }
+            if (TwentyFourHour1 > 11) {
+                mid1 = "PM"
+            }
+            
+            document.getElementById("hour2").innerHTML = hour1 + " " + mid1
+    
+            var hour2 = (hour+2)
+            if (hour2 > 12) {
+                hour2 = hour2 - 12
+            }
+            var TwentyFourHour2 = (TwentyFourHour + 2)
+            var mid2 = mid 
+            if (TwentyFourHour2 > 24) {
+                TwentyFourHour2 = TwentyFourHour2 - 24
+            }
+            if (TwentyFourHour2 == 24) {
+                mid2 = "AM"
+            }
+            if (TwentyFourHour2 >= 1) {
+                if (TwentyFourHour2 < 12) {
+                    mid2 = "AM"
+                }
+            }
+            if (TwentyFourHour2 > 11) {
+                mid2 = "PM"
+            }
+            
+            document.getElementById("hour3").innerHTML = hour2 + " " + mid2
+    
+            var hour3 = (hour+3)
+            if (hour3 > 12) {
+                hour3 = hour3 - 12
+            }
+            var TwentyFourHour3 = (TwentyFourHour + 3)
+            var mid3 = mid 
+            if (TwentyFourHour3 > 24) {
+                TwentyFourHour3 = TwentyFourHour3 - 24
+            }
+            if (TwentyFourHour3 == 24) {
+                mid3 = "AM"
+            }
+            if (TwentyFourHour3 >= 1) {
+                if (TwentyFourHour3 < 12) {
+                    mid3 = "AM"
+                }
+            }
+            if (TwentyFourHour3 > 11) {
+                mid3 = "PM"
+            }
+            
+            document.getElementById("hour4").innerHTML = hour3 + " " + mid3
+    
+            var hour4 = (hour+4)
+            if (hour4 > 12) {
+                hour4 = hour4 - 12
+            }
+            var TwentyFourHour4 = (TwentyFourHour + 4)
+            var mid4 = mid 
+            if (TwentyFourHour4 > 24) {
+                TwentyFourHour4 = TwentyFourHour4 - 24
+            }
+            if (TwentyFourHour4 == 24) {
+                mid4 = "AM"
+            }
+            if (TwentyFourHour4 >= 1) {
+                if (TwentyFourHour4 < 12) {
+                    mid4 = "AM"
+                }
+            }
+            if (TwentyFourHour4 > 11) {
+                mid4 = "PM"
+            }
+            
+            document.getElementById("hour5").innerHTML = hour4 + " " + mid4
+    
+            var hour5 = (hour+5)
+            if (hour5 > 12) {
+                hour5 = hour5 - 12
+            }
+            var TwentyFourHour5 = (TwentyFourHour + 5)
+            var mid5 = mid 
+            if (TwentyFourHour5 > 24) {
+                TwentyFourHour5 = TwentyFourHour5 - 24
+            }
+            if (TwentyFourHour5 == 24) {
+                mid5 = "AM"
+            }
+            if (TwentyFourHour5 >= 1) {
+                if (TwentyFourHour5 < 12) {
+                    mid5 = "AM"
+                }
+            }
+            if (TwentyFourHour5 > 11) {
+                mid5 = "PM"
+            }
+            
+            document.getElementById("hour6").innerHTML = hour5 + " " + mid5
+    
+            var hour6 = (hour+6)
+            if (hour6 > 12) {
+                hour6 = hour6 - 12
+            }	
+            var TwentyFourHour6 = (TwentyFourHour + 6)
+            var mid6 = mid 
+            if (TwentyFourHour6 > 24) {
+                TwentyFourHour6 = TwentyFourHour6 - 24
+            }
+            if (TwentyFourHour6 == 24) {
+                mid6 = "AM"
+            }
+            if (TwentyFourHour6 >= 1) {
+                if (TwentyFourHour6 < 12) {
+                    mid6 = "AM"
+                }
+            }
+            if (TwentyFourHour6 > 11) {
+                mid6 = "PM"
+            }
+            
+            document.getElementById("hour7").innerHTML = hour6 + " " + mid6
+    
+            var hour7 = (hour+7)
+            if (hour7 > 12) {
+                hour7 = hour7 - 12
+            }	
+            var TwentyFourHour7 = (TwentyFourHour + 7)
+            var mid7 = mid 
+            if (TwentyFourHour7 > 24) {
+                TwentyFourHour7 = TwentyFourHour7 - 24
+            }
+            if (TwentyFourHour7 == 24) {
+                mid7 = "AM"
+            }
+            if (TwentyFourHour7 >= 1) {
+                if (TwentyFourHour7 < 12) {
+                    mid7 = "AM"
+                }
+            }
+            if (TwentyFourHour7 > 11) {
+                mid7 = "PM"
+            }
+            
+            document.getElementById("hour8").innerHTML = hour7 + " " + mid7
+}
+DefaultHours();
 
 function expandTimeHourly () {
 
@@ -1275,12 +1462,24 @@ function getCurrentWeather () {
 	//.then(response => response.json())
     //.then(data => (console.log(data)))
 
+    fetch('https://api.weather.gov/gridpoints/MPX/116,72/forecast')
+	.then(response => response.json())
+    .then(data => (console.log(data)))
+
+    fetch('https://api.weather.gov/gridpoints/MPX/116,72/forecast')
+	.then(response => response.json())
+    .then(data => {
+
+        localStorage.setItem("currentTextDesc", data['properties']['periods'][0]['detailedForecast'])
+
+    })
+
 //----------------------------------------------------------------------
 
 
 
  //REALTIME
- fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=temp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
+ fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=feels_like%2Ctemp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
  .then(response => response.json())
  .then(data => {
 
@@ -1290,6 +1489,7 @@ function getCurrentWeather () {
      var currentwindspeed = Math.floor(data["wind_speed"]["value"])
      var currentairp =  data["baro_pressure"]["value"]
      var currentairpFinal = currentairp.toFixed(2)
+     var feelsLike = data['feels_like']['value']
 
      iconDesc();
 
@@ -1609,7 +1809,9 @@ function getCurrentWeather () {
      document.getElementById("temp").innerHTML = currenttemp + "° " + data["temp"]["units"];
      document.getElementById("stat1").innerHTML = currenthumidity + " " + data["humidity"]["units"];
      document.getElementById("stat3").innerHTML = currentwindspeed + " " + data["wind_speed"]["units"];
-     document.getElementById("stat4").innerHTML = currentairpFinal + " " + data["baro_pressure"]["units"];
+     document.getElementById("stat4").innerHTML = Math.floor(feelsLike)  + "°" + " " + data["temp"]["units"]
+
+     document.getElementById("stat4icon").src = document.getElementById("wicon").src
 
  });
 } 
