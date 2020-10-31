@@ -57,7 +57,7 @@ function welcome() {
 
     //UN-COMMENT THE BELOW LINE FOR UNNESSACARY API CALLS
     getCurrentWeather();
-
+    mobileBgChange ()
 
     // PUT LCL STRG ITEMS BELOW
     localStorage.setItem("showingUpdates", "no");
@@ -662,31 +662,61 @@ function exitChangeLayout() {
 
 
 var backgroundColorAuto = document.getElementById("minheight").style.backgroundColor
+var mobileHtml = document.getElementsByTagName("html")
+
+
+function mobileBgChange () {
+
+    for(var i=0; i < mobileHtml.length; i++) {
+        mobileHtml[i].style.background = localStorage.getItem("bgimage");
+
+        if (localStorage.getItem("bgimage") == "null") {
+            setTimeout(function() {
+                for(var i=0; i < mobileHtml.length; i++) {
+                    var noneBg = document.getElementById("nonebg").style.backgroundColor
+                    //console.log(noneBg)
+                    mobileHtml[i].style.background = null
+                    mobileHtml[i].style.backgroundColor = noneBg
+                }
+            }, 100)
+        }
+
+    }
+}
+
+
+
 
 function nonebg1 () {
     //alert("dw")
     bg.style.backgroundImage = null
     localStorage.setItem("bgimage", "null")
+    mobileBgChange ()
 }
 function defaultbg () {
     bg.style.backgroundImage = "url(/FlowersandStuff-01.png)"
     localStorage.setItem("bgimage", "url(/FlowersandStuff-01.png)")
+    mobileBgChange ()
 }
 function rainbowbg () {
     bg.style.backgroundImage = "url(/Bimages/background-with-floral-concept/PinnkandGreen.jpg)"
     localStorage.setItem("bgimage", "url(/Bimages/background-with-floral-concept/PinnkandGreen.jpg)")
+    mobileBgChange ()
 }
 function tropicalbg () {
     bg.style.backgroundImage = "url(/Bimages/flat-abstract-floral-background/Tropical.jpg)"
     localStorage.setItem("bgimage", "url(/Bimages/flat-abstract-floral-background/Tropical.jpg)")
+    mobileBgChange ()
 }
 function goldblue() {
-    bg.style.backgroundImage = "url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg)"
-    localStorage.setItem("bgimage", "url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg")
+    bg.style.backgroundImage = "url(/Bimages/flat-design-floral-wallpaper-design/GoldBlue.jpg)"
+    localStorage.setItem("bgimage", "url(/Bimages/flat-design-floral-wallpaper-design/GoldBlue.jpg")
+    mobileBgChange ()
 }
 function darkModern () {
     bg.style.backgroundImage = "url(/Bimages/GeometricDark1.png)"
     localStorage.setItem("bgimage", "url(/Bimages/GeometricDark1.png)")
+    mobileBgChange ()
 }
 //Color bgchange 
 
@@ -696,6 +726,7 @@ document.getElementById("bgcolorpicker").addEventListener('change', function() {
     
     document.getElementById("auto").style.color = "black"
     localStorage.setItem("bgcolor", this.value)
+    mobileBgChange () 
 
     //console.log(localStorage.getItem("bgcolor"))
 })
@@ -1462,9 +1493,9 @@ function getCurrentWeather () {
 	//.then(response => response.json())
     //.then(data => (console.log(data)))
 
-    fetch('https://api.weather.gov/gridpoints/MPX/116,72/forecast')
+    /*fetch('https://api.weather.gov/gridpoints/MPX/116,72/forecast')
 	.then(response => response.json())
-    .then(data => (console.log(data)))
+    .then(data => (console.log(data)))*/
 
     fetch('https://api.weather.gov/gridpoints/MPX/116,72/forecast')
 	.then(response => response.json())

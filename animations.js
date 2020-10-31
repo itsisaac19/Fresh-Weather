@@ -618,8 +618,8 @@ function darkTheme () {
             cC.style.backgroundColor = "rgb(64, 64, 64)"
             cC.style.boxShadow = "3px 4px 15px black"
 
-            cUS.style.backgroundColor = "rgb(64, 64, 64)"
-            cUS.style.boxShadow = "3px 4px 15px black"
+            //cUS.style.backgroundColor = "rgb(64, 64, 64)"
+            //cUS.style.boxShadow = "3px 4px 15px black"
             cUSback.style.backgroundColor = "rgb(90 90 90)"
             cUSback.style.boxShadow = "3px 4px 15px black"
             cUSlayout.style.backgroundColor = "rgb(90 90 90)"
@@ -672,8 +672,8 @@ function darkTheme () {
             cC.style.backgroundColor = "rgb(64, 64, 64)"
             cC.style.boxShadow = "3px 4px 15px black"
 
-            cUS.style.backgroundColor = "rgb(64, 64, 64)"
-            cUS.style.boxShadow = "3px 4px 15px black"
+            //cUS.style.backgroundColor = "rgb(64, 64, 64)"
+            //cUS.style.boxShadow = "3px 4px 15px black"
             cUSback.style.backgroundColor = "rgb(90 90 90)"
             cUSback.style.boxShadow = "3px 4px 15px black"
             cUSlayout.style.backgroundColor = "rgb(90 90 90)"
@@ -745,8 +745,8 @@ function DarkThemeForOtherBg () {
         cC.style.boxShadow = null
         cD.style.backgroundColor = null
 
-        cUS.style.backgroundColor = null
-        cUS.style.boxShadow = null
+        //cUS.style.backgroundColor = null
+        //cUS.style.boxShadow = null
 
         mWL.style.backgroundColor =  null
         mWL.style.boxShadow =  null

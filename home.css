@@ -8,7 +8,7 @@ body::-webkit-scrollbar {
 }
 @media only screen and (max-width: 800px) {
   html {
-    background: url(/Bimages/flat-design-floral-wallpaper-design/GoldBlue.jpg) no-repeat center center fixed;
+    
     background-position: center;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -1769,6 +1769,14 @@ body::-webkit-scrollbar {
   text-align: left;
   line-height: 25px;
   font-family: 'Barlow', sans-serif;
+}
+@media only screen and (max-width: 800px) {
+  #updates {
+    width: 210px;
+  }
+  #updatesBox {
+    width: 200px;
+  }
 }
 #pastUpdates {
   color: rgb(47, 47, 47);
