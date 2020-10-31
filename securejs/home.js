@@ -43,7 +43,7 @@ function welcome() {
         return;
     }
     if (localStorage.getItem("bgimage") == "url(/Bimages/GeometricDark1.png)") {
-        alert("whaa")
+        //alert("whaa")
         darkTheme()
     }
 
@@ -381,7 +381,7 @@ function showHome () {
     }
     if (localStorage.getItem("tutorial", "yes")) {
 
-        alert("tut")
+        //alert("tut")
 
         document.getElementById('flowers').style.backgroundImage = "url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg)"
 
