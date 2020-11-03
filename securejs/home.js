@@ -399,21 +399,119 @@ switch (localStorage.getItem("showingUpdates")) {
         //console.log("bruh")
 }        
 
-/*
-function responsivewarning(x) {
 
+function responsivewarning(x) {
+    var hG = document.getElementById("HourlyGrid")
     switch (localStorage.getItem("showingUpdates")) {
         case "yes":
             //console.log("disabledresponsive")
             break;
         case "no":
             if (width.matches) { // If media query matches
-                document.getElementById("backwhite").classList.remove("backwhitehide")
-                document.getElementById("backwhite").classList.add("backwhiteshowdisplay")
-                document.getElementById("backwhite").classList.remove("backwhitehidedisplay")
+
+                localStorage.setItem("belowMediaMobile", "yes")
+
+                hG.innerHTML = `
+    
+                <div id="temphour1">test</div>
+                <img class="bruh1" id="wiconhour1"/>  
+                <div class="defaultHourly" id="hour1">3pm</div>           
+            
+                <img class="bruh2" id="wiconhour2"/>
+                <div id="temphour2">test</div>
+                <div class="defaultHourly" id="hour2">4pm</div>   
+            
+                <img class="bruh3" id="wiconhour3"/>
+                <div id="temphour3">test</div>
+                <div class="defaultHourly" id="hour3">5pm</div>   
+            
+                <img class="bruh4" id="wiconhour4"/>
+                <div id="temphour4">test</div>
+                <div class="defaultHourly" id="hour4">6pm</div>   
+                
+                <img class="bruh5" id="wiconhour5"/>
+                <div id="temphour5">test</div>
+                <div class="defaultHourly" id="hour5">7pm</div>   
+            
+                <img class="bruh6" id="wiconhour6"/>
+                <div id="temphour6">test</div>
+                <div class="defaultHourly" id="hour6">8pm</div>   
+            
+                <img class="bruh7" id="wiconhour7"/>
+                <div id="temphour7">test</div>
+                <div class="defaultHourly" id="hour7">9pm</div>   
+            
+                <img class="bruh8" id="wiconhour8"/>
+                <div id="temphour8">test</div>
+                <div class="defaultHourly" id="hour8">10pm</div>   
+            
+                <img class="bruh9" id="wiconhour9"/>
+                <div id="temphour9">test</div>
+                <div id="hour9">10pm</div>  
+            
+                <img class="bruh10" id="wiconhour10"/>
+                <div id="temphour10">test</div>
+                <div id="hour10">10pm</div>  
+            
+                <img class="bruh11" id="wiconhour11"/>
+                <div id="temphour11">test</div>
+                <div id="hour11">10pm</div>  
+            
+                <img class="bruh12" id="wiconhour12"/>
+                <div id="temphour12">test</div>
+                <div id="hour12">10pm</div>  
+            
+                <img class="bruh13" id="wiconhour13"/>
+                <div id="temphour13">test</div>
+                <div id="hour13">10pm</div>  
+            
+                <img class="bruh14" id="wiconhour14"/>
+                <div id="temphour14">test</div>
+                <div id="hour14">10pm</div>  
+            
+                <img class="bruh15" id="wiconhour15"/>
+                <div id="temphour15">test</div>
+                <div id="hour15">10pm</div>  
+            
+                `
               } else {
-                document.getElementById("backwhite").classList.add("backwhitehidedisplay")
-                document.getElementById("backwhite").classList.remove("backwhiteshowdisplay")
+
+                localStorage.setItem("belowMediaMobile", "no")
+
+                hG.innerHTML = `
+
+                <div id="temphour1">test</div>
+                <img class="bruh1" id="wiconhour1"/>  
+                <div id="hour1">3pm</div>           
+            
+                <img class="bruh2" id="wiconhour2"/>
+                <div id="temphour2">test</div>
+                <div id="hour2">4pm</div>   
+            
+                <img class="bruh3" id="wiconhour3"/>
+                <div id="temphour3">test</div>
+                <div id="hour3">5pm</div>   
+            
+                <img class="bruh4" id="wiconhour4"/>
+                <div id="temphour4">test</div>
+                <div id="hour4">6pm</div>   
+                
+                <img class="bruh5" id="wiconhour5"/>
+                <div id="temphour5">test</div>
+                <div id="hour5">7pm</div>   
+            
+                <img class="bruh6" id="wiconhour6"/>
+                <div id="temphour6">test</div>
+                <div id="hour6">8pm</div>   
+            
+                <img class="bruh7" id="wiconhour7"/>
+                <div id="temphour7">test</div>
+                <div id="hour7">9pm</div>   
+            
+                <img class="bruh8" id="wiconhour8"/>
+                <div id="temphour8">test</div>
+                <div id="hour8">10pm</div>   
+                `
               }
             break;
     }
@@ -493,8 +591,11 @@ function customize() {
    bodygrid.classList.remove("goback");
    bodygrid.classList.add("goleft");
 
-   customize.classList.remove("swingout")
-   customize.classList.add("swingin")
+   customize.classList.remove("displaynone")
+   setTimeout(function() {
+    customize.classList.remove("swingout")
+    customize.classList.add("swingin")
+   }, 300);
 
    localStorage.setItem("customizePage", "true")
    tutbox = document.getElementById("tutbox");
@@ -511,6 +612,11 @@ function freshdashboard () {
  
     customize.classList.add("swingout")
     customize.classList.remove("swingin")
+
+    setTimeout(function() {
+        customize.classList.add("displaynone")
+       }, 300);
+
 }
 
 //dots
@@ -1228,15 +1334,16 @@ function expandTimeHourly () {
     if (TwentyFourHour10 > 11) {
         mid10 = "PM"
     }
-    
+
     document.getElementById("hour11").innerHTML = hour10 + " " + mid10
 
     var hour11 = (hour+11)
     if (hour11 > 12) {
         hour11 = hour11 - 12
     }	
-    var TwentyFourHour11 = (TwentyFourHour11 + 8)
+    var TwentyFourHour11 = (TwentyFourHour + 11)
     var mid11 = mid 
+
     if (TwentyFourHour11 > 24) {
         TwentyFourHour11 = TwentyFourHour11 - 24
     }
@@ -1248,17 +1355,19 @@ function expandTimeHourly () {
             mid11 = "AM"
         }
     }
-    if (TwentyFourHour > 11) {
+    if (TwentyFourHour11 > 11) {
         mid11 = "PM"
     }
     
+
+
     document.getElementById("hour12").innerHTML = hour11 + " " + mid11
 
     var hour12 = (hour+12)
     if (hour12 > 12) {
         hour12 = hour12 - 12
     }	
-    var TwentyFourHour12 = (TwentyFourHour12 + 8)
+    var TwentyFourHour12 = (TwentyFourHour + 12)
     var mid12 = mid 
     if (TwentyFourHour12 > 24) {
         TwentyFourHour12 = TwentyFourHour12 - 24
@@ -1281,7 +1390,7 @@ function expandTimeHourly () {
     if (hour13 > 12) {
         hour13 = hour13 - 12
     }	
-    var TwentyFourHour13 = (TwentyFourHour13 + 8)
+    var TwentyFourHour13 = (TwentyFourHour + 13)
     var mid13 = mid 
     if (TwentyFourHour13 > 24) {
         TwentyFourHour13 = TwentyFourHour13 - 24
@@ -1304,7 +1413,7 @@ function expandTimeHourly () {
     if (hour14 > 12) {
         hour14 = hour14 - 12
     }	
-    var TwentyFourHour14 = (TwentyFourHour14 + 8)
+    var TwentyFourHour14 = (TwentyFourHour + 14)
     var mid14 = mid 
     if (TwentyFourHour14 > 24) {
         TwentyFourHour14 = TwentyFourHour14 - 24
@@ -1327,7 +1436,7 @@ function expandTimeHourly () {
     if (hour15 > 12) {
         hour15 = hour15 - 12
     }	
-    var TwentyFourHour15 = (TwentyFourHour15 + 8)
+    var TwentyFourHour15 = (TwentyFourHour + 15)
     var mid15 = mid 
     if (TwentyFourHour15 > 24) {
         TwentyFourHour15 = TwentyFourHour15 - 24

@@ -1,10 +1,6 @@
-body {
-  overflow: hidden; /* Hide scrollbars */
-  overflow-x: hidden; /* Hide scrollbars */
-}
+
 body::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* make scrollbar transparent */
+  display: none;
 }
 @media only screen and (max-width: 800px) {
   html {
@@ -16,8 +12,6 @@ body::-webkit-scrollbar {
     -o-background-size: cover;
     background-size: cover;
 
-    overflow-x: hidden;
-    overflow-y: scroll;
   }
   #flowers {
     display: none;
@@ -275,8 +269,6 @@ body::-webkit-scrollbar {
 }
 #notibubble {
   position: absolute;
-  left: 50%;
-  transform: translate(-50%);
   
   width: 230px;
   height: 60px;
@@ -292,13 +284,18 @@ body::-webkit-scrollbar {
   
 }
 .notiup {
-  transition: ease-in 0.6s;
-  top: -10vh;
-  filter: opacity(0.01);
+  transition: ease-in 0.3s;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  filter: opacity(0.001);
 }
 .notidown {
-  transition: ease-out 0.7s;
-  top: 45px;
+  transition: ease-out 0.5s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   filter: opacity(1);
 }
 #exit {
@@ -518,7 +515,7 @@ body::-webkit-scrollbar {
   margin: 0;
 
   background-color: rgb(255, 255, 255);
-  box-shadow: 3px 4px 15px rgb(98, 98, 98, 0.36);
+  box-shadow: 3px 4px 15px rgb(98, 98, 98, 0.26);
   border-radius: 7px;
 
   text-align: center;
@@ -588,7 +585,7 @@ body::-webkit-scrollbar {
 .bounceFocus {
   animation-duration: 2s;
   animation-iteration-count: 1;
-  animation-name: bounce-7;
+  animation-name: bouncePure;
   animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
 }
 @keyframes bounce-7 {
@@ -599,6 +596,15 @@ body::-webkit-scrollbar {
   57%  { transform: scale(1,1)      translateY(-10px); }
   64%  { transform: scale(1,1)      translateY(-10px); }
   100% { transform: scale(1,1)      translateY(-10px); }
+}
+@keyframes bouncePure {
+  0%   { transform: scale(1,1)      translateY(0); }
+  10%  { transform: scale(1,1)   translateY(5px); }
+  30%  { transform: scale(1,1)   translateY(-8px); }
+  50%  { transform: scale(1,1) translateY(-8px); }
+  57%  { transform: scale(1,1)      translateY(-8px); }
+  64%  { transform: scale(1,1)      translateY(-8px); }
+  100% { transform: scale(1,1)      translateY(-8px); }
 }
 #temp {
   color: #9bc7c3;
@@ -617,8 +623,8 @@ body::-webkit-scrollbar {
 }
 #temphighlow {
   position: absolute;
-  margin-top: -0px;
-  font-size: calc(10px + (25 - 10) * ((100vw - 300px) / (1600 - 300)));
+  margin-top: -10px;
+  font-size: calc(13px + (25 - 13) * ((100vw - 300px) / (1600 - 300)));
   font-weight: 200;
   padding-left: 22px;
 }
@@ -641,7 +647,7 @@ body::-webkit-scrollbar {
 }
 #wicon {
   position: absolute;
-  top: 30px;
+  top: 10%;
   right: 50%;
   margin-right: -40px;
   
@@ -704,7 +710,7 @@ body::-webkit-scrollbar {
 }
 .expandGrayAdvanced {
   transition: 0.5s ease-in;
-  width: 60%;
+  width: 50%;
 }
 #leftbottombodygrid {
     background-color: rgb(255, 255, 255);
@@ -713,16 +719,7 @@ body::-webkit-scrollbar {
     margin: 0;
     position: absolute;
 }
-@media only screen and (max-width: 800px){
-  #leftbottombodygrid {
-    transition: 0.3s ease-in-out;
-    width: 86.5vw;
-    height: 15vh;
-    top: 33.2vh;
 
-    box-shadow: 1px 2px 20px rgb(98, 98, 98, 0.16);
-  }
-}
 #leftbottombodygrid:hover {
   cursor: pointer;
 }
@@ -732,7 +729,7 @@ body::-webkit-scrollbar {
   width: 49.3%;
   height: 18vh;
 
-  top: 44.2vh;
+  top: 44.3vh;
   left: 1.3%;
 }
 .fullExpandlBBG {
@@ -744,16 +741,59 @@ body::-webkit-scrollbar {
   top: 2.3vh;
   left: 1.4%;
 }
+@media only screen and (max-width: 800px){
+  .lBBGnormal {
+    transition: 0.3s ease-in-out;
+    width: 86.5vw;
+    height: 15vh;
+    top: 33.2vh;
+
+    box-shadow: 1px 2px 20px rgb(98, 98, 98, 0.16);
+  }
+  .fullExpandlBBG {
+    transition: 0.5s ease-in-out;
+  
+    width: 86.5vw;
+    height: 35vh;
+
+    top: 33.2vh;
+  }
+}
 #HourlyCurrentGray {
   position: absolute;
   right: 0px;
   top: 0px;
 
   height: 100%;
-  width: 87%;
 
-  border-radius: 0px 7px 7px 0px;
+
+
   background-color: rgb(244, 244, 244);
+}
+.mobileSlideLeft {
+  transition: 0.3s ease-in;
+  width: 100%;
+  border-radius: 7px;
+}
+.mobileSlideNormal {
+  transition: 0.3s ease-out;
+  width: 87%;
+  border-radius: 0px 7px 7px 0px;
+}
+@media only screen and (max-width: 800px){
+  .mobileSlideNormal {
+    width: 93%;
+  }
+}
+@media only screen and (max-width: 740px){
+  .mobileSlideNormal {
+    width: 91%;
+  }
+}
+@media only screen and (max-width: 500px){
+  .mobileSlideNormal {
+    width: 86%;
+  }
 }
 #HourlyGrid {
   position: absolute;
@@ -890,6 +930,26 @@ body::-webkit-scrollbar {
 .bruh {
   margin-top: 20px;
 }
+@media only screen and (max-width: 800px){
+  #HourlyGrid {
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    display: grid;
+    grid-template-columns: repeat(16, 50px);
+    grid-template-rows: repeat(3, 1fr);
+
+    width: 100%;
+
+    top: 0px;
+    left: 0px;
+
+    transform: none;
+
+  }
+
+}
 
 #rightbodygrid {
     width: 16.3%;
@@ -899,7 +959,7 @@ body::-webkit-scrollbar {
     border-radius: 7px;
     margin: 0;
     position: absolute;
-    top: 1.5%;
+    top: 1.3vh;
     left: 53%;
 
     font-family: 'Barlow', sans-serif;
@@ -1034,7 +1094,7 @@ body::-webkit-scrollbar {
 #dailyBox {
   position: absolute;
   left: 71.2%;
-  top: 8px;
+  top: 1.3vh;
   margin: 0;
 
   width: 23.3%;
@@ -1220,9 +1280,11 @@ body::-webkit-scrollbar {
   filter: opacity(0)
 }
 .displayblock {
+  transition: ease-in-out 0.7s;
   display: block;
 }
 .displaynone {
+  transition: ease-in-out 0.7s;
   display: none;
 }
 #leftcolumntext {
@@ -1295,26 +1357,42 @@ body::-webkit-scrollbar {
   transform: translate(-50%);
 
   padding: 25px;
-  padding-bottom: 200px;
   width: 90%;
+  height: 200px;
+
   background-color: rgb(255, 255, 255);
   box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
   border-radius: 5px;
   font-weight: 500;
 }
+#bgColorGrid {
+  width: 100%;
+  height: 100%;
+
+  margin-top: 10px;
+
+  display: grid;
+  grid-template-columns:  1fr 3fr;
+  grid-template-rows: repeat(3, 1fr) 0.6fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
 #colorselect {
-  position: absolute;
-  top: 62px;
-  left: 12px;
-  padding-left: 25px;
+  grid-area: 1 / 1 / 2 / 2; 
+
+  margin: auto;
+  margin-left: 2px;
+
   color: #3f3f3f;
   font-weight: 200;
   font-size: calc(13px + (25 - 13) * ((100vw - 300px) / (1600 - 300)));;
 }
 #colorstrip {
-  position: absolute;
-  top: 78px;
-  left: 252px;
+  grid-area: 1 / 2 / 2 / 3;
+
+  margin: auto;
+  margin-left: 25px;
+
   width: 40vw;
   height: 30px;
   background-color: rgb(0, 0, 0, 0.0001);
@@ -1338,8 +1416,7 @@ body::-webkit-scrollbar {
   box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
 }
 #colorgrid {
-  position: absolute;
-  top: 0px;
+
   display: grid;
   grid-template-columns: 30px 80px;
   grid-template-rows: 30px;
@@ -1368,18 +1445,21 @@ body::-webkit-scrollbar {
     transform: scale(1);
   }
 #imgselect {
-  position: absolute;
-  top: 115px;
-  left: 12px;
-  padding-left: 25px;
+  grid-area: 2 / 1 / 3 / 2;
+
+  margin: auto;
+  margin-left: 2px;
+
   color: #3f3f3f;
   font-weight: 200;
   font-size: calc(13px + (25 - 13) * ((100vw - 300px) / (1600 - 300)));;
 }
 #imgstrip {
-  position: absolute;
-  top: 134px;
-  left: 252px;
+  grid-area: 2 / 2 / 3 / 3;
+
+  margin: auto;
+  margin-left: 25px;
+
   width: 40vw;
   height: 30px;
   background-color: rgb(0, 0, 0, 0.0001);
@@ -1400,8 +1480,7 @@ body::-webkit-scrollbar {
 
 /* test */
 .parent {
-  position: absolute;
-  top: 0px;
+
   display: grid;
   grid-template-columns: repeat(6, 30px);
   grid-template-rows: 30px;
@@ -1437,25 +1516,27 @@ body::-webkit-scrollbar {
 /* test */
 
 #theme {
-  position: absolute;
-  top: 170px;
-  left: 12px;
-  padding-left: 25px;
+  grid-area: 3 / 1 / 4 / 2;
+
+  margin: auto;
+  margin-left: 2px;
+
   color: #3f3f3f;
   font-weight: 200;
   font-size: calc(13px + (25 - 13) * ((100vw - 300px) / (1600 - 300)));;
 }
 #imgstrip2 {
-  position: absolute;
-  top: 193px;
-  left: 252px;
+  grid-area: 3 / 2 / 4 / 3;
+
+  margin: auto;
+  margin-left: 25px;
+
   width: 40vw;
   height: 30px;
   background-color: rgb(0, 0, 0, 0.001);
 }
 .dThemeImgs {
-  position: absolute;
-  top: 0px;
+
   width: 100%;
   display: grid;
   grid-template-columns: repeat(6, 30px);
@@ -1487,7 +1568,7 @@ body::-webkit-scrollbar {
 
 @media only screen and (max-width: 800px) {
   .parent {
-    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-columns: repeat(6, 27px);
   }
   #imgstrip {
     left: 200px;
@@ -2080,3 +2161,13 @@ body::-webkit-scrollbar {
   height: 50px;
 }
 
+#testFrame {
+  display: none;
+
+  position: absolute;
+  left: 0%;
+  top: 0%;
+
+  width: 100%;
+  height: 100%;
+}

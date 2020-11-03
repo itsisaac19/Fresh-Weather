@@ -22,23 +22,14 @@
     </div>
     <img class="logoup FreshLogodisplaynone" id="freshWelcomeLogo" src="/FreshLogos/Fresh Logo-01.png"></img>
     <div id="greensplit" class="greensplitshow"></div>
-    <div id="notibubble" class="notiup">Notification</div>
     <div id="exit" class="exithide" onclick="exitChangeLayout()">Exit</div>
     <div id="flowers" class="flowersshown"></div>
     <div id="biggrid">
 
-
-
-        <div id="bodygrid" class="goback">
-
-
-            
-
-            
+        <div id="bodygrid" class="goback">            
             <div id="clocksquare" class="freeOffdetect">
-
+                <div id="notibubble" class="notiup">Notification</div>
                 <div id="clock"></div>
-    
                 <div id="logosquare">
                     <!--<div id="expandthelogo" class="closedhoriztranslatelogo">
                         <p id="settings">settings</p>
@@ -148,8 +139,8 @@
                 <p id="city">Shoreview, MN</p>
             </div>
             <div id="leftbottombodygrid" class="freeOffdetect lBBGnormal">
-                <div id="HourlyCurrentGray"></div>
-                <div id="HourlyGrid" class="normalHourlyGrid">
+                <div id="HourlyCurrentGray" class="mobileSlideNormal"></div>
+                <div id="HourlyGrid" class="normalHourlyGrid" onscroll="testHor()">
 
 
 
@@ -193,7 +184,7 @@
 
         </div> 
 
-        <div id="customizesquare" class="swingout" class="displaynone">
+        <div id="customizesquare" class="swingout displaynone" class="displaynone">
 
             <!--
             <div id="leftcolumntext">
@@ -206,30 +197,31 @@
             <div id="bodytext">
                 <div id="headerbasic">
                     <div id="backgroundcolor">Background
-
-                        <p id="colorselect">Color</p>
-                        <div id="colorstrip">
-                            <div id="colorgrid">
-                                <input type="color" id="bgcolorpicker">
-                                <div id="auto" onclick="autobgcolor()">AUTO</div>
+                        <div id="bgColorGrid">
+                            <p id="colorselect">Color</p>
+                            <div id="colorstrip">
+                                <div id="colorgrid">
+                                    <input type="color" id="bgcolorpicker">
+                                    <div id="auto" onclick="autobgcolor()">AUTO</div>
+                                </div>
+                                
                             </div>
-                            
-                        </div>
-                        <p id="imgselect">Light Theme Images</p>
-                        <div id="imgstrip">
-                            <div class="parent">
-                                <div id="nonebg" onclick="nonebg1()"></div>
-                                <div id="default" onclick="defaultbg()"></div>
-                                <div id="rainbow" onclick="rainbowbg()"></div>
-                                <div id="tropical" onclick="tropicalbg()"></div>
-                                <div id="goldblue" onclick="goldblue()"></div>
-                            </div> 
-                        </div>
-                        <p id="theme">Dark Theme Images</p>
-                        <div id="imgstrip2">
-                            <div class="dThemeImgs">
-                                <div id="darkModern" onclick="darkModern()"></div>
-                            </div> 
+                            <p id="imgselect">Light Themes</p>
+                            <div id="imgstrip">
+                                <div class="parent">
+                                    <div id="nonebg" onclick="nonebg1()"></div>
+                                    <div id="default" onclick="defaultbg()"></div>
+                                    <div id="rainbow" onclick="rainbowbg()"></div>
+                                    <div id="tropical" onclick="tropicalbg()"></div>
+                                    <div id="goldblue" onclick="goldblue()"></div>
+                                </div> 
+                            </div>
+                            <p id="theme">Dark Themes</p>
+                            <div id="imgstrip2">
+                                <div class="dThemeImgs">
+                                    <div id="darkModern" onclick="darkModern()"></div>
+                                </div> 
+                            </div>
                         </div>
                     </div>
 
@@ -242,16 +234,17 @@
                 </div>
             </div>
         </div>
+        
     </div>
     
-    <div id="buttonhold" class="buttonholdfadeout buttonholdhidedisplay">
+    <!--<div id="buttonhold" class="buttonholdfadeout buttonholdhidedisplay">
         <button onclick="contNewVisitor()" id="bubbly-button">lets go!</button>
-    </div>
+    </div>-->
     <div id="dottedboxleft" ></div>
     <div id="dottedboxright" ></div>
     <div id="backwhite"></div>
     <div id="backwhiteHeight" class="backwhiteHeighthidedisplay"></div>
-    <input id="name" type="text" class="css-input"/>
+    <input style="display: none;" id="name" type="text" class="css-input"/>
 
     <div class="updateBlurHide" id="upBlur" onclick="hideUpdates()">
         <div id="updates">
@@ -269,7 +262,6 @@
 
 
     <div id="spacerBottom"></div>
-
 
 
 
