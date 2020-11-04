@@ -2,7 +2,8 @@
 
 var currtime = document.getElementById("clock");
 var bg = document.getElementById("flowers")
-var apiKey = localStorage.getItem("apiKey")
+
+
 
 //Disable Tab
 
@@ -34,10 +35,10 @@ function welcome() {
         //alert("ccd")
         document.getElementById("minheight").style.backgroundColor = localStorage.getItem("bgcolor")
     }
-    /*if (localStorage.getItem("name") === null) {
-        newVisitor();
-        return;
+    if (localStorage.getItem("apiKey") === null) {
+        localStorage.setItem("apiKey", "oATA14jpsO1MdhKOjKCscL6Aym7N6QAn")
     }
+    /*
     if (localStorage.getItem("updatesOctober19") === null) {
         showUpdates ()
         localStorage.setItem("updatesOctober19", "seen")
@@ -1641,7 +1642,7 @@ function getCurrentWeather () {
 
 
  //REALTIME
- fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=feels_like%2Ctemp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey='+apiKey)
+ fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=feels_like%2Ctemp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey='+localStorage.getItem("apiKey"))
  .then(response => response.json())
  .then(data => {
 
@@ -1750,7 +1751,7 @@ function getCurrentWeather () {
 
 
 //HOURLY WEATHER
-    fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&location_id=shoreview&unit_system='+localStorage.getItem("units")+'&start_time=now&end_time='+next4days+'T14%3A09%3A50Z&fields=precipitation%2Ctemp%2Chumidity%2Cwind_speed%2Cweather_code%2Cbaro_pressure%2Cfeels_like%2Cprecipitation_probability&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
+    fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&location_id=shoreview&unit_system='+localStorage.getItem("units")+'&start_time=now&end_time='+next4days+'T14%3A09%3A50Z&fields=precipitation%2Ctemp%2Chumidity%2Cwind_speed%2Cweather_code%2Cbaro_pressure%2Cfeels_like%2Cprecipitation_probability&apikey='+localStorage.getItem("apiKey"))
 	.then(response => response.json())
 	.then(data => {
 
@@ -1900,7 +1901,7 @@ function getCurrentWeather () {
 
     //console.log(localStorage.getItem("next10days"))
 //DAILY (for temp high/low)
-    fetch('https://api.climacell.co/v3/weather/forecast/daily?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time=now&end_time='+localStorage.getItem("next10days")+'T14%3A00%3A00Z&fields=temp%2Cweather_code&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
+    fetch('https://api.climacell.co/v3/weather/forecast/daily?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time=now&end_time='+localStorage.getItem("next10days")+'T14%3A00%3A00Z&fields=temp%2Cweather_code&apikey='+localStorage.getItem("apiKey"))
 	.then(response => response.json())
 	.then(data => {
         var templow = Math.floor(data[0]["temp"][0]['min']["value"])
