@@ -25,6 +25,7 @@ function weatherTestError () {
       return response.json();
   
     } else {
+      localStorage.setItem("apiKey", "gjkSy3KHmWy7xWUrToVJA24shlhC5w5z")
       throw new Error('Something went wrong');
     }
   })
