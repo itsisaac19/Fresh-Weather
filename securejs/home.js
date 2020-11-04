@@ -2,6 +2,7 @@
 
 var currtime = document.getElementById("clock");
 var bg = document.getElementById("flowers")
+var apiKey = localStorage.getItem("apiKey")
 
 //Disable Tab
 
@@ -401,6 +402,7 @@ switch (localStorage.getItem("showingUpdates")) {
 
 
 function responsivewarning(x) {
+    
     var hG = document.getElementById("HourlyGrid")
     switch (localStorage.getItem("showingUpdates")) {
         case "yes":
@@ -411,7 +413,13 @@ function responsivewarning(x) {
 
                 localStorage.setItem("belowMediaMobile", "yes")
 
+
+
                 hG.innerHTML = `
+
+                <em id="HourlyChartContainer">
+                    <canvas id="hourlyChart"></canvas>
+                </em>
     
                 <div id="temphour1">test</div>
                 <img class="bruh1" id="wiconhour1"/>  
@@ -479,6 +487,10 @@ function responsivewarning(x) {
                 localStorage.setItem("belowMediaMobile", "no")
 
                 hG.innerHTML = `
+
+                <em id="HourlyChartContainer">
+                <canvas id="hourlyChart"></canvas>
+                </em>
 
                 <div id="temphour1">test</div>
                 <img class="bruh1" id="wiconhour1"/>  
@@ -773,21 +785,31 @@ var mobileHtml = document.getElementsByTagName("html")
 
 function mobileBgChange () {
 
-    for(var i=0; i < mobileHtml.length; i++) {
-        mobileHtml[i].style.background = localStorage.getItem("bgimage");
+    if (localStorage.getItem("belowMediaMobile") == "yes") {
+        for(var i=0; i < mobileHtml.length; i++) {
+            mobileHtml[i].style.background = localStorage.getItem("bgimage");
 
-        if (localStorage.getItem("bgimage") == "null") {
-            setTimeout(function() {
-                for(var i=0; i < mobileHtml.length; i++) {
-                    var noneBg = document.getElementById("nonebg").style.backgroundColor
-                    //console.log(noneBg)
-                    mobileHtml[i].style.background = null
-                    mobileHtml[i].style.backgroundColor = noneBg
-                }
-            }, 100)
+            if (localStorage.getItem("bgimage") == "null") {
+                setTimeout(function() {
+                    for(var i=0; i < mobileHtml.length; i++) {
+                        var noneBg = document.getElementById("nonebg").style.backgroundColor
+                        //console.log(noneBg)
+                        mobileHtml[i].style.background = null
+                        mobileHtml[i].style.backgroundColor = noneBg
+                    }
+                }, 100)
+            }
+
         }
-
+    } else {
+        for(var i=0; i < mobileHtml.length; i++) {
+            var noneBg = document.getElementById("nonebg").style.backgroundColor
+            //console.log(noneBg)
+            mobileHtml[i].style.background = null
+            mobileHtml[i].style.backgroundColor = noneBg
+        }        
     }
+    setTimeout(mobileBgChange, 1000)
 }
 
 
@@ -1619,7 +1641,7 @@ function getCurrentWeather () {
 
 
  //REALTIME
- fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=feels_like%2Ctemp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
+ fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=feels_like%2Ctemp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey='+apiKey)
  .then(response => response.json())
  .then(data => {
 
@@ -1860,7 +1882,6 @@ function getCurrentWeather () {
             setTimeout(setIconHourDefault, 100)
         }
         setIconHourDefault();
-
 
 
 

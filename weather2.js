@@ -250,3 +250,117 @@ function iconDesc() {
                 return  (iconPath) 
 
         }
+
+
+
+/*CHARTS.JS*/
+
+///////////////////////
+console.log(localStorage.getItem("belowMediaMobile"))
+setTimeout(function() {
+
+    var hr1 = document.getElementById("temphour1").innerHTML.substring(0,2);
+    var hr2 = document.getElementById("temphour2").innerHTML.substring(0,2);
+    var hr3 = document.getElementById("temphour3").innerHTML.substring(0,2);
+    var hr4 = document.getElementById("temphour4").innerHTML.substring(0,2);
+    var hr5 = document.getElementById("temphour5").innerHTML.substring(0,2);
+    var hr6 = document.getElementById("temphour6").innerHTML.substring(0,2);
+    var hr7 = document.getElementById("temphour7").innerHTML.substring(0,2);
+    var hr8 = document.getElementById("temphour8").innerHTML.substring(0,2);
+
+    if (localStorage.getItem("belowMediaMobile") == "yes") {
+    var hr9 = document.getElementById("temphour9").innerHTML.substring(0,2);
+    var hr10 = document.getElementById("temphour10").innerHTML.substring(0,2);
+    var hr11 = document.getElementById("temphour11").innerHTML.substring(0,2);
+    var hr12 = document.getElementById("temphour12").innerHTML.substring(0,2);
+    var hr13 = document.getElementById("temphour13").innerHTML.substring(0,2);
+    var hr14 = document.getElementById("temphour14").innerHTML.substring(0,2);
+    var hr15 = document.getElementById("temphour15").innerHTML.substring(0,2);
+    }
+
+    
+    if (localStorage.getItem("belowMediaMobile") == "yes") {
+        //alert("s")
+        var ctx = document.getElementById('hourlyChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+          data: {
+            labels: ['','','','','','','','','','','','','','',''],
+            datasets: [{ 
+                data: [hr1,hr2,hr3,hr4,hr5,hr6,hr7,hr8,hr9,hr10,hr11,hr12,hr13,hr14,hr15],
+                label: "",
+                borderColor: "#afded6",
+                fill: false
+              },
+            ]
+          },
+          options: {
+            tooltips: {enabled: false},
+            hover: {mode: null},
+            
+            maintainAspectRatio: false,
+                legend: {
+                    display: false,
+                },
+                scales: {
+                  xAxes: [{
+                    gridLines: {
+                        display:false
+                    }  
+                  }],
+                  yAxes: [{
+                    gridLines: {
+                        display:false
+                    },
+                    ticks: {
+                       display: true,
+                      fontColor: 'rgb(255, 255, 255, 0.001)'
+                    }
+                  }],
+                }
+          }
+        });
+    } else {
+        var ctx = document.getElementById('hourlyChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+          data: {
+            labels: ['','','','','',],
+            datasets: [{ 
+                data: [hr1,hr2,hr3,hr4,hr5,hr6,hr7,hr8],
+                label: "",
+                borderColor: "#eddd8a",
+                fill: false
+              },
+            ]
+          },
+          options: {
+            
+            maintainAspectRatio: false,
+                legend: {
+                    display: false,
+                },
+                scales: {
+                  xAxes: [{
+                    gridLines: {
+                        display:false
+                    }  
+                  }],
+                  yAxes: [{
+                    gridLines: {
+                        display:false
+                    },
+                    ticks: {
+                       display: true,
+                      fontColor: 'rgb(255, 255, 255, 0.001)'
+                    }
+                  }],
+                }
+          }
+        });
+    }
+
+}, 1500);
+

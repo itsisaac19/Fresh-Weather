@@ -140,9 +140,13 @@
             </div>
             <div id="leftbottombodygrid" class="freeOffdetect lBBGnormal">
                 <div id="HourlyCurrentGray" class="mobileSlideNormal"></div>
+
+
+
                 <div id="HourlyGrid" class="normalHourlyGrid" onscroll="testHor()">
-
-
+                    <em id="HourlyChartContainer">
+                        <canvas id="hourlyChart"></canvas>
+                    </em>
 
                         <div id="temphour1">test</div>
                         <img class="bruh1" id="wiconhour1"/>  
@@ -266,6 +270,7 @@
 
 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <script src="./securejs/home.js"></script>
 <script src="./errCatch.js"></script>
 <script src="./updates.js"></script>
