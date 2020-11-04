@@ -296,6 +296,11 @@ setTimeout(function() {
             ]
           },
           options: {
+            elements: {
+                point:{
+                    radius: 0
+                },
+            },
             tooltips: {enabled: false},
             hover: {mode: null},
             
@@ -319,7 +324,8 @@ setTimeout(function() {
                     }
                   }],
                 }
-          }
+            },
+
         });
     } else {
         var ctx = document.getElementById('hourlyChart').getContext('2d');
