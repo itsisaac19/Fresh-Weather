@@ -524,6 +524,34 @@ function responsivewarning(x) {
                 <img class="bruh8" id="wiconhour8"/>
                 <div id="temphour8">test</div>
                 <div id="hour8">10pm</div>   
+
+                <img class="bruh9" id="wiconhour9"/>
+                <div id="temphour9">test</div>
+                <div id="hour9">10pm</div>  
+            
+                <img class="bruh10" id="wiconhour10"/>
+                <div id="temphour10">test</div>
+                <div id="hour10">10pm</div>  
+            
+                <img class="bruh11" id="wiconhour11"/>
+                <div id="temphour11">test</div>
+                <div id="hour11">10pm</div>  
+            
+                <img class="bruh12" id="wiconhour12"/>
+                <div id="temphour12">test</div>
+                <div id="hour12">10pm</div>  
+            
+                <img class="bruh13" id="wiconhour13"/>
+                <div id="temphour13">test</div>
+                <div id="hour13">10pm</div>  
+            
+                <img class="bruh14" id="wiconhour14"/>
+                <div id="temphour14">test</div>
+                <div id="hour14">10pm</div>  
+            
+                <img class="bruh15" id="wiconhour15"/>
+                <div id="temphour15">test</div>
+                <div id="hour15">10pm</div>  
                 `
               }
             break;
@@ -1104,7 +1132,7 @@ function DefaultHours () {
 }
 DefaultHours();
 
-function expandTimeHourly () {
+function TimeHourly () {
 
     var now = new Date();
     var TwentyFourHour = now.getHours();
@@ -1295,6 +1323,9 @@ function expandTimeHourly () {
     if (hour8 > 12) {
         hour8 = hour8 - 12
     }	
+    if (hour8 > 12) {
+        hour8 = hour8 - 12
+    }	
     var TwentyFourHour8 = (TwentyFourHour + 8)
     var mid8 = mid 
     if (TwentyFourHour8 > 24) {
@@ -1315,6 +1346,9 @@ function expandTimeHourly () {
     document.getElementById("hour9").innerHTML = hour8 + " " + mid8
 
     var hour9 = (hour+9)
+    if (hour9 > 12) {
+        hour9 = hour9 - 12
+    }	
     if (hour9 > 12) {
         hour9 = hour9 - 12
     }	
@@ -1341,6 +1375,9 @@ function expandTimeHourly () {
     if (hour10 > 12) {
         hour10 = hour10 - 12
     }	
+    if (hour10 > 12) {
+        hour10 = hour10 - 12
+    }	
     var TwentyFourHour10 = (TwentyFourHour + 10)
     var mid10 = mid 
     if (TwentyFourHour10 > 24) {
@@ -1361,6 +1398,9 @@ function expandTimeHourly () {
     document.getElementById("hour11").innerHTML = hour10 + " " + mid10
 
     var hour11 = (hour+11)
+    if (hour11 > 12) {
+        hour11 = hour11 - 12
+    }	
     if (hour11 > 12) {
         hour11 = hour11 - 12
     }	
@@ -1390,6 +1430,9 @@ function expandTimeHourly () {
     if (hour12 > 12) {
         hour12 = hour12 - 12
     }	
+    if (hour12 > 12) {
+        hour12 = hour12 - 12
+    }	
     var TwentyFourHour12 = (TwentyFourHour + 12)
     var mid12 = mid 
     if (TwentyFourHour12 > 24) {
@@ -1413,6 +1456,9 @@ function expandTimeHourly () {
     if (hour13 > 12) {
         hour13 = hour13 - 12
     }	
+    if (hour13 > 12) {
+        hour13 = hour13 - 12
+    }	
     var TwentyFourHour13 = (TwentyFourHour + 13)
     var mid13 = mid 
     if (TwentyFourHour13 > 24) {
@@ -1433,14 +1479,22 @@ function expandTimeHourly () {
     document.getElementById("hour14").innerHTML = hour13 + " " + mid13
 
     var hour14 = (hour+14)
+
     if (hour14 > 12) {
         hour14 = hour14 - 12
-    }	
+    } 
+    if (hour14 > 12) {
+        hour14 = hour14 - 12
+    }		
+
     var TwentyFourHour14 = (TwentyFourHour + 14)
     var mid14 = mid 
+
+
     if (TwentyFourHour14 > 24) {
         TwentyFourHour14 = TwentyFourHour14 - 24
     }
+
     if (TwentyFourHour14 == 24) {
         mid14 = "AM"
     }
@@ -1455,10 +1509,14 @@ function expandTimeHourly () {
     
     document.getElementById("hour15").innerHTML = hour14 + " " + mid14
 
+
     var hour15 = (hour+15)
     if (hour15 > 12) {
         hour15 = hour15 - 12
     }	
+    if (hour15 > 12) {
+        hour15 = hour15 - 12
+    }
     var TwentyFourHour15 = (TwentyFourHour + 15)
     var mid15 = mid 
     if (TwentyFourHour15 > 24) {
@@ -1479,7 +1537,7 @@ function expandTimeHourly () {
     //document.getElementById("hour16").innerHTML = hour15 + " " + mid15
 
 }
-
+TimeHourly();
 
 function getCurrentWeather () {
 
@@ -1885,7 +1943,23 @@ function getCurrentWeather () {
         setIconHourDefault();
 
 
+        document.getElementById("temphour9").innerHTML = localStorage.getItem("temphour9")
+        document.getElementById("temphour10").innerHTML = localStorage.getItem("temphour10")
+        document.getElementById("temphour11").innerHTML = localStorage.getItem("temphour11")
+        document.getElementById("temphour12").innerHTML = localStorage.getItem("temphour12")
+        document.getElementById("temphour13").innerHTML = localStorage.getItem("temphour13")
+        document.getElementById("temphour14").innerHTML = localStorage.getItem("temphour14")
+        document.getElementById("temphour15").innerHTML = localStorage.getItem("temphour15")
+        //document.getElementById("temphour16").innerHTML = localStorage.getItem("temphour16")
 
+        document.getElementById("wiconhour9").src = localStorage.getItem("icon9")
+        document.getElementById("wiconhour10").src = localStorage.getItem("icon10")
+        document.getElementById("wiconhour11").src = localStorage.getItem("icon11")
+        document.getElementById("wiconhour12").src = localStorage.getItem("icon12")
+        document.getElementById("wiconhour13").src = localStorage.getItem("icon13")
+        document.getElementById("wiconhour14").src = localStorage.getItem("icon14")
+        document.getElementById("wiconhour15").src = localStorage.getItem("icon15")
+        //document.getElementById("wiconhour16").src = localStorage.getItem("icon16")
 
         //--------------------------------
 

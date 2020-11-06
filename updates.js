@@ -1,4 +1,17 @@
 document.getElementById("updatesBox").innerHTML = `
+<h1>Update (V 1.5)</h1>
+<p id="pastUpdates">November 6, 2020</p>
+<p>Heyo! Some updates here:</p>
+<li>Content</li>
+<dd> - Added a <b>line graph</b> on the hourly square, increasing and decreasing according to the temperature.</dd>
+<dd> - <b>16 Hour view</b> for desktop users </dd>
+<dd> - Changed the <b>position</b> of the statistics square for mobile users-it's now directly underneath the current temperature allowing for quick access. </dd>
+<li>Responsiveness</li>
+<dd> - Text size and stats box are now more responsive</dd>
+<li>Bug Fixes</li>
+    <dd> - <b>Mobile users</b> will not encounter an issue where there is a white rectangle covering most of the viewport (yay!).</dd>
+<hr>
+<p id="pastUpdates">PAST UPDATES</p>
 <h1>Update (V 1.4)</h1>
 <p id="pastUpdates">October 31, 2020</p>
 <p>Hi loyal testers!</p>
@@ -13,7 +26,6 @@ document.getElementById("updatesBox").innerHTML = `
     <dd> - <b>More clickable squares-</b>Each square that is displaying information will be able to be clicked, and expanded. So far the top left, bottom left, and middle squares are able to be clicked. Try it out!</dd>
 </p>
 <hr>
-<p id="pastUpdates">PAST UPDATES</p>
 <h1>Update (V 1.3)</h1>
 <p id="pastUpdates">October 19, 2020</p>
 <p>Heyo! Back with another update!</p>

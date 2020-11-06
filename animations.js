@@ -67,6 +67,9 @@ document.getElementById('leftbottombodygrid').addEventListener("click", function
 
 document.getElementById('rightbodygrid').addEventListener("click", function(){
 
+    if (localStorage.getItem("belowMediaMobile") == "yes") {
+        return;
+    }
     //console.log(localStorage.getItem("whichHardPress"))
 
      //This switch case prevents users from clicking another square WHILE focused in on another square
@@ -192,7 +195,7 @@ function hardPress () {
                     }
 
                     setTimeout(function() {
-                        document.getElementById('leftopbodygrid').style.transform = "translateY(-10px)"
+                        document.getElementById('leftopbodygrid').style.transform = "translateY(-8px)"
                         localStorage.setItem("animateFocus", "no")
                         //console.log("NOW")
                     }, 900);
@@ -282,7 +285,7 @@ function hardPress () {
                         }
 
                         setTimeout(function() {
-                            document.getElementById('leftbottombodygrid').style.transform = "translateY(-10px)"
+                            document.getElementById('leftbottombodygrid').style.transform = "translateY(-8px)"
                             localStorage.setItem("animateFocus", "no")
                             //console.log("NOW")
 
@@ -374,7 +377,7 @@ function hardPress () {
                         document.getElementById('rightbodygrid').classList.add("bounceFocus")
     
                         setTimeout(function() {
-                            document.getElementById('rightbodygrid').style.transform = "translateY(-10px)"
+                            document.getElementById('rightbodygrid').style.transform = "translateY(-8px)"
                             localStorage.setItem("animateFocus", "no")
                             //console.log("NOW")
                         }, 900);
@@ -872,80 +875,15 @@ function expandHourlyAdvanced() {
         lBBG.classList.remove("lBBGnormal");
         lBBG.classList.add("fullExpandlBBG");
 
-        hG.classList.remove("normalHourlyGrid");
-        hG.classList.add("fullExpandHourlyGrid");
+        //hG.classList.remove("normalHourlyGrid");
+        //hG.classList.add("fullExpandHourlyGrid");
 
         //Change the grid to encompass advanced data:
 
-        hG.style.gridTemplateColumns = "repeat(16, 1fr)"
-        hG.style.gridTemplateRows = "repeat(6, 1fr)"
-
-        //Add all the html elements:
-
-        hG.innerHTML = `
-
-        <div id="temphour1">test</div>
-        <img class="bruh1" id="wiconhour1"/>  
-        <div class="defaultHourly" id="hour1">3pm</div>           
-
-        <img class="bruh2" id="wiconhour2"/>
-        <div id="temphour2">test</div>
-        <div class="defaultHourly" id="hour2">4pm</div>   
-
-        <img class="bruh3" id="wiconhour3"/>
-        <div id="temphour3">test</div>
-        <div class="defaultHourly" id="hour3">5pm</div>   
-
-        <img class="bruh4" id="wiconhour4"/>
-        <div id="temphour4">test</div>
-        <div class="defaultHourly" id="hour4">6pm</div>   
-
-        <img class="bruh5" id="wiconhour5"/>
-        <div id="temphour5">test</div>
-        <div class="defaultHourly" id="hour5">7pm</div>   
-
-        <img class="bruh6" id="wiconhour6"/>
-        <div id="temphour6">test</div>
-        <div class="defaultHourly" id="hour6">8pm</div>   
-
-        <img class="bruh7" id="wiconhour7"/>
-        <div id="temphour7">test</div>
-        <div class="defaultHourly" id="hour7">9pm</div>   
-
-        <img class="bruh8" id="wiconhour8"/>
-        <div id="temphour8">test</div>
-        <div class="defaultHourly" id="hour8">10pm</div>   
-
-        <img class="bruh9" id="wiconhour9"/>
-        <div id="temphour9">test</div>
-        <div id="hour9">10pm</div>  
-
-        <img class="bruh10" id="wiconhour10"/>
-        <div id="temphour10">test</div>
-        <div id="hour10">10pm</div>  
-
-        <img class="bruh11" id="wiconhour11"/>
-        <div id="temphour11">test</div>
-        <div id="hour11">10pm</div>  
-
-        <img class="bruh12" id="wiconhour12"/>
-        <div id="temphour12">test</div>
-        <div id="hour12">10pm</div>  
-
-        <img class="bruh13" id="wiconhour13"/>
-        <div id="temphour13">test</div>
-        <div id="hour13">10pm</div>  
-
-        <img class="bruh14" id="wiconhour14"/>
-        <div id="temphour14">test</div>
-        <div id="hour14">10pm</div>  
-
-        <img class="bruh15" id="wiconhour15"/>
-        <div id="temphour15">test</div>
-        <div id="hour15">10pm</div>  
+        //hG.style.gridTemplateColumns = "repeat(16, 1fr)"
+        //hG.style.gridTemplateRows = "repeat(6, 1fr)"
 
 
-        `
         /*<img class="bruh16" id="wiconhour16"/>
         <div id="temphour16">test</div>
         <div id="hour16">10pm</div> */ 
@@ -971,7 +909,7 @@ function expandHourlyAdvanced() {
         document.getElementById("wiconhour15").src = localStorage.getItem("icon15")
         //document.getElementById("wiconhour16").src = localStorage.getItem("icon16")
 
-        expandTimeHourly();
+        TimeHourly();
     } else {
         //Declare Vars:
 
@@ -1006,7 +944,7 @@ function expandHourlyAdvanced() {
         document.getElementById("wiconhour15").src = localStorage.getItem("icon15")
         //document.getElementById("wiconhour16").src = localStorage.getItem("icon16")
 
-        expandTimeHourly();
+        TimeHourly();
     }
 
     
@@ -1050,7 +988,7 @@ function mobileData (){
         document.getElementById("wiconhour15").src = localStorage.getItem("icon15")
         //document.getElementById("wiconhour16").src = localStorage.getItem("icon16")
 
-        expandTimeHourly();
+        TimeHourly();
 }
 
 function closeHourlyAdvanced () {
@@ -1063,40 +1001,6 @@ function closeHourlyAdvanced () {
     hG.classList.add("normalHourlyGrid");
     hG.classList.remove("fullExpandHourlyGrid");
 
-    hG.innerHTML = `
-
-    <div id="temphour1">test</div>
-    <img class="bruh1" id="wiconhour1"/>  
-    <div id="hour1">3pm</div>           
-
-    <img class="bruh2" id="wiconhour2"/>
-    <div id="temphour2">test</div>
-    <div id="hour2">4pm</div>   
-
-    <img class="bruh3" id="wiconhour3"/>
-    <div id="temphour3">test</div>
-    <div id="hour3">5pm</div>   
-
-    <img class="bruh4" id="wiconhour4"/>
-    <div id="temphour4">test</div>
-    <div id="hour4">6pm</div>   
-    
-    <img class="bruh5" id="wiconhour5"/>
-    <div id="temphour5">test</div>
-    <div id="hour5">7pm</div>   
-
-    <img class="bruh6" id="wiconhour6"/>
-    <div id="temphour6">test</div>
-    <div id="hour6">8pm</div>   
-
-    <img class="bruh7" id="wiconhour7"/>
-    <div id="temphour7">test</div>
-    <div id="hour7">9pm</div>   
-
-    <img class="bruh8" id="wiconhour8"/>
-    <div id="temphour8">test</div>
-    <div id="hour8">10pm</div>   
-    `
     DefaultHours();
 }
 

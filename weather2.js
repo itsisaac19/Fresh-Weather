@@ -259,6 +259,8 @@ function iconDesc() {
 //console.log(localStorage.getItem("belowMediaMobile"))
 setTimeout(function() {
 
+    console.log(localStorage.getItem("temphour1"))
+
     var hr1 = document.getElementById("temphour1").innerHTML.substring(0,2);
     var hr2 = document.getElementById("temphour2").innerHTML.substring(0,2);
     var hr3 = document.getElementById("temphour3").innerHTML.substring(0,2);

@@ -331,6 +331,7 @@ body::-webkit-scrollbar {
   filter: opacity(1);
 }
 .exithide {
+  display: none;
   transition: ease-out 0.7s;
   bottom: -145px;
   filter: opacity(0.01);
@@ -516,13 +517,14 @@ body::-webkit-scrollbar {
   left:  48%;
   transform: translate(-50%);
 
-  width: 86.5vw;
-  height: 110px;
+  width: calc(86.5vw - 4px);
+  height: 106px;
   margin: 0;
 
   background-color: rgb(255, 255, 255);
   box-shadow: 3px 4px 15px rgb(98, 98, 98, 0.26);
   border-radius: 7px;
+  border: 2px rgb(228, 228, 228) solid;
 
   text-align: center;
   align-items: center;
@@ -562,11 +564,12 @@ body::-webkit-scrollbar {
   filter: opacity(1);
 }
 #leftopbodygrid {
-    width: 49.3%;
-    height: 40vh;
+    width: calc(49.3% - 4px);
+    height: calc(40vh - 4px);
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
     border-radius: 7px;
+    border: 2px rgb(228, 228, 228) solid;
     margin: 0;
     position: absolute;
     top: 1.3vh;
@@ -720,12 +723,12 @@ body::-webkit-scrollbar {
   transition: 0.5s ease-in;
   width: 50%;
 
-  box-shadow: -2px 5px 20px rgb(98, 98, 98, 0.19);
 }
 #leftbottombodygrid {
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
     border-radius: 7px;
+    border: 2px rgb(231, 231, 231) solid;
     margin: 0;
     position: absolute;
 }
@@ -736,8 +739,8 @@ body::-webkit-scrollbar {
 .lBBGnormal {
   transition: 0.5s ease-in-out;
 
-  width: 49.3%;
-  height: 18vh;
+  width: calc(49.3% - 4px);
+  height: calc(18vh - 4px);
 
   top: 44.3vh;
   left: 1.3%;
@@ -745,18 +748,18 @@ body::-webkit-scrollbar {
 .fullExpandlBBG {
   transition: 0.5s ease-in-out;
 
-  width: 86.5vw;
-  height: 60vh;
+  width: calc(86.5vw - 4px);
+  height: calc(18vh - 4px);
 
-  top: 2.3vh;
-  left: 1.4%;
+  top: 44.3vh;
+  left: 1.3%;
 }
 @media only screen and (max-width: 800px){
   .lBBGnormal {
     transition: 0.3s ease-in-out;
     width: 86.5vw;
     height: 15vh;
-    top: 33.2vh;
+    top: 45.2vh;
 
     box-shadow: 1px 2px 20px rgb(98, 98, 98, 0.16);
   }
@@ -817,8 +820,12 @@ body::-webkit-scrollbar {
   width: 98%;
   height: 95%;
 
+
+  overflow-x: scroll auto;
+  overflow-y: hidden;
+
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(16, 60px);
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -986,11 +993,12 @@ body::-webkit-scrollbar {
 }
 
 #rightbodygrid {
-    width: 16.3%;
-    height: 61vh;
+    width: calc(16.3% - 4px);
+    height: calc(61vh - 4px);
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
     border-radius: 7px;
+    border: 2px rgb(228, 228, 228) solid;
     margin: 0;
     position: absolute;
     top: 1.3vh;
@@ -1003,10 +1011,10 @@ body::-webkit-scrollbar {
 }
 @media only screen and (max-width: 800px) {
   #rightbodygrid {
-    top: 50.2vh;
-    left: 53%;
-    width: 38.3vw;
-    height: 51vh;
+    top: 30.5vh;
+    left: 2.2%;
+    width: 84.5vw;
+    height: 13vh;
   }
 }
 #statsgrid {
@@ -1039,28 +1047,22 @@ body::-webkit-scrollbar {
 }
 
 #stat1container {
-  margin: auto;
-  margin-left: 25px;
-  padding-left: 0px;
+  margin: auto 0 auto 40px;
 }
 #stat2container {
-  margin: auto;
-  margin-left: 25px;
-
+  margin: auto auto auto 40px;
 }
 #stat3container {
-  margin: auto;
-  margin-left: 25px;
-
+  margin: auto auto auto 40px;
 }
 #stat4container {
-  margin: auto;
-  margin-left: 25px;
-
+  margin: auto auto auto 40px;
 }
+
+
 #statsgrid > div > h1 {
   color: #04273d;
-  font-size: 16px;
+  font-size: calc(13px + (25 - 13) * ((100vw - 300px) / (1600 - 300)));
   font-weight: 400;
 }
 #statsgrid > div > h1 > div{
@@ -1080,17 +1082,7 @@ body::-webkit-scrollbar {
     height: 35px;
     width: 35px;
   }
-  #statsgrid {
 
-    width: 100%;
-    height: 100%;
-  
-    display: grid;
-    grid-template-columns: 2fr 1fr ;
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-  }
 }
 @media only screen and (max-width: 1200px){
   .fourStatIcon {
@@ -1102,10 +1094,22 @@ body::-webkit-scrollbar {
     height: 100%;
   
     display: grid;
-    grid-template-columns: 3fr 1fr ;
+    grid-template-columns: 6fr 1fr ;
     grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+  }
+  #stat1container {
+    margin: auto 0 auto 40px;
+  }
+  #stat2container {
+    margin: auto auto auto 40px;
+  }
+  #stat3container {
+    margin: auto auto auto 40px;
+  }
+  #stat4container {
+    margin: auto auto auto 40px;
   }
 }
 @media only screen and (max-width: 1060px){
@@ -1118,10 +1122,61 @@ body::-webkit-scrollbar {
     height: 100%;
   
     display: grid;
-    grid-template-columns: 4fr 1fr ;
+    grid-template-columns: 1fr;
     grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+  }
+  #stat1container {
+    margin: auto 0 auto 30px;
+  }
+  #stat2container {
+    margin: auto auto auto 30px;
+  }
+  #stat3container {
+    margin: auto auto auto 30px;
+  }
+  #stat4container {
+    margin: auto auto auto 30px;
+  }
+}
+@media only screen and (max-width: 800px){
+  #rightbodygrid {
+    border: 2px rgb(245, 245, 245) solid;
+  }
+  .fourStatIcon {
+    display: none;
+  }
+  #statsgrid {
+    position: absolute;
+    left: 51%;
+    transform: translate(-50%);
+
+    width: 97%;
+    height: 100%;
+  
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows:  1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  #stat1container { grid-area: 1 / 1 / 2 / 2; }
+  #stat2container { grid-area: 1 / 2 / 2 / 3; }
+  #stat3container { grid-area: 1 / 3 / 2 / 4; }
+  #stat4container { grid-area: 1 / 4 / 2 / 5; }
+
+  #stat1container {
+    margin: auto;
+  }
+  #stat2container {
+    margin: auto;
+  }
+  #stat3container {
+    margin: auto;
+  }
+  #stat4container {
+    margin: auto;
   }
 }
 
@@ -1131,10 +1186,11 @@ body::-webkit-scrollbar {
   top: 1.3vh;
   margin: 0;
 
-  width: 23.3%;
-  height: 61vh;
+  width: calc(23.3% - 4px);
+  height: calc(61vh - 4px);
 
   border-radius: 7px;
+  border: 2px rgb(231, 231, 231) solid;
   background-color: white;
   box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
 }
@@ -1162,7 +1218,7 @@ body::-webkit-scrollbar {
     transition: 0.3s ease-in-out;
     width: 46.5vw;
     height: 51vh;
-    top: 50.2vh;
+    top: 61.7vh;
     left: 1.3%;
 
     box-shadow: -4px 1px 20px rgb(98, 98, 98, 0.16);
@@ -1253,6 +1309,57 @@ body::-webkit-scrollbar {
   src: url(Almonade.ttf);
 }
 
+#something {
+  display: none;
+  position: absolute;
+  top: 61.7vh;
+  left: 54%;
+
+  width: 37vw;
+  height: 51vh;
+
+  border-radius: 7px;
+  box-shadow: 2px 1px 20px rgb(98, 98, 98, 0.16);
+  background-color: rgb(245, 245, 245);
+  border: 2px rgb(228, 228, 228) solid;
+
+  text-align: center;
+
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+}
+#something > p {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  margin: 0;
+  padding: 0;
+
+  transform: translate(-50%, -50%);
+
+  width: 80%;
+}
+#something > h1 {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+
+  margin: 0;
+  padding: 0;
+
+  transform: translate(-50%);
+
+  width: 80%;
+
+  font-size: 19px;
+  font-weight: 500;
+}
+@media only screen and (max-width: 800px) {
+  #something {
+    display: block;
+  }
+}
 #madeWithLove {
   position: absolute;
   bottom: -2%;
@@ -1993,6 +2100,7 @@ body::-webkit-scrollbar {
 
   background-color: white;
   border-radius: 4px;
+  border: 2px rgb(228, 228, 228) solid;
   box-shadow: 4px 5px 20px rgb(98, 98, 98, 0.16);
 
   font-family: 'Barlow', sans-serif;
@@ -2014,7 +2122,7 @@ body::-webkit-scrollbar {
 }
 @media only screen and (max-width: 800px){
   #climacell {
-    bottom: -56%;
+    bottom: -69%;
   }
 }
 #leftopBlur {
@@ -2153,7 +2261,7 @@ body::-webkit-scrollbar {
 #typeButton {
   position: absolute;
   right: -82%;
-  bottom: 0%;
+  bottom: calc(0% - 2px);
 
   display: inline-block;
   text-decoration: none;
@@ -2167,7 +2275,8 @@ body::-webkit-scrollbar {
   margin: 0;
   padding: 20px; 
 
-  border-radius: 5px;
+  border-radius: 6px;
+  border: 2px rgb(228, 228, 228) solid;
   max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -2187,16 +2296,28 @@ body::-webkit-scrollbar {
   bottom: -2%;
   box-shadow: none;
 }
-
+@media only screen and (max-width: 800px) {
+  #typeButton {
+    right: -84%;
+  }
+}
 
 #spacerBottom {
+  display: none;
+
   position: absolute;
   left: 50%;
   transform: translate(-50%);
-  bottom: -35vh;
+  bottom: -89vh;
 
   width: 100px;
   height: 50px;
+}
+@media only screen and (max-width: 800px) {
+  #spacerBottom {
+    display: block;
+    bottom: -55vh;
+  }
 }
 
 #testFrame {
