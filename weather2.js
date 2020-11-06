@@ -256,7 +256,7 @@ function iconDesc() {
 /*CHARTS.JS*/
 
 ///////////////////////
-console.log(localStorage.getItem("belowMediaMobile"))
+//console.log(localStorage.getItem("belowMediaMobile"))
 setTimeout(function() {
 
     var hr1 = document.getElementById("temphour1").innerHTML.substring(0,2);
@@ -337,13 +337,17 @@ setTimeout(function() {
             datasets: [{ 
                 data: [hr1,hr2,hr3,hr4,hr5,hr6,hr7,hr8],
                 label: "",
-                borderColor: "#eddd8a",
+                borderColor: "#afded6",
                 fill: false
               },
             ]
           },
           options: {
-            
+            elements: {
+                point:{
+                    radius: 0
+                },
+            },
             maintainAspectRatio: false,
                 legend: {
                     display: false,

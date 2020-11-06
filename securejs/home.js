@@ -535,7 +535,7 @@ function responsivewarning(x) {
   responsivewarning(width) // Call listener function at run time
   width.addListener(responsivewarning) // Attach listener function on state changes*/
 
-
+/*
 
   //HEIGHT
   function responsivewarningHeight(x) {
@@ -565,7 +565,7 @@ function responsivewarning(x) {
 
 
 
-
+*/
 
 
 
@@ -2038,3 +2038,49 @@ function weekdays() {
     //document.getElementById("dateDaily10").innerHTML = tense
   }
   weekdays();
+
+
+  /*
+  document.body.onscroll = function () {
+    var mobileTop = document.body.scrollTop
+
+    console.log(mobileTop)
+  };
+*/
+
+  function safari () {
+
+    if (localStorage.getItem("belowMediaMobile") == "yes") {
+        // Get the user-agent string 
+        let userAgentString =  
+        navigator.userAgent; 
+
+        // Detect Chrome 
+        let chromeAgent =  
+        userAgentString.indexOf("Chrome") > -1;
+        
+        // Detect Safari 
+        let safariAgent = userAgentString.indexOf("Safari") > -1; 
+
+        // Discard Safari since it also matches Chrome 
+        if ((chromeAgent) && (safariAgent)) safariAgent = false; 
+
+        var browserSafari = safariAgent; 
+
+        //console.log(browserSafari)
+
+        if (browserSafari == true) {
+            document.getElementById("biggrid").style.top = "60%"
+            //console.log('safari')
+        } else {
+            //alert("sdjsdk")
+            document.getElementById("biggrid").style.top = "60%"
+            //console.log('notSafari')
+        }
+    } else {
+
+    }
+  }
+
+  safari();
+

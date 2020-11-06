@@ -21,13 +21,13 @@ function alertbuddy() {
 function weatherTestError () {
   fetch('https://api.climacell.co/v3/weather/forecast/daily?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time=now&end_time='+localStorage.getItem("next10days")+'T14%3A00%3A00Z&fields=temp%2Cweather_code&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z').then((response) => {
     if (response.ok) {
-      //alert("setting api key to oA")
-      localStorage.setItem("apiKey", "oATA14jpsO1MdhKOjKCscL6Aym7N6QAn")
+      //alert("setting api key to gj")
+      localStorage.setItem("apiKey", "gjkSy3KHmWy7xWUrToVJA24shlhC5w5z")
       return response.json();
   
     } else {
-      //alert("setting api key to gj")
-      localStorage.setItem("apiKey", "gjkSy3KHmWy7xWUrToVJA24shlhC5w5z")
+      //alert("setting api key to oA")
+      localStorage.setItem("apiKey", "oATA14jpsO1MdhKOjKCscL6Aym7N6QAn")
       throw new Error('Something went wrong');
     }
   })
