@@ -74,53 +74,6 @@
                 </div>
             </div>
 
-            <div id="dailyBox" class="freeOffdetect">
-                <div id="dailyGrid">
-
-                    <div id="currentDay"></div>
-                    <div id="futureDays"></div>
-
-                    <div id="dateDaily1" class="dateDaily">tt</div>
-                    <div id="dateDaily2" class="dateDaily">tt</div>
-                    <div id="dateDaily3" class="dateDaily">tt</div>
-                    <div id="dateDaily4" class="dateDaily">tt</div>
-                    <div id="dateDaily5" class="dateDaily">tt</div>
-                    <div id="dateDaily6" class="dateDaily">tt</div>
-                    <div id="dateDaily7" class="dateDaily">tt</div>
-                    <!--
-                    <div id="dateDaily8" class="dateDaily">tt</div>
-                    <div id="dateDaily9" class="dateDaily">tt</div>
-                    <div id="dateDaily10" class="dateDaily">tt</div>
-                    -->
-
-                    <img id="iconDaily1" class="iconDaily"/>
-                    <img id="iconDaily2" class="iconDaily"/>
-                    <img id="iconDaily3" class="iconDaily"/>
-                    <img id="iconDaily4" class="iconDaily"/>
-                    <img id="iconDaily5" class="iconDaily"/>
-                    <img id="iconDaily6" class="iconDaily"/>
-                    <img id="iconDaily7" class="iconDaily"/>
-                    <!--                    
-                    <img id="iconDaily8" class="iconDaily"/>
-                    <img id="iconDaily9" class="iconDaily"/>
-                    <img id="iconDaily10" class="iconDaily"/>
-                    -->
-
-                    <div class="tempDaily" id="tempDaily1"></div>
-                    <div class="tempDaily" id="tempDaily2"></div>
-                    <div class="tempDaily" id="tempDaily3"></div>
-                    <div class="tempDaily" id="tempDaily4"></div>
-                    <div class="tempDaily" id="tempDaily5"></div>
-                    <div class="tempDaily" id="tempDaily6"></div>
-                    <div class="tempDaily" id="tempDaily7"></div>
-                    <!--                    
-                    <div id="tempDaily8"></div>
-                    <div id="tempDaily9"></div>
-                    <div id="tempDaily10"></div>
-                    -->
-                </div>
-            </div>
-
             <div id="something">
                 <h1>Under Construction:</h1>
                 <p>Something will go here. Click the give feedback button to request a feature-it could pop up here!</p>
@@ -132,7 +85,7 @@
             <div class="freeOffdetect" href="javascript:void(0);"  onclick="window.location.href='https://www.climacell.co/weather-api/';" id="climacell">Powered by
                 <a id="typeButton" class="typeform-share button" href="https://form.typeform.com/to/Bz7Iyn1W" data-mode="popup"  target="_blank">Give Feedback</a> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm_share", b="https://embed.typeform.com/"; if(!gi.call(d,id)){ js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script>
             </div>            
-            <div id="leftopbodygrid">
+            <div id="leftopbodygrid" class="heightNormalLeftop">
                 <div id="farLeftGray" class="closeGrayAdvanced"> 
                     <img id="wicon"/>
                     <img id="paragraphIcon" src="/FreshLogos/Paragraph-justify-left-01.png"/>
@@ -149,7 +102,7 @@
 
 
 
-                <div id="HourlyGrid" class="normalHourlyGrid" onscroll="testHor()">
+                <div id="HourlyGrid" class="normalHourlyGrid" onscroll="testHor()"  onmouseover="expandHourlyAdvanced()" onmouseout="closeHourlyAdvanced()">
                     <em id="HourlyChartContainer">
                         <canvas id="hourlyChart"></canvas>
                     </em>
@@ -213,14 +166,68 @@
                         <img class="bruh15" id="wiconhour15"/>
                         <div id="temphour15">test</div>
                         <div id="hour15">10pm</div>  
-
-                    </div>
                 </div>
             </div>
+            <div id="dailyBox" class="freeOffdetect closeBox">
+                <div class="closedrows" id="dailyGrid" onmouseenter="dailyHover()" onmouseleave="dailyHover2()">
 
+                    <div id="currentDay"></div>
+                    <div id="futureDays"></div>
 
+                    <div id="dateDaily1" class="dateDaily">tt</div>
+                    <div id="dateDaily2" class="dateDaily">tt</div>
+                    <div id="dateDaily3" class="dateDaily">tt</div>
+                    <div id="dateDaily4" class="dateDaily">tt</div>
+                    <div id="dateDaily5" class="dateDaily">tt</div>
+                    <div id="dateDaily6" class="dateDaily">tt</div>
+                    <div id="dateDaily7" class="dateDaily">tt</div>
+                    <!--
+                    <div id="dateDaily8" class="dateDaily">tt</div>
+                    <div id="dateDaily9" class="dateDaily">tt</div>
+                    <div id="dateDaily10" class="dateDaily">tt</div>
+                    -->
+
+                    <img id="iconDaily1" class="iconDaily"/>
+                    <img id="iconDaily2" class="iconDaily"/>
+                    <img id="iconDaily3" class="iconDaily"/>
+                    <img id="iconDaily4" class="iconDaily"/>
+                    <img id="iconDaily5" class="iconDaily"/>
+                    <img id="iconDaily6" class="iconDaily"/>
+                    <img id="iconDaily7" class="iconDaily"/>
+                    <!--                    
+                    <img id="iconDaily8" class="iconDaily"/>
+                    <img id="iconDaily9" class="iconDaily"/>
+                    <img id="iconDaily10" class="iconDaily"/>
+                    -->
+
+                    <div class="tempDaily" id="tempDaily1"></div>
+                    <div class="tempDaily" id="tempDaily2"></div>
+                    <div class="tempDaily" id="tempDaily3"></div>
+                    <div class="tempDaily" id="tempDaily4"></div>
+                    <div class="tempDaily" id="tempDaily5"></div>
+                    <div class="tempDaily" id="tempDaily6"></div>
+                    <div class="tempDaily" id="tempDaily7"></div>
+                    <!--                    
+                    <div id="tempDaily8"></div>
+                    <div id="tempDaily9"></div>
+                    <div id="tempDaily10"></div>
+                    -->
+
+                    <div id="hourlyDay1"></div>
+                    <div id="hourlyDay2"></div>
+                    <div id="hourlyDay3"></div>
+                    <div id="hourlyDay4"></div>
+                    <div id="hourlyDay5"></div>
+                    <div id="hourlyDay6"></div>
+                    <div id="hourlyDay7"></div>
+                </div>
+            </div>
+            
+            <div id="innerHtmlLogs" style="display: none; position: absolute; bottom: 0; left: 50%;"></div>
 
         </div> 
+
+        
 
         <div id="customizesquare" class="swingout displaynone" class="displaynone">
 
@@ -304,10 +311,13 @@
 
 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js">
+</script>
 <script src="./errCatch.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <script src="./securejs/home.js"></script>
 <script src="./updates.js"></script>
 <script src="./weather2.js"></script>
 <script src="./animations.js"></script>
+<script src="./dailyHourly.js"></script>
 </html>

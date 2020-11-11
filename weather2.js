@@ -259,7 +259,7 @@ function iconDesc() {
 //console.log(localStorage.getItem("belowMediaMobile"))
 setTimeout(function() {
 
-    console.log(localStorage.getItem("temphour1"))
+    //console.log(document.getElementById("temphour5").innerHTML.substring(0,2))
 
     var hr1 = document.getElementById("temphour1").innerHTML.substring(0,2);
     var hr2 = document.getElementById("temphour2").innerHTML.substring(0,2);
@@ -335,7 +335,7 @@ setTimeout(function() {
             // The type of chart we want to create
             type: 'line',
           data: {
-            labels: ['','','','','',],
+            labels: ['','','','','','','',''],
             datasets: [{ 
                 data: [hr1,hr2,hr3,hr4,hr5,hr6,hr7,hr8],
                 label: "",

@@ -9,29 +9,37 @@ document.getElementById('flowers').addEventListener("click", function(){
 //When each of the squares is clicked:
 
 document.getElementById('leftopbodygrid').addEventListener("click", function(){
-    
-    //console.log(localStorage.getItem("whichHardPress"))
 
+    if (localStorage.getItem("belowMediaMobile") == "yes") {
+        //This switch case prevents users from clicking another square WHILE focused in on another square
+        switch(localStorage.getItem("whichHardPress")) {
+            default :
+                //If default do nothing
+            break;
+            case null :
+                localStorage.setItem("whichHardPress", "leftopbodygrid")
+                localStorage.setItem("pressing", "yes")
 
-    //This switch case prevents users from clicking another square WHILE focused in on another square
-    switch(localStorage.getItem("whichHardPress")) {
-        default :
-
-        break;
-        case "leftopbodygrid" :
-            localStorage.setItem("whichHardPress", "leftopbodygrid")
-            localStorage.setItem("pressing", "yes")
-            //alert("wdwd")
-            hardPress();
-            return;
-        break
-        case null :
-            localStorage.setItem("whichHardPress", "leftopbodygrid")
-            localStorage.setItem("pressing", "yes")
-            //alert("wdwd")
-            hardPress();
-            return;
-        break
+                //alert("null")
+                hardPress();
+            break;
+        }
+    } else {
+        //console.log("you have clicked while in desktop mode.")
+    }
+})
+document.getElementById('leftopbodygrid').addEventListener("mouseenter", function(){
+    if (localStorage.getItem("belowMediaMobile") == "yes") {
+        return;
+    } else {
+        expandCurrentWeatherSquare()
+    }
+})
+document.getElementById('leftopbodygrid').addEventListener("mouseleave", function(){
+    if (localStorage.getItem("belowMediaMobile") == "yes") {
+        return;
+    } else {
+        closeCurrentWeatherSquare()
     }
 })
 
@@ -39,27 +47,22 @@ document.getElementById('leftopbodygrid').addEventListener("click", function(){
 
 document.getElementById('leftbottombodygrid').addEventListener("click", function(){
 
-    //console.log(localStorage.getItem("whichHardPress"))
+    if (localStorage.getItem("belowMediaMobile") == "yes") {
+        //This switch case prevents users from clicking another square WHILE focused in on another square
+        switch(localStorage.getItem("whichHardPress")) {
+            default :
+                
+            break;
+            case null :
+                localStorage.setItem("whichHardPress", "leftbottombodygrid")
+                localStorage.setItem("pressing", "yes")
 
-     //This switch case prevents users from clicking another square WHILE focused in on another square
-    switch(localStorage.getItem("whichHardPress")) {
-        default :
-            
-        break;
-        case "leftbottombodygrid" :
-            localStorage.setItem("whichHardPress", "leftbottombodygrid")
-            localStorage.setItem("pressing", "yes")
-            //alert("wdwd")
-            hardPress();
-            return;
-        break
-        case null :
-            localStorage.setItem("whichHardPress", "leftbottombodygrid")
-            localStorage.setItem("pressing", "yes")
-            //alert("wdwd")
-            hardPress();
-            return;
-        break
+                //alert("wdwd")
+                hardPress();
+            break;
+        }
+    } else {
+
     }
 })
 
@@ -68,33 +71,48 @@ document.getElementById('leftbottombodygrid').addEventListener("click", function
 document.getElementById('rightbodygrid').addEventListener("click", function(){
 
     if (localStorage.getItem("belowMediaMobile") == "yes") {
-        return;
-    }
-    //console.log(localStorage.getItem("whichHardPress"))
+        //This switch case prevents users from clicking another square WHILE focused in on another square
+        switch(localStorage.getItem("whichHardPress")) {
+            default :
+                
+            break;
+            case null :
+                localStorage.setItem("whichHardPress", "rightbodygrid")
+                localStorage.setItem("pressing", "yes")
 
-     //This switch case prevents users from clicking another square WHILE focused in on another square
-     switch(localStorage.getItem("whichHardPress")) {
-        default :
-            
-        break;
-        case "rightbodygrid" :
-            localStorage.setItem("whichHardPress", "rightbodygrid")
-            localStorage.setItem("pressing", "yes")
-            //alert("wdwd")
-            hardPress();
-            return;
-        break
-        case null :
-            localStorage.setItem("whichHardPress", "rightbodygrid")
-            localStorage.setItem("pressing", "yes")
-            //alert("wdwd")
-            hardPress();
-            return;
-        break
+                //alert("wdwd")
+                hardPress();
+            break;
+        }
+    } else {
+
     }
 })
 
+function dailyHover() {
+    if (localStorage.getItem("belowMediaMobile") == "yes") {
+        return;
+    }
+    document.getElementById("dailyBox").classList.remove("closeBox")
+    document.getElementById("dailyBox").classList.add("expandBox")
 
+    document.getElementById("dailyGrid").classList.add("expandrows")
+    document.getElementById("dailyGrid").classList.remove("closedrows")
+
+    assignShowHourlyGrids();
+}
+function dailyHover2() {
+    if (localStorage.getItem("belowMediaMobile") == "yes") {
+        return;
+    }
+    document.getElementById("dailyBox").classList.remove("expandBox")
+    document.getElementById("dailyBox").classList.add("closeBox")
+
+    document.getElementById("dailyGrid").classList.remove("expandrows")
+    document.getElementById("dailyGrid").classList.add("closedrows")
+
+    assignHideHourlyGrids();
+}
 
 
 //If the escape key is pressed while currentFocus is yes, it will unfocus the square
@@ -814,6 +832,17 @@ function expandCurrentWeatherSquare () {
     rightGray.classList.remove("closeGrayAdvanced")
     rightGray.classList.add("expandGrayAdvanced")
 
+    //Change the box height to expand 
+
+    lTBG.classList.remove("heightNormalLeftop")
+    lTBG.classList.add("heightExpandLeftop")
+
+    lTBG.style.zIndex = "2"
+
+    //Add a scroll to the box if needed 
+
+    textDesc.classList.add("textDescScroll")
+
     //Change the innerHtml of textDesc to the desc
 
     paraIcon.style.display = "none"
@@ -834,6 +863,19 @@ function closeCurrentWeatherSquare () {
 
     rightGray.classList.add("closeGrayAdvanced")
     rightGray.classList.remove("expandGrayAdvanced")
+
+    //Change the box height to expand 
+
+    lTBG.classList.remove("heightExpandLeftop")
+    lTBG.classList.add("heightNormalLeftop")
+
+    setTimeout(function() {
+        lTBG.style.zIndex = null
+    },500);
+
+    //Add a scroll to the box if needed 
+
+    textDesc.classList.remove("textDescScroll")
 
     //Change the innerHtml of textDesc to the desc
 
@@ -875,6 +917,11 @@ function expandHourlyAdvanced() {
         lBBG.classList.remove("lBBGnormal");
         lBBG.classList.add("fullExpandlBBG");
 
+        /*setTimeout(function() {
+            hGExpandedWith ()
+        }, 501)*/
+
+        hG.classList.add("HourlyGridOverflowAuto");
         //hG.classList.remove("normalHourlyGrid");
         //hG.classList.add("fullExpandHourlyGrid");
 
@@ -993,14 +1040,217 @@ function mobileData (){
 
 function closeHourlyAdvanced () {
 
+    //console.log("closing")
+
     var hG = document.getElementById("HourlyGrid")
+    var lBBG = document.getElementById("leftbottombodygrid") 
+
+    //Change the square to become bigger:
+
+    lBBG.classList.add("lBBGnormal");
+    lBBG.classList.remove("fullExpandlBBG");
 
     hG.style.gridTemplateColumns = null
     hG.style.gridTemplateRows = null
 
     hG.classList.add("normalHourlyGrid");
     hG.classList.remove("fullExpandHourlyGrid");
+    hG.classList.remove("HourlyGridOverflowAuto");
 
     DefaultHours();
 }
 
+
+
+//declare vars 
+
+/*When the user hovers over the current hourly box 
+and scrolls they are able to scroll horizontally*/
+var hourlyGrid = document.getElementById('HourlyGrid')
+
+hourlyGrid.addEventListener("mouseenter", function()  {
+
+    //console.warn("detected that mouse entered")
+
+    function handler(e) {
+
+        if (localStorage.getItem("isMouseOverHourlyGrid") == "yes") {
+            var isTouchPad = e.wheelDeltaY ? e.wheelDeltaY === -3 * e.deltaY : e.deltaMode === 0
+            // logs whether the user has a mouse or trackpad
+            document.getElementById('innerHtmlLogs').innerHTML = (isTouchPad ? "isTouchPad" : "isMouse") 
+        
+            var IsMouse = document.getElementById('innerHtmlLogs').innerHTML    
+        
+            if (IsMouse == "isMouse") {
+                if (e.deltaY > 0) hourlyGrid.scrollLeft += 100;
+                else hourlyGrid.scrollLeft -= 100;
+            } 
+        } else {
+            //console.warn("dss")
+        }
+    }
+    //when the user scrolls, call the above function
+    document.body.addEventListener("mousewheel", handler, false);
+    document.body.addEventListener("DOMMouseScroll", handler, false);
+});
+
+hourlyGrid.onmouseenter = function () {
+    localStorage.setItem("isMouseOverHourlyGrid", "yes")
+}
+hourlyGrid.onmouseleave = function () {
+    localStorage.setItem("isMouseOverHourlyGrid", "no")
+}
+
+
+/* Daily Box Hourly Grids scrolling functions */
+
+setTimeout(function(){
+    var hourlyDay1 = document.getElementById('HourlyGridDay1')
+
+    hourlyDay1.addEventListener("mouseenter", function()  {
+    
+        //console.warn("detected that mouse entered")
+    
+        function handler(e) {
+    
+            if (localStorage.getItem("isMouseOverHourlyGridDay1") == "yes") {
+                var isTouchPad = e.wheelDeltaY ? e.wheelDeltaY === -3 * e.deltaY : e.deltaMode === 0
+                // logs whether the user has a mouse or trackpad
+                var IsMouse = (isTouchPad ? "isTouchPad" : "isMouse") 
+      
+                if (IsMouse == "isMouse") {
+                    if (e.deltaY > 0) hourlyDay1.scrollLeft += 15;
+                    else hourlyDay1.scrollLeft -= 15;
+                } 
+            } else {
+                //console.warn("dss")
+            }
+        }
+        //when the user scrolls, call the above function
+        document.body.addEventListener("mousewheel", handler, false);
+        document.body.addEventListener("DOMMouseScroll", handler, false);
+    });
+    
+    hourlyDay1.onmouseenter = function () {
+        localStorage.setItem("isMouseOverHourlyGridDay1", "yes")
+        document.getElementById("dailyGrid").style.overflowY = "hidden"
+    }
+    hourlyDay1.onmouseleave = function () {
+        localStorage.setItem("isMouseOverHourlyGridDay1", "no")
+        document.getElementById("dailyGrid").style.overflowY = null
+    }
+}, 500);
+
+setTimeout(function(){
+    var hourlyDay2 = document.getElementById('HourlyGridDay2')
+
+    hourlyDay2.addEventListener("mouseenter", function()  {
+    
+        //console.warn("detected that mouse entered")
+    
+        function handler(e) {
+    
+            if (localStorage.getItem("isMouseOverHourlyGridDay2") == "yes") {
+                var isTouchPad = e.wheelDeltaY ? e.wheelDeltaY === -3 * e.deltaY : e.deltaMode === 0
+                // logs whether the user has a mouse or trackpad
+                var IsMouse = (isTouchPad ? "isTouchPad" : "isMouse") 
+      
+                if (IsMouse == "isMouse") {
+
+                    if (e.deltaY > 0) hourlyDay2.scrollLeft += 15;
+                    else hourlyDay2.scrollLeft -= 15;
+                } 
+            } else {
+                //console.warn("dss")
+            }
+        }
+        //when the user scrolls, call the above function
+        document.body.addEventListener("mousewheel", handler, false);
+        document.body.addEventListener("DOMMouseScroll", handler, false);
+    });
+    
+    hourlyDay2.onmouseenter = function () {
+        localStorage.setItem("isMouseOverHourlyGridDay2", "yes")
+        document.getElementById("dailyGrid").style.overflowY = "hidden"
+    }
+    hourlyDay2.onmouseleave = function () {
+        localStorage.setItem("isMouseOverHourlyGridDay2", "no")
+        document.getElementById("dailyGrid").style.overflowY = null
+    }
+}, 500);
+
+setTimeout(function(){
+    var hourlyDay3 = document.getElementById('HourlyGridDay3')
+
+    hourlyDay3.addEventListener("mouseenter", function()  {
+    
+        //console.warn("detected that mouse entered")
+    
+        function handler(e) {
+    
+            if (localStorage.getItem("isMouseOverHourlyGridDay3") == "yes") {
+                var isTouchPad = e.wheelDeltaY ? e.wheelDeltaY === -3 * e.deltaY : e.deltaMode === 0
+                // logs whether the user has a mouse or trackpad
+                var IsMouse = (isTouchPad ? "isTouchPad" : "isMouse") 
+      
+                if (IsMouse == "isMouse") {
+
+                    if (e.deltaY > 0) hourlyDay3.scrollLeft += 15; 
+                    else hourlyDay3.scrollLeft -= 15;
+                } 
+            } else {
+                //console.warn("dss")
+            }
+        }
+        //when the user scrolls, call the above function
+        document.body.addEventListener("mousewheel", handler, false);
+        document.body.addEventListener("DOMMouseScroll", handler, false);
+    });
+    
+    hourlyDay3.onmouseenter = function () {
+        localStorage.setItem("isMouseOverHourlyGridDay3", "yes")
+        document.getElementById("dailyGrid").style.overflowY = "hidden"
+    }
+    hourlyDay3.onmouseleave = function () {
+        localStorage.setItem("isMouseOverHourlyGridDay3", "no")
+        document.getElementById("dailyGrid").style.overflowY = null
+    }
+}, 500);
+
+setTimeout(function(){
+    var hourlyDay4 = document.getElementById('HourlyGridDay4')
+
+    hourlyDay4.addEventListener("mouseenter", function()  {
+    
+        //console.warn("detected that mouse entered")
+    
+        function handler(e) {
+    
+            if (localStorage.getItem("isMouseOverHourlyGridDay4") == "yes") {
+                var isTouchPad = e.wheelDeltaY ? e.wheelDeltaY === -3 * e.deltaY : e.deltaMode === 0
+                // logs whether the user has a mouse or trackpad
+                var IsMouse = (isTouchPad ? "isTouchPad" : "isMouse") 
+      
+                if (IsMouse == "isMouse") {
+
+                    if (e.deltaY > 0) hourlyDay4.scrollLeft += 15; 
+                    else hourlyDay4.scrollLeft -= 15;
+                } 
+            } else {
+                //console.warn("dss")
+            }
+        }
+        //when the user scrolls, call the above function
+        document.body.addEventListener("mousewheel", handler, false);
+        document.body.addEventListener("DOMMouseScroll", handler, false);
+    });
+    
+    hourlyDay4.onmouseenter = function () {
+        localStorage.setItem("isMouseOverHourlyGridDay4", "yes")
+        document.getElementById("dailyGrid").style.overflowY = "hidden"
+    }
+    hourlyDay4.onmouseleave = function () {
+        localStorage.setItem("isMouseOverHourlyGridDay4", "no")
+        document.getElementById("dailyGrid").style.overflowY = null
+    }
+}, 500);

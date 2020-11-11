@@ -3,6 +3,15 @@
 var currtime = document.getElementById("clock");
 var bg = document.getElementById("flowers")
 
+function hGExpandedWith () {
+    var hGwidth = document.getElementById("leftbottombodygrid").getBoundingClientRect()
+    
+    var computedhGwith = hGwidth.width
+
+    localStorage.setItem("hGExpandedwidth", computedhGwith)
+
+    console.log(localStorage.getItem("hGExpandedwidth" )+ " is the hourly grid")
+}
 
 
 //Disable Tab
@@ -1352,7 +1361,8 @@ function TimeHourly () {
     if (hour9 > 12) {
         hour9 = hour9 - 12
     }	
-    var TwentyFourHour9 = (TwentyFourHour9 + 9)
+    var TwentyFourHour9 = (TwentyFourHour + 9)
+    
     var mid9 = mid
     if (TwentyFourHour9 > 24) {
         TwentyFourHour9 = TwentyFourHour9 - 24
@@ -1368,7 +1378,7 @@ function TimeHourly () {
     if (TwentyFourHour9 > 11) {
         mid9 = "PM"
     }
-    
+
     document.getElementById("hour10").innerHTML = hour9 + " " + mid9
 
     var hour10 = (hour+10)
@@ -1660,12 +1670,12 @@ function getCurrentWeather () {
     var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     var rigger = months[digger.getMonth()];
     var figger = digger.getDate();
-
+    
     var next4days = gigger + "-" + u + "-"+ c  
     var next10days = gigger + "-" + u + "-"+ cForDaily  
     
     document.getElementById("date").innerHTML = rigger + " " + figger + ", " + gigger
-    //console.log(next10days)
+    //console.log(next4days)
 
     //fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=temp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey=gjkSy3KHmWy7xWUrToVJA24shlhC5w5z')
     //.then(response => response.json())
@@ -1683,11 +1693,15 @@ function getCurrentWeather () {
 	//.then(response => response.json())
     //.then(data => (console.log(data)))
 
-    /*fetch('https://api.weather.gov/gridpoints/MPX/116,72/forecast')
+    fetch('https://api.weather.gov/gridpoints/MPX/112,76/forecast/hourly')
 	.then(response => response.json())
-    .then(data => (console.log(data)))*/
+    .then(data => {
+        
+        //data[Hours]
 
-    fetch('https://api.weather.gov/gridpoints/MPX/116,72/forecast')
+    })
+
+    fetch('https://api.weather.gov/gridpoints/MPX/112,76/forecast')
 	.then(response => response.json())
     .then(data => {
 
@@ -1695,9 +1709,366 @@ function getCurrentWeather () {
 
     })
 
+
 //----------------------------------------------------------------------
 
+function getTommorowdddsdsds () {
+    var m = moment();
 
+    m.add(108, 'hours')
+
+
+    //console.log(m)
+    //console.log(addOneNight)
+
+
+}
+//getTommorowdddsdsds();
+
+
+function getTommorow () {
+    var m = moment();
+
+    m.add(1, 'days').calendar()
+    var addOneDay = m.format().substring(0,11) + '09:00:00'
+    var addOneNight = m.format().substring(0,11) + '21:00:00'
+
+    localStorage.setItem("oneDay", addOneDay)
+    localStorage.setItem("oneNight", addOneNight)
+
+    /*console.log(addOneDay)
+    console.log(addOneNight)*/
+
+    getTommorowWeather();
+}
+getTommorow();
+
+function get2Days () {
+    var m = moment();
+
+    m.add(2, 'days').calendar()
+    var addTwoDay = m.format().substring(0,11) + '09:00:00'
+    var addTwoNight = m.format().substring(0,11) + '21:00:00'
+
+    localStorage.setItem("twoDay", addTwoDay)
+    localStorage.setItem("twoNight", addTwoNight)
+
+    /*console.log(addOneDay)
+    console.log(addOneNight)*/
+
+    get2DaysWeather();
+}
+get2Days();
+
+function get3Days () {
+    var m = moment();
+
+    m.add(3, 'days').calendar()
+    var addThreeDay = m.format().substring(0,11) + '09:00:00'
+    var addThreeNight = m.format().substring(0,11) + '21:00:00'
+
+    localStorage.setItem("threeDay", addThreeDay)
+    localStorage.setItem("threeNight", addThreeNight)
+
+    /*console.log(addOneDay)
+    console.log(addOneNight)*/
+
+    get3DaysWeather();
+}
+get3Days();
+
+function get4Days () {
+    var m = moment();
+
+    m.add(4, 'days').calendar()
+    var addFourDay = m.format().substring(0,11) + '09:00:00'
+    var addFourNight = m.format().substring(0,11) + '21:00:00'
+
+    localStorage.setItem("fourDay", addFourDay)
+    localStorage.setItem("fourNight", addFourNight)
+
+    /*console.log(addOneDay)
+    console.log(addOneNight)*/
+}
+get4Days();
+
+function getTommorowWeather () {
+    fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time='+localStorage.getItem("oneDay")+'&end_time='+localStorage.getItem("oneNight")+'&fields=temp%2Cweather_code&apikey=oATA14jpsO1MdhKOjKCscL6Aym7N6QAn')
+    .then(response => response.json())
+    .then(data => {
+    
+        var temphour1 = Math.floor(data[0]['temp']['value']) + "°"
+        var temphour2 = Math.floor(data[1]['temp']['value']) + "°"
+        var temphour3 = Math.floor(data[2]['temp']['value']) + "°"
+        var temphour4 = Math.floor(data[3]['temp']['value']) + "°"
+        var temphour5 = Math.floor(data[4]['temp']['value']) + "°"
+        var temphour6 = Math.floor(data[5]['temp']['value']) + "°"
+        var temphour7 = Math.floor(data[6]['temp']['value']) + "°"
+        var temphour8 = Math.floor(data[7]['temp']['value']) + "°"
+        var temphour9 = Math.floor(data[8]['temp']['value']) + "°"
+        var temphour10 = Math.floor(data[9]['temp']['value']) + "°"
+        var temphour11 = Math.floor(data[10]['temp']['value']) + "°"
+        var temphour12 = Math.floor(data[11]['temp']['value']) + "°"
+    
+        localStorage.setItem("hour1Day1Temp", temphour1)
+        localStorage.setItem("hour2Day1Temp", temphour2)
+        localStorage.setItem("hour3Day1Temp", temphour3)
+        localStorage.setItem("hour4Day1Temp", temphour4)
+        localStorage.setItem("hour5Day1Temp", temphour5)
+        localStorage.setItem("hour6Day1Temp", temphour6)
+        localStorage.setItem("hour7Day1Temp", temphour7)
+        localStorage.setItem("hour8Day1Temp", temphour8)
+        localStorage.setItem("hour9Day1Temp", temphour9)
+        localStorage.setItem("hour10Day1Temp", temphour10)
+        localStorage.setItem("hour11Day1Temp", temphour11)
+        localStorage.setItem("hour12Day1Temp", temphour12)
+    
+        var hr1dayData = document.getElementById("temphour2Day2");
+        var hr2dayData = document.getElementById("temphour3Day2");
+        var hr3dayData = document.getElementById("temphour4Day2");
+        var hr4dayData = document.getElementById("temphour5Day2");
+        var hr5dayData = document.getElementById("temphour6Day2");
+        var hr6dayData = document.getElementById("temphour7Day2");
+        var hr7dayData = document.getElementById("temphour8Day2");
+        var hr8dayData = document.getElementById("temphour9Day2");
+        var hr9dayData = document.getElementById("temphour10Day2");
+        var hr10dayData = document.getElementById("temphour11Day2");
+        var hr11dayData = document.getElementById("temphour12Day2");
+        var hr12dayData = document.getElementById("temphour13Day2");
+    
+        hr1dayData.innerHTML = localStorage.getItem("hour1Day1Temp")
+        hr2dayData.innerHTML = localStorage.getItem("hour2Day1Temp")
+        hr3dayData.innerHTML = localStorage.getItem("hour3Day1Temp")
+        hr4dayData.innerHTML = localStorage.getItem("hour4Day1Temp")
+        hr5dayData.innerHTML = localStorage.getItem("hour5Day1Temp")
+        hr6dayData.innerHTML = localStorage.getItem("hour6Day1Temp")
+        hr7dayData.innerHTML = localStorage.getItem("hour7Day1Temp")
+        hr8dayData.innerHTML = localStorage.getItem("hour8Day1Temp")
+        hr9dayData.innerHTML = localStorage.getItem("hour9Day1Temp")
+        hr10dayData.innerHTML = localStorage.getItem("hour10Day1Temp")
+        hr11dayData.innerHTML = localStorage.getItem("hour11Day1Temp")
+        hr12dayData.innerHTML = localStorage.getItem("hour12Day1Temp")
+        
+        //ADD 12 HOUR WEATHER ICONS!!!!
+    
+        var wicon1 = data[0]['weather_code']['value']
+        var wicon2 = data[1]['weather_code']['value']
+        var wicon3 = data[2]['weather_code']['value']
+        var wicon4 = data[3]['weather_code']['value']
+        var wicon5 = data[4]['weather_code']['value']
+        var wicon6 = data[5]['weather_code']['value']
+        var wicon7 = data[6]['weather_code']['value']
+        var wicon8 = data[7]['weather_code']['value']
+        var wicon9 = data[8]['weather_code']['value']
+        var wicon10 = data[9]['weather_code']['value']
+        var wicon11 = data[10]['weather_code']['value']
+        var wicon12 = data[11]['weather_code']['value']
+    
+        var wiconDisplay1 = document.getElementById("wiconHour1Day2")
+        var wiconDisplay2 = document.getElementById("wiconHour2Day2")
+        var wiconDisplay3 = document.getElementById("wiconHour3Day2")
+        var wiconDisplay4 = document.getElementById("wiconHour4Day2")
+        var wiconDisplay5 = document.getElementById("wiconHour5Day2")
+        var wiconDisplay6 = document.getElementById("wiconHour6Day2")
+        var wiconDisplay7 = document.getElementById("wiconHour7Day2")
+        var wiconDisplay8 = document.getElementById("wiconHour8Day2")
+        var wiconDisplay9 = document.getElementById("wiconHour9Day2")
+        var wiconDisplay10 = document.getElementById("wiconHour10Day2")
+        var wiconDisplay11 = document.getElementById("wiconHour11Day2")
+        var wiconDisplay12 = document.getElementById("wiconHour12Day2")
+    
+        wiconDisplay1.src = iconSelect(wicon1)
+        wiconDisplay2.src = iconSelect(wicon2)
+        wiconDisplay3.src = iconSelect(wicon3)
+        wiconDisplay4.src = iconSelect(wicon4)
+        wiconDisplay5.src = iconSelect(wicon5)
+        wiconDisplay6.src = iconSelect(wicon6)
+        wiconDisplay7.src = iconSelect(wicon7)
+        wiconDisplay8.src = iconSelect(wicon8)
+        wiconDisplay9.src = iconSelect(wicon9)
+        wiconDisplay10.src = iconSelect(wicon10)
+        wiconDisplay11.src = iconSelect(wicon11)
+        wiconDisplay12.src = iconSelect(wicon12)
+    });
+}
+function get2DaysWeather () {
+    fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time='+localStorage.getItem("twoDay")+'&end_time='+localStorage.getItem("twoNight")+'&fields=temp%2Cweather_code&apikey=oATA14jpsO1MdhKOjKCscL6Aym7N6QAn')
+    .then(response => response.json())
+    .then(data => {
+    
+        var temphour1 = Math.floor(data[0]['temp']['value']) + "°"
+        var temphour2 = Math.floor(data[1]['temp']['value']) + "°"
+        var temphour3 = Math.floor(data[2]['temp']['value']) + "°"
+        var temphour4 = Math.floor(data[3]['temp']['value']) + "°"
+        var temphour5 = Math.floor(data[4]['temp']['value']) + "°"
+        var temphour6 = Math.floor(data[5]['temp']['value']) + "°"
+        var temphour7 = Math.floor(data[6]['temp']['value']) + "°"
+        var temphour8 = Math.floor(data[7]['temp']['value']) + "°"
+        var temphour9 = Math.floor(data[8]['temp']['value']) + "°"
+        var temphour10 = Math.floor(data[9]['temp']['value']) + "°"
+        var temphour11 = Math.floor(data[10]['temp']['value']) + "°"
+        var temphour12 = Math.floor(data[11]['temp']['value']) + "°"
+    
+        var hr1dayData = document.getElementById("temphour3Day3");
+        var hr2dayData = document.getElementById("temphour4Day3");
+        var hr3dayData = document.getElementById("temphour5Day3");
+        var hr4dayData = document.getElementById("temphour6Day3");
+        var hr5dayData = document.getElementById("temphour7Day3");
+        var hr6dayData = document.getElementById("temphour8Day3");
+        var hr7dayData = document.getElementById("temphour9Day3");
+        var hr8dayData = document.getElementById("temphour10Day3");
+        var hr9dayData = document.getElementById("temphour11Day3");
+        var hr10dayData = document.getElementById("temphour12Day3");
+        var hr11dayData = document.getElementById("temphour13Day3");
+        var hr12dayData = document.getElementById("temphour14Day3");
+    
+        hr1dayData.innerHTML = temphour1
+        hr2dayData.innerHTML = temphour2
+        hr3dayData.innerHTML = temphour3
+        hr4dayData.innerHTML = temphour4
+        hr5dayData.innerHTML = temphour5
+        hr6dayData.innerHTML = temphour6
+        hr7dayData.innerHTML = temphour7
+        hr8dayData.innerHTML = temphour8
+        hr9dayData.innerHTML = temphour9
+        hr10dayData.innerHTML = temphour10
+        hr11dayData.innerHTML = temphour11
+        hr12dayData.innerHTML = temphour12
+        
+        //ADD 12 HOUR WEATHER ICONS!!!!
+    
+        var wicon1 = data[0]['weather_code']['value']
+        var wicon2 = data[1]['weather_code']['value']
+        var wicon3 = data[2]['weather_code']['value']
+        var wicon4 = data[3]['weather_code']['value']
+        var wicon5 = data[4]['weather_code']['value']
+        var wicon6 = data[5]['weather_code']['value']
+        var wicon7 = data[6]['weather_code']['value']
+        var wicon8 = data[7]['weather_code']['value']
+        var wicon9 = data[8]['weather_code']['value']
+        var wicon10 = data[9]['weather_code']['value']
+        var wicon11 = data[10]['weather_code']['value']
+        var wicon12 = data[11]['weather_code']['value']
+    
+        var wiconDisplay1 = document.getElementById("wiconHour1Day3")
+        var wiconDisplay2 = document.getElementById("wiconHour2Day3")
+        var wiconDisplay3 = document.getElementById("wiconHour3Day3")
+        var wiconDisplay4 = document.getElementById("wiconHour4Day3")
+        var wiconDisplay5 = document.getElementById("wiconHour5Day3")
+        var wiconDisplay6 = document.getElementById("wiconHour6Day3")
+        var wiconDisplay7 = document.getElementById("wiconHour7Day3")
+        var wiconDisplay8 = document.getElementById("wiconHour8Day3")
+        var wiconDisplay9 = document.getElementById("wiconHour9Day3")
+        var wiconDisplay10 = document.getElementById("wiconHour10Day3")
+        var wiconDisplay11 = document.getElementById("wiconHour11Day3")
+        var wiconDisplay12 = document.getElementById("wiconHour12Day3")
+    
+        wiconDisplay1.src = iconSelect(wicon1)
+        wiconDisplay2.src = iconSelect(wicon2)
+        wiconDisplay3.src = iconSelect(wicon3)
+        wiconDisplay4.src = iconSelect(wicon4)
+        wiconDisplay5.src = iconSelect(wicon5)
+        wiconDisplay6.src = iconSelect(wicon6)
+        wiconDisplay7.src = iconSelect(wicon7)
+        wiconDisplay8.src = iconSelect(wicon8)
+        wiconDisplay9.src = iconSelect(wicon9)
+        wiconDisplay10.src = iconSelect(wicon10)
+        wiconDisplay11.src = iconSelect(wicon11)
+        wiconDisplay12.src = iconSelect(wicon12)
+    });
+}
+function get3DaysWeather () {
+    fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system=us&start_time='+localStorage.getItem("threeDay")+'&end_time='+localStorage.getItem("threeNight")+'&fields=temp%2Cweather_code&apikey=oATA14jpsO1MdhKOjKCscL6Aym7N6QAn')
+    .then(response => response.json())
+    .then(data => {
+    
+        var temphour1 = Math.floor(data[0]['temp']['value']) + "°"
+        var temphour2 = Math.floor(data[1]['temp']['value']) + "°"
+        var temphour3 = Math.floor(data[2]['temp']['value']) + "°"
+        var temphour4 = Math.floor(data[3]['temp']['value']) + "°"
+        var temphour5 = Math.floor(data[4]['temp']['value']) + "°"
+        var temphour6 = Math.floor(data[5]['temp']['value']) + "°"
+        var temphour7 = Math.floor(data[6]['temp']['value']) + "°"
+        var temphour8 = Math.floor(data[7]['temp']['value']) + "°"
+        var temphour9 = Math.floor(data[8]['temp']['value']) + "°"
+        var temphour10 = Math.floor(data[9]['temp']['value']) + "°"
+        var temphour11 = Math.floor(data[10]['temp']['value']) + "°"
+        var temphour12 = Math.floor(data[11]['temp']['value']) + "°"
+    
+        var hr1dayData = document.getElementById("temphour4Day4");
+        var hr2dayData = document.getElementById("temphour5Day4");
+        var hr3dayData = document.getElementById("temphour6Day4");
+        var hr4dayData = document.getElementById("temphour7Day4");
+        var hr5dayData = document.getElementById("temphour8Day4");
+        var hr6dayData = document.getElementById("temphour9Day4");
+        var hr7dayData = document.getElementById("temphour10Day4");
+        var hr8dayData = document.getElementById("temphour11Day4");
+        var hr9dayData = document.getElementById("temphour12Day4");
+        var hr10dayData = document.getElementById("temphour13Day4");
+        var hr11dayData = document.getElementById("temphour14Day4");
+        var hr12dayData = document.getElementById("temphour15Day4");
+    
+        hr1dayData.innerHTML = temphour1
+        hr2dayData.innerHTML = temphour2
+        hr3dayData.innerHTML = temphour3
+        hr4dayData.innerHTML = temphour4
+        hr5dayData.innerHTML = temphour5
+        hr6dayData.innerHTML = temphour6
+        hr7dayData.innerHTML = temphour7
+        hr8dayData.innerHTML = temphour8
+        hr9dayData.innerHTML = temphour9
+        hr10dayData.innerHTML = temphour10
+        hr11dayData.innerHTML = temphour11
+        hr12dayData.innerHTML = temphour12
+        
+        //ADD 12 HOUR WEATHER ICONS!!!!
+    
+        var wicon1 = data[0]['weather_code']['value']
+        var wicon2 = data[1]['weather_code']['value']
+        var wicon3 = data[2]['weather_code']['value']
+        var wicon4 = data[3]['weather_code']['value']
+        var wicon5 = data[4]['weather_code']['value']
+        var wicon6 = data[5]['weather_code']['value']
+        var wicon7 = data[6]['weather_code']['value']
+        var wicon8 = data[7]['weather_code']['value']
+        var wicon9 = data[8]['weather_code']['value']
+        var wicon10 = data[9]['weather_code']['value']
+        var wicon11 = data[10]['weather_code']['value']
+        var wicon12 = data[11]['weather_code']['value']
+    
+        var wiconDisplay1 = document.getElementById("wiconHour1Day4")
+        var wiconDisplay2 = document.getElementById("wiconHour2Day4")
+        var wiconDisplay3 = document.getElementById("wiconHour3Day4")
+        var wiconDisplay4 = document.getElementById("wiconHour4Day4")
+        var wiconDisplay5 = document.getElementById("wiconHour5Day4")
+        var wiconDisplay6 = document.getElementById("wiconHour6Day4")
+        var wiconDisplay7 = document.getElementById("wiconHour7Day4")
+        var wiconDisplay8 = document.getElementById("wiconHour8Day4")
+        var wiconDisplay9 = document.getElementById("wiconHour9Day4")
+        var wiconDisplay10 = document.getElementById("wiconHour10Day4")
+        var wiconDisplay11 = document.getElementById("wiconHour11Day4")
+        var wiconDisplay12 = document.getElementById("wiconHour12Day4")
+    
+        wiconDisplay1.src = iconSelect(wicon1)
+        wiconDisplay2.src = iconSelect(wicon2)
+        wiconDisplay3.src = iconSelect(wicon3)
+        wiconDisplay4.src = iconSelect(wicon4)
+        wiconDisplay5.src = iconSelect(wicon5)
+        wiconDisplay6.src = iconSelect(wicon6)
+        wiconDisplay7.src = iconSelect(wicon7)
+        wiconDisplay8.src = iconSelect(wicon8)
+        wiconDisplay9.src = iconSelect(wicon9)
+        wiconDisplay10.src = iconSelect(wicon10)
+        wiconDisplay11.src = iconSelect(wicon11)
+        wiconDisplay12.src = iconSelect(wicon12)
+    });
+}
+
+//Free Weather API 
+
+/*fetch('http://api.weatherapi.com/v1/forecast.json?key=4b13ea33e96a4e3e86411255200911&q=Shoreview&days=4&dt=2020-11-9')
+.then(response => response.json())
+.then(data => (console.log(data)))*/
 
  //REALTIME
  fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=feels_like%2Ctemp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey='+localStorage.getItem("apiKey"))
@@ -1965,6 +2336,49 @@ function getCurrentWeather () {
 
 
         document.getElementById("stat2").innerHTML = currentrainchance + " %";
+
+        //Daily Data placements:
+
+        setTimeout(function() {
+            document.getElementById("temphour1Day1").innerHTML = temphour1 + "°"
+            document.getElementById("temphour2Day1").innerHTML = temphour2 + "°"
+            document.getElementById("temphour3Day1").innerHTML = temphour3 + "°"
+            document.getElementById("temphour4Day1").innerHTML = temphour4 + "°"
+            document.getElementById("temphour5Day1").innerHTML = temphour5 + "°"
+            document.getElementById("temphour6Day1").innerHTML = temphour6 + "°"
+            document.getElementById("temphour7Day1").innerHTML = temphour7 + "°"
+            document.getElementById("temphour8Day1").innerHTML = temphour8 + "°"
+            document.getElementById("temphour9Day1").innerHTML = temphour9 + "°"
+            document.getElementById("temphour10Day1").innerHTML = temphour10 + "°"
+            document.getElementById("temphour11Day1").innerHTML = temphour11 + "°"
+            document.getElementById("temphour12Day1").innerHTML = temphour12 + "°"
+        }, 200)
+
+        document.getElementById("wiconHour1Day1").src = icon1
+        document.getElementById("wiconHour2Day1").src = icon2
+        document.getElementById("wiconHour3Day1").src = icon3
+        document.getElementById("wiconHour4Day1").src = icon4
+        document.getElementById("wiconHour5Day1").src = icon5
+        document.getElementById("wiconHour6Day1").src = icon6
+        document.getElementById("wiconHour7Day1").src = icon7
+        document.getElementById("wiconHour8Day1").src = icon8
+        document.getElementById("wiconHour9Day1").src = icon9
+        document.getElementById("wiconHour10Day1").src = icon10
+        document.getElementById("wiconHour11Day1").src = icon11
+        document.getElementById("wiconHour12Day1").src = icon12
+
+        document.getElementById("hour1Day1").innerHTML = document.getElementById("hour1").innerHTML
+        document.getElementById("hour2Day1").innerHTML = document.getElementById("hour2").innerHTML
+        document.getElementById("hour3Day1").innerHTML = document.getElementById("hour3").innerHTML
+        document.getElementById("hour4Day1").innerHTML = document.getElementById("hour4").innerHTML
+        document.getElementById("hour5Day1").innerHTML = document.getElementById("hour5").innerHTML
+        document.getElementById("hour6Day1").innerHTML = document.getElementById("hour6").innerHTML
+        document.getElementById("hour7Day1").innerHTML = document.getElementById("hour7").innerHTML
+        document.getElementById("hour8Day1").innerHTML = document.getElementById("hour8").innerHTML
+        document.getElementById("hour9Day1").innerHTML = document.getElementById("hour9").innerHTML
+        document.getElementById("hour10Day1").innerHTML = document.getElementById("hour10").innerHTML
+        document.getElementById("hour11Day1").innerHTML = document.getElementById("hour11").innerHTML
+        document.getElementById("hour12Day1").innerHTML = document.getElementById("hour12").innerHTML
     })    
 
 
@@ -2148,7 +2562,7 @@ function weekdays() {
             //console.log('safari')
         } else {
             //alert("sdjsdk")
-            document.getElementById("biggrid").style.top = "60%"
+            document.getElementById("biggrid").style.top = "53%"
             //console.log('notSafari')
         }
     } else {
