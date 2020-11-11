@@ -1693,6 +1693,8 @@ function getCurrentWeather () {
 	//.then(response => response.json())
     //.then(data => (console.log(data)))
 
+    /* HEY https://api.weather.gov/points/45.0867,-93.1182 */
+
     fetch('https://api.weather.gov/gridpoints/MPX/112,76/forecast/hourly')
 	.then(response => response.json())
     .then(data => {
