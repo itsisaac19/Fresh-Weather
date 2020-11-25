@@ -79,12 +79,10 @@ function welcome() {
 
     //SET DEFAULTS
     document.getElementById("freshWelcomeLogo").style.display = "none"
-    document.getElementById("minheight").style.backgroundColor = localStorage.getItem("bgcolor")
     document.getElementsByClassName("arrow")[0].style.display = "none"
     document.getElementById("updates").style.display = "none"    
     document.getElementById("notibubble").innerHTML = "Welcome, " + localStorage.getItem("name") 
-    document.getElementById("bgcolorpicker").value = localStorage.getItem("bgcolor")
-    document.getElementById("nonebg").style.backgroundColor = localStorage.getItem("bgcolor")
+
 
     bg.style.backgroundImage = localStorage.getItem("bgimage")
 
@@ -233,10 +231,6 @@ function hideUpdates () {
 function newVisitor () {
 
     document.getElementById("notibubble").innerHTML = "Welcome" 
-    document.getElementById("backwhite").classList.remove("backwhitehidedisplay")
-
-    var backwhite = document.getElementById("backwhite")
-    backwhite.classList.add("backwhiteshow")
 
     var uhoh = document.getElementById("uhoh")
     uhoh.classList.add("zerozindex");
@@ -345,17 +339,13 @@ function hideTutorial () {
 }
 
 function showHome () {
-    //alert("showinghome")
+
 
     document.getElementById("welcometext").classList.add("hideWelcomeText")
     document.getElementById("welcometext").classList.remove("showWelcomeText")
 
     document.getElementById("name").classList.add("hidename")
     document.getElementById("name").classList.remove("showname")
-
-    var backwhite = document.getElementById("backwhite")
-    backwhite.classList.remove("backwhiteshow")
-    backwhite.classList.add("backwhitehide")
 
     if (localStorage.getItem("name") === null) {
         document.getElementById("notibubble").innerHTML = "Welcome"
@@ -365,7 +355,6 @@ function showHome () {
 
     
     setTimeout(function(){
-        document.getElementById("backwhite").classList.add("backwhitehidedisplay")
         document.getElementById("name").classList.add("hidenamedisplay")
     },1600);
 
@@ -379,7 +368,35 @@ function showHome () {
     setTimeout(function(){
         document.getElementById("notibubble").classList.remove("notidown")
         document.getElementById("notibubble").classList.add("notiup")
-    },5000);
+    },3000);
+
+    if (localStorage.getItem("barPosition") !== 1) {
+        return;
+    }
+
+    var lTBG = document.getElementById("leftopbodygrid")
+    var lBBG = document.getElementById("leftbottombodygrid")
+    var rBG = document.getElementById("rightbodygrid")
+
+    setTimeout(function() {
+
+        lTBG.style.transition = "cubic-bezier(.41,.6,.4,.95) 1s;", lTBG.style.top = "-0.3vh", lTBG.style.filter = "opacity(1)"
+
+        setTimeout(function() {
+
+            lBBG.style.transition = "cubic-bezier(.41,.6,.4,.95) 1s;", lBBG.style.top = "30.9vh", lBBG.style.filter = "opacity(1)"
+
+            setTimeout(function() {
+
+                rBG.style.transition = "cubic-bezier(.41,.6,.4,.95) 1s;", rBG.style.top = "-0.3vh", rBG.style.filter = "opacity(1)"
+
+            }, 100)
+
+        }, 100)
+
+    }, 200)
+
+
 
     if (localStorage.getItem("tutorial", "yes")) {
         document.getElementById('flowers').style.backgroundImage = "url(/Bimages//flat-design-floral-wallpaper-design/GoldBlue.jpg)"
@@ -411,332 +428,328 @@ switch (localStorage.getItem("showingUpdates")) {
 }        
 
 
-function responsivewarning(x) {
-    
-    var hG = document.getElementById("HourlyGrid")
-    switch (localStorage.getItem("showingUpdates")) {
-        case "yes":
-            //console.log("disabledresponsive")
-            break;
-        case "no":
-            if (width.matches) { // If media query matches
 
-                localStorage.setItem("belowMediaMobile", "yes")
-
-
-
-                hG.innerHTML = `
-
-                <em id="HourlyChartContainer">
-                    <canvas id="hourlyChart"></canvas>
-                </em>
-    
-                <div id="temphour1">test</div>
-                <img class="bruh1" id="wiconhour1"/>  
-                <div class="defaultHourly" id="hour1">3pm</div>           
-            
-                <img class="bruh2" id="wiconhour2"/>
-                <div id="temphour2">test</div>
-                <div class="defaultHourly" id="hour2">4pm</div>   
-            
-                <img class="bruh3" id="wiconhour3"/>
-                <div id="temphour3">test</div>
-                <div class="defaultHourly" id="hour3">5pm</div>   
-            
-                <img class="bruh4" id="wiconhour4"/>
-                <div id="temphour4">test</div>
-                <div class="defaultHourly" id="hour4">6pm</div>   
-                
-                <img class="bruh5" id="wiconhour5"/>
-                <div id="temphour5">test</div>
-                <div class="defaultHourly" id="hour5">7pm</div>   
-            
-                <img class="bruh6" id="wiconhour6"/>
-                <div id="temphour6">test</div>
-                <div class="defaultHourly" id="hour6">8pm</div>   
-            
-                <img class="bruh7" id="wiconhour7"/>
-                <div id="temphour7">test</div>
-                <div class="defaultHourly" id="hour7">9pm</div>   
-            
-                <img class="bruh8" id="wiconhour8"/>
-                <div id="temphour8">test</div>
-                <div class="defaultHourly" id="hour8">10pm</div>   
-            
-                <img class="bruh9" id="wiconhour9"/>
-                <div id="temphour9">test</div>
-                <div id="hour9">10pm</div>  
-            
-                <img class="bruh10" id="wiconhour10"/>
-                <div id="temphour10">test</div>
-                <div id="hour10">10pm</div>  
-            
-                <img class="bruh11" id="wiconhour11"/>
-                <div id="temphour11">test</div>
-                <div id="hour11">10pm</div>  
-            
-                <img class="bruh12" id="wiconhour12"/>
-                <div id="temphour12">test</div>
-                <div id="hour12">10pm</div>  
-            
-                <img class="bruh13" id="wiconhour13"/>
-                <div id="temphour13">test</div>
-                <div id="hour13">10pm</div>  
-            
-                <img class="bruh14" id="wiconhour14"/>
-                <div id="temphour14">test</div>
-                <div id="hour14">10pm</div>  
-            
-                <img class="bruh15" id="wiconhour15"/>
-                <div id="temphour15">test</div>
-                <div id="hour15">10pm</div>  
-            
-                `
-              } else {
-
-                localStorage.setItem("belowMediaMobile", "no")
-
-                hG.innerHTML = `
-
-                <em id="HourlyChartContainer">
-                <canvas id="hourlyChart"></canvas>
-                </em>
-
-                <div id="temphour1">test</div>
-                <img class="bruh1" id="wiconhour1"/>  
-                <div id="hour1">3pm</div>           
-            
-                <img class="bruh2" id="wiconhour2"/>
-                <div id="temphour2">test</div>
-                <div id="hour2">4pm</div>   
-            
-                <img class="bruh3" id="wiconhour3"/>
-                <div id="temphour3">test</div>
-                <div id="hour3">5pm</div>   
-            
-                <img class="bruh4" id="wiconhour4"/>
-                <div id="temphour4">test</div>
-                <div id="hour4">6pm</div>   
-                
-                <img class="bruh5" id="wiconhour5"/>
-                <div id="temphour5">test</div>
-                <div id="hour5">7pm</div>   
-            
-                <img class="bruh6" id="wiconhour6"/>
-                <div id="temphour6">test</div>
-                <div id="hour6">8pm</div>   
-            
-                <img class="bruh7" id="wiconhour7"/>
-                <div id="temphour7">test</div>
-                <div id="hour7">9pm</div>   
-            
-                <img class="bruh8" id="wiconhour8"/>
-                <div id="temphour8">test</div>
-                <div id="hour8">10pm</div>   
-
-                <img class="bruh9" id="wiconhour9"/>
-                <div id="temphour9">test</div>
-                <div id="hour9">10pm</div>  
-            
-                <img class="bruh10" id="wiconhour10"/>
-                <div id="temphour10">test</div>
-                <div id="hour10">10pm</div>  
-            
-                <img class="bruh11" id="wiconhour11"/>
-                <div id="temphour11">test</div>
-                <div id="hour11">10pm</div>  
-            
-                <img class="bruh12" id="wiconhour12"/>
-                <div id="temphour12">test</div>
-                <div id="hour12">10pm</div>  
-            
-                <img class="bruh13" id="wiconhour13"/>
-                <div id="temphour13">test</div>
-                <div id="hour13">10pm</div>  
-            
-                <img class="bruh14" id="wiconhour14"/>
-                <div id="temphour14">test</div>
-                <div id="hour14">10pm</div>  
-            
-                <img class="bruh15" id="wiconhour15"/>
-                <div id="temphour15">test</div>
-                <div id="hour15">10pm</div>  
-                `
-              }
-            break;
-    }
-}
-
-
-  var width = window.matchMedia("(max-width: 800px)")
-  responsivewarning(width) // Call listener function at run time
-  width.addListener(responsivewarning) // Attach listener function on state changes*/
-
-/*
-
-  //HEIGHT
-  function responsivewarningHeight(x) {
-
-    switch (localStorage.getItem("showingUpdates")) {
-        case "yes":
-            //console.log("disabledresponsive")
-            break;
-        case "no":
-            if (Height.matches) { // If media query matches
-                document.getElementById("backwhiteHeight").classList.remove("backwhiteHeighthide")
-                document.getElementById("backwhiteHeight").classList.add("backwhiteHeightshowdisplay")
-                document.getElementById("backwhiteHeight").classList.remove("backwhiteHeighthidedisplay")
-              } else {
-                document.getElementById("backwhiteHeight").classList.add("backwhiteHeighthidedisplay")
-                document.getElementById("backwhiteHeight").classList.remove("backwhiteHeightshowdisplay")
-              }
-            break;
-    }
-}
-
-
-  var Height = window.matchMedia("(max-height: 640px)")
-  responsivewarningHeight(Height) // Call listener function at run time
-  Height.addListener(responsivewarningHeight) // Attach listener function on state changes
-
-
-
-
-*/
 
 
 
 //Animations: -----------------------------------------------
 
-//fancy button
-var animateButton = function(e) {
+function dailyDashboard () {
+    hideHome();
+    hideCustomize();
+    setTimeout(showDaily, 400)
 
-    e.preventDefault;
-    //reset animation
-    e.target.classList.remove('animate');
+    var dB = document.getElementById('dailyBox')
+    dB.style.top = "10.3vh"
+
+    localStorage.setItem("animatingDashboard", "yes")
+    setTimeout(function() {
+        localStorage.setItem("animatingDashboard", "no")
+    }, 1000)
+}
+
+function hourlyDashboard () {
+    hideHome();
+    hideDaily(); 
+    hideCustomize ();
+    setTimeout(showHourly, 400);
+
+    localStorage.setItem("animatingDashboard", "yes")
+    setTimeout(function() {
+        localStorage.setItem("animatingDashboard", "no")
+    }, 1000)
+}
+function showHomeDashboard () {
+    hideHome();
+    hideHourly();
+    hideDaily(); 
+    hideCustomize ();
+    DefaultHours ();
+    setTimeout(showHomeForSlider, 400);
+
+    localStorage.setItem("animatingDashboard", "yes")
+    setTimeout(function() {
+        localStorage.setItem("animatingDashboard", "no")
+    }, 1000)
+}
+function showCustomize () {
+    hideHome();
+    hideDaily(); 
+    customize();
+    localStorage.setItem("animatingDashboard", "yes")
+    setTimeout(function() {
+        localStorage.setItem("animatingDashboard", "no")
+    }, 1000)
+}
+
+//Bar slider
+
+var bar = document.getElementById("currentBarInd")
+localStorage.setItem("animatingDashboard", "no")
+
+function goToLatestBarPosition() {
+    if (localStorage.getItem("barPosition") === null) {placeBar1();}
+    if (localStorage.getItem("barPosition") === "") {placeBar1();}
     
-    e.target.classList.add('animate');
-    setTimeout(function(){
-      e.target.classList.remove('animate');
-    },700);
-  };
-  
-  var bubblyButtons = document.getElementsByClassName("bubbly-button");
-  
-  for (var i = 0; i < bubblyButtons.length; i++) {
-    bubblyButtons[i].addEventListener('click', animateButton, false);
-  }
-//fancy button
+   // console.log(localStorage.getItem("barPosition"))
+    
+    if (localStorage.getItem("barPosition") == 1) {placeBar1()}
+    if (localStorage.getItem("barPosition") == 2) {placeBar2()}
+    if (localStorage.getItem("barPosition") == 3) {placeBar3()}
+    if (localStorage.getItem("barPosition") == 4) {placeBar4()}
+    if (localStorage.getItem("barPosition") == 5) {placeBar5()}
+    if (localStorage.getItem("barPosition") == 6) {placeBar6()}
+    if (localStorage.getItem("barPosition") == 7) {placeBar7()}
+    if (localStorage.getItem("barPosition") == 8) {placeBar8()}
+}
+goToLatestBarPosition();
+
+function placeBar1 () {
+    if (localStorage.getItem("animatingDashboard") == "yes") {
+        return;
+    }
+    bar.style.top = "5.2%",localStorage.setItem("barPosition", 1), showHomeDashboard();
+}
+function placeBar2 () {
+    if (localStorage.getItem("animatingDashboard") == "yes") {
+        return;
+    }
+    bar.style.top = "17.5%",localStorage.setItem("barPosition", 2), hourlyDashboard();
+}
+function placeBar3 () {
+    if (localStorage.getItem("animatingDashboard") == "yes") {
+        return;
+    }
+    bar.style.top = "29.8%",localStorage.setItem("barPosition", 3)
+    dailyDashboard ();
+}
+function placeBar4 () {
+    if (localStorage.getItem("animatingDashboard") == "yes") {
+        return;
+    }
+    bar.style.top = "42.1%",localStorage.setItem("barPosition", 4)
+}
+function placeBar5 () {
+    if (localStorage.getItem("animatingDashboard") == "yes") {
+        return;
+    }
+    bar.style.top = "54.4%",localStorage.setItem("barPosition", 5)
+}
+function placeBar6 () {
+    if (localStorage.getItem("animatingDashboard") == "yes") {
+        return;
+    }
+    bar.style.top = "66.7%",localStorage.setItem("barPosition", 6)
+}
+function placeBar7 () {
+    if (localStorage.getItem("animatingDashboard") == "yes") {
+        return;
+    }
+    bar.style.top = "74.5%",localStorage.setItem("barPosition", 7), showUpdates();
+}
+function placeBar8 () {
+    if (localStorage.getItem("animatingDashboard") == "yes") {
+        return;
+    }
+    bar.style.top = "87.4%",localStorage.setItem("barPosition", 8), showCustomize();
+}
+
+//Bar slider
+
+//Each weather displays own hide and show functions:
+
+function showHomeForSlider () {
+    var lTBG = document.getElementById("leftopbodygrid")
+    var lBBG = document.getElementById("leftbottombodygrid")
+    var rBG = document.getElementById("rightbodygrid")
+    setTimeout(function() {
+
+        lTBG.style.transition = "cubic-bezier(.41,.6,.4,.95) 1s;", lTBG.style.top = "-0.3vh", lTBG.style.filter = "opacity(1)"
+
+        setTimeout(function() {
+
+            lBBG.style.transition = "cubic-bezier(.41,.6,.4,.95) 1s;", lBBG.style.top = "30.9vh", lBBG.style.filter = "opacity(1)"
+
+            setTimeout(function() {
+
+                rBG.style.transition = "cubic-bezier(.41,.6,.4,.95) 1s;", rBG.style.top = "-0.3vh", rBG.style.filter = "opacity(1)"
+
+            }, 100)
+
+        }, 100)
+
+    }, 100)
+}
+function hideHome () {
+    var lTBG = document.getElementById("leftopbodygrid")
+    var lBBG = document.getElementById("leftbottombodygrid")
+    var rBG = document.getElementById("rightbodygrid")
+
+    lTBG.style.top = null, lTBG.style.filter = null
+    lBBG.style.top = null, lBBG.style.filter = null
+    rBG.style.top = null, rBG.style.filter = null
+}
+
+function showHourly () {
+    var lBBG = document.getElementById("leftbottombodygrid")
+    var hGrid = document.getElementById("HourlyGrid")
+    var hGridLabels = document.getElementById("rowLabelsHourly")
+    var gray = document.getElementById("HourlyCurrentGray")
+
+    var rainChances = document.getElementsByClassName("rainChances")
+    var HumidityHourly = document.getElementsByClassName("humidityHour")
+    var windHourly = document.getElementsByClassName("windHour")
+
+    setTimeout(function() {
+        for(var i=0; i < rainChances.length; i++) {
+            rainChances[i].style.display = null;
+            HumidityHourly[i].style.display = null;
+            windHourly[i].style.display = null;
+        }
+    }, 50)
+
+    lBBG.classList.remove("leftbottomDashboard")
+    lBBG.style.right = "95px"
+    lBBG.style.top = "4.3vh"
+
+    setTimeout(function() {
+        lBBG.style.top = "-0.3vh", lBBG.style.filter = "opacity(1)"
+        hGridLabels.style.top = "-2px", hGridLabels.style.filter = "opacity(1)"
+    }, 500)
+
+    lBBG.style.width = "75%"
+    lBBG.style.height = "65.3vh"
+
+    hGrid.style.gridTemplateRows = "repeat(8, 1fr)"
+    hGrid.style.gridTemplateColumns = "repeat(15, 90px)"
+
+    gray.style.width = null
+
+    TimeHourly ();
+}    
+function hideHourly () {
+    var lBBG = document.getElementById("leftbottombodygrid")
+    var hGrid = document.getElementById("HourlyGrid")
+    var gray = document.getElementById("HourlyCurrentGray")
+    var hGridLabels = document.getElementById("rowLabelsHourly")
+
+    var rainChances = document.getElementsByClassName("rainChances")
+    var HumidityHourly = document.getElementsByClassName("humidityHour")
+    var windHourly = document.getElementsByClassName("windHour")
+
+    setTimeout(function() {
+        for(var i=0; i < rainChances.length; i++) {
+            rainChances[i].style.display = "none";
+            HumidityHourly[i].style.display = "none";
+            windHourly[i].style.display = "none";
+        }
+    }, 500)
 
 
+    setTimeout(function() {
+        hGrid.style.gridTemplateRows = null
+        hGrid.style.gridTemplateColumns = null
+        lBBG.style.height = null
+
+        gray.style.width = "calc(99% -  60px)"
+    },400)
+
+    setTimeout(function() {
+        lBBG.style.right = null
+        lBBG.style.width = null
+
+        hGridLabels.style.top = null, hGridLabels.style.filter = "opacity(0)"
+
+        lBBG.classList.add("leftbottomDashboard")
+    }, 500)
+}
+
+function hideCustomize () {
+    var customize = document.getElementById("customizesquare")
+ 
+    customize.classList.add("swingout")
+    customize.classList.remove("swingin")
+
+        setTimeout(function() {
+            customize.classList.add("displaynone")
+            var slideUpItems = document.getElementsByClassName("slideUpClass")
+            if (slideUpItems > 0) {
+                slideUpItems[0].className = "slideDownClass"
+            } 
+        }, 800);
+}
+function showDaily () {
+    var dB = document.getElementById('dailyBox')
+
+    dB.style.top = "-0.3vh"
+    dB.style.filter = "opacity(1)"
+
+    dailyHover();
+    DefaultDailyHours();
+}
+function hideDaily () {
+    var dB = document.getElementById('dailyBox')
+
+    dB.style.top = null
+    dB.style.filter = null
+
+    setTimeout(function () {
+        var dB = document.getElementById('dailyBox')
+        dB.style.top = "220.3vh"
+    }, 1001)
+}
+
+//
 
 
 
 //customize page
 
 function customize() {
-   var bodygrid = document.getElementById("bodygrid")
-   var customize = document.getElementById("customizesquare")
-   
-   bodygrid.classList.remove("goback");
-   bodygrid.classList.add("goleft");
 
+   var customize = document.getElementById("customizesquare")
    customize.classList.remove("displaynone")
+
+   setTimeout(function() {
+    var slideUpItems = document.getElementsByClassName("slideDownClass")
+
+    slideUpItems[0].className = "slideUpClass"
+    
+    var lTBG = document.getElementById("leftopbodygrid")
+    var lBBG = document.getElementById("leftbottombodygrid")
+    var rBG = document.getElementById("rightbodygrid")
+
+    lTBG.style.top = null, lTBG.style.filter = null
+    lBBG.style.top = null, lBBG.style.filter = null
+    rBG.style.top = null, rBG.style.filter = null
+   }, 200);
+
    setTimeout(function() {
     customize.classList.remove("swingout")
     customize.classList.add("swingin")
    }, 300);
 
    localStorage.setItem("customizePage", "true")
-   tutbox = document.getElementById("tutbox");
-   //tutbox.style.display = "none"
 }
-//dashboard
+//Go back from customize
 
 function freshdashboard () {
-    var bodygrid = document.getElementById("bodygrid")
     var customize = document.getElementById("customizesquare")
-    
-    bodygrid.classList.add("goback");
-    bodygrid.classList.remove("goleft");
  
     customize.classList.add("swingout")
     customize.classList.remove("swingin")
 
-    setTimeout(function() {
-        customize.classList.add("displaynone")
-       }, 300);
-
+        setTimeout(function() {
+            customize.classList.add("displaynone")
+            var slideUpItems = document.getElementsByClassName("slideUpClass")
+            slideUpItems[0].className = "slideDownClass"
+        }, 800);
+       
+    setTimeout(showHome, 200)
+    placeBar1 ()
 }
 
-//dots
-function expandthedots() {
-    //var element1 = document.getElementById("expandthedots");
-    //element1.classList.add("expandhoriztranslate");
-    //element1.classList.remove("closedhoriztranslate");
-
-    //document.getElementById("customize").style.display = "block"
-
-    //var element2 = document.getElementById("customize");
-    //element2.classList.add("customizefadein");
-    //element2.classList.remove("customizefadeout");
-} 
-function closethedots() {
-    //var element = document.getElementById("expandthedots");
-    //element.classList.add("closedhoriztranslate");
-    //element.classList.remove("expandhoriztranslate");
-
-    //var element2 = document.getElementById("customize");
-    //element2.classList.add("customizefadeout");
-    //element2.classList.remove("customizefadein");
-
-    //setTimeout(function(){
-
-    //    document.getElementById("customize").style.display = "none"
-
-    //},699);
-}
-//logo
-function expandthelogo() {
-    //var element1 = document.getElementById("expandthelogo");
-    //element1.classList.add("expandhoriztranslatelogo");
-    //element1.classList.remove("closedhoriztranslatelogo");
-
-    //document.getElementById("settings").style.display = "block"
-
-    //var element2 = document.getElementById("settings");
-    //element2.classList.add("customizefadein");
-    //element2.classList.remove("customizefadeout");
-
-    //pushdots();
-} 
-function closethelogo() {
-    //var element = document.getElementById("expandthelogo");
-    //element.classList.add("closedhoriztranslatelogo");
-    //element.classList.remove("expandhoriztranslatelogo");
-
-    //var element2 = document.getElementById("settings");
-    //element2.classList.add("customizefadeout");
-    //element2.classList.remove("customizefadein");
-
-    //pulldots();
-
-    //setTimeout(function(){
-    //    document.getElementById("settings").style.display = "none"
-    //},699);
-}
-//push amimation *still needs work*
-function pushdots() {
-    setTimeout(function(){
-        var element = document.getElementById("dotsquare").style.left = "360px"
-    },100);
-}
-function pulldots() {
-    setTimeout(function(){
-        var element = document.getElementById("dotsquare").style.left = "163px"
-    },500);
-}
-//Layout Function 
+//Layout Function **NEEDS WORK**
 
 function changeLayout () {
     freshdashboard();
@@ -785,20 +798,6 @@ function changeLayout () {
     },2200);
 }
 
-//function allowDrop(ev) {
-  //  ev.preventDefault();
-  //}
-  
-  //function drag(ev) {
-    //ev.dataTransfer.setData("text", ev.target.id);
-  //}
-  
-  //function drop(ev) {
-    //ev.preventDefault();
-    //var data = ev.dataTransfer.getData("text");
-    //ev.target.appendChild(document.getElementById(data));
-  //}
-
 function exitChangeLayout() {
 
     localStorage.setItem("layoutMode", "no")
@@ -824,6 +823,7 @@ var mobileHtml = document.getElementsByTagName("html")
 function mobileBgChange () {
 
     if (localStorage.getItem("belowMediaMobile") == "yes") {
+        console.log("uhoh")
         for(var i=0; i < mobileHtml.length; i++) {
             mobileHtml[i].style.background = localStorage.getItem("bgimage");
 
@@ -839,18 +839,10 @@ function mobileBgChange () {
             }
 
         }
-    } else {
-        for(var i=0; i < mobileHtml.length; i++) {
-            var noneBg = document.getElementById("nonebg").style.backgroundColor
-            //console.log(noneBg)
-            mobileHtml[i].style.background = null
-            mobileHtml[i].style.backgroundColor = noneBg
-        }        
-    }
-    setTimeout(mobileBgChange, 1000)
+    } 
 }
 
-
+if (localStorage.getItem("belowMediaMobile") == "yes") {setTimeout(mobileBgChange, 1000)}
 
 
 function nonebg1 () {
@@ -887,15 +879,22 @@ function darkModern () {
 //Color bgchange 
 
 document.getElementById("bgcolorpicker").addEventListener('change', function() {
-    document.getElementById("minheight").style.backgroundColor = this.value
+    document.getElementById("flowers").style.backgroundColor = this.value
     document.getElementById("nonebg").style.backgroundColor = this.value
     
     document.getElementById("auto").style.color = "black"
     localStorage.setItem("bgcolor", this.value)
     mobileBgChange () 
+    nonebg1();
 
     //console.log(localStorage.getItem("bgcolor"))
 })
+
+
+document.getElementById("flowers").style.backgroundColor = localStorage.getItem("bgcolor")
+document.getElementById("nonebg").style.backgroundColor = localStorage.getItem("bgcolor")
+document.getElementById("bgcolorpicker").value = localStorage.getItem("bgcolor")
+
 
 function autobgcolor () {
 
@@ -904,25 +903,12 @@ function autobgcolor () {
         document.getElementById("auto").style.color = "white"
         localStorage.setItem("userChooseAuto", "active")
 
-        switch (localStorage.getItem("bgimage")) {
-            default:
-                document.getElementById("minheight").style.backgroundColor = "#d6f5f5"
-                document.getElementById("bgcolorpicker").value = "#d6f5f5"
+        document.getElementById("minheight").style.backgroundColor = "#6b868e"
+        document.getElementById("bgcolorpicker").value = "#6b868e"
     
-                localStorage.setItem("bgcolor", "#d6f5f5")
-    
-                document.getElementById("nonebg").style.backgroundColor = localStorage.getItem("bgcolor")
-                break;
-    
-            case "url(/FlowersandStuff-01.png)": 
-                document.getElementById("minheight").style.backgroundColor = "#d6f5f5"
-                document.getElementById("bgcolorpicker").value = "#d6f5f5"
-    
-                localStorage.setItem("bgcolor", "#d6f5f5")
-    
-                document.getElementById("nonebg").style.backgroundColor = localStorage.getItem("bgcolor")
-            break;
-        }
+        localStorage.setItem("bgcolor", "#6b868e")
+        document.getElementById("nonebg").style.backgroundColor = "#6b868e"
+        document.getElementById("flowers").style.backgroundColor = "#6b868e"
     } else {
         document.getElementById("auto").style.color = "black"
         localStorage.setItem("userChooseAuto", "unactive")
@@ -948,198 +934,38 @@ function updateTime() {
   currtime.innerHTML = hh + "<span>:</span>" + zeropadder(mm) + " " + formatAMPM;
 setTimeout(updateTime, 1000);
 }
-
 updateTime();
+
+
+
+
+
+
+
+
 
 //WEATHER API AND DATA ------------------------------------------------------
 //---------------------------------------------------------------------------
 
 function DefaultHours () {
-    var now = new Date();
-    var TwentyFourHour = now.getHours();
-    var hour = now.getHours();
-
-    var mid = 'PM';
-
-    if (hour > 12) {
-      hour = hour - 12;
-    }    
-    if(hour==0){ 
-      hour=12;
-    }
-    if(TwentyFourHour < 12) {
-       mid = 'AM';
-    }
-    if((TwentyFourHour == 24)) {
-    mid = 'AM'
-    }
-
-            //Hour display
-
-            document.getElementById("hour1").innerHTML = hour + " " + mid
-
-            var hour1 = (hour+1)
-            if (hour1 > 12) {
-                hour1 = hour1 - 12
-            }
-            var TwentyFourHour1 = (TwentyFourHour + 1)
-            var mid1 = mid 
-            if (TwentyFourHour1 > 24) {
-                TwentyFourHour1 = TwentyFourHour1 - 24
-            }
-            if (TwentyFourHour1 == 24) {
-                mid1 = "AM"
-            }
-            if (TwentyFourHour1 >= 1) {
-                if (TwentyFourHour1 < 12) {
-                    mid1 = "AM"
-                }
-            }
-            if (TwentyFourHour1 > 11) {
-                mid1 = "PM"
-            }
-            
-            document.getElementById("hour2").innerHTML = hour1 + " " + mid1
-    
-            var hour2 = (hour+2)
-            if (hour2 > 12) {
-                hour2 = hour2 - 12
-            }
-            var TwentyFourHour2 = (TwentyFourHour + 2)
-            var mid2 = mid 
-            if (TwentyFourHour2 > 24) {
-                TwentyFourHour2 = TwentyFourHour2 - 24
-            }
-            if (TwentyFourHour2 == 24) {
-                mid2 = "AM"
-            }
-            if (TwentyFourHour2 >= 1) {
-                if (TwentyFourHour2 < 12) {
-                    mid2 = "AM"
-                }
-            }
-            if (TwentyFourHour2 > 11) {
-                mid2 = "PM"
-            }
-            
-            document.getElementById("hour3").innerHTML = hour2 + " " + mid2
-    
-            var hour3 = (hour+3)
-            if (hour3 > 12) {
-                hour3 = hour3 - 12
-            }
-            var TwentyFourHour3 = (TwentyFourHour + 3)
-            var mid3 = mid 
-            if (TwentyFourHour3 > 24) {
-                TwentyFourHour3 = TwentyFourHour3 - 24
-            }
-            if (TwentyFourHour3 == 24) {
-                mid3 = "AM"
-            }
-            if (TwentyFourHour3 >= 1) {
-                if (TwentyFourHour3 < 12) {
-                    mid3 = "AM"
-                }
-            }
-            if (TwentyFourHour3 > 11) {
-                mid3 = "PM"
-            }
-            
-            document.getElementById("hour4").innerHTML = hour3 + " " + mid3
-    
-            var hour4 = (hour+4)
-            if (hour4 > 12) {
-                hour4 = hour4 - 12
-            }
-            var TwentyFourHour4 = (TwentyFourHour + 4)
-            var mid4 = mid 
-            if (TwentyFourHour4 > 24) {
-                TwentyFourHour4 = TwentyFourHour4 - 24
-            }
-            if (TwentyFourHour4 == 24) {
-                mid4 = "AM"
-            }
-            if (TwentyFourHour4 >= 1) {
-                if (TwentyFourHour4 < 12) {
-                    mid4 = "AM"
-                }
-            }
-            if (TwentyFourHour4 > 11) {
-                mid4 = "PM"
-            }
-            
-            document.getElementById("hour5").innerHTML = hour4 + " " + mid4
-    
-            var hour5 = (hour+5)
-            if (hour5 > 12) {
-                hour5 = hour5 - 12
-            }
-            var TwentyFourHour5 = (TwentyFourHour + 5)
-            var mid5 = mid 
-            if (TwentyFourHour5 > 24) {
-                TwentyFourHour5 = TwentyFourHour5 - 24
-            }
-            if (TwentyFourHour5 == 24) {
-                mid5 = "AM"
-            }
-            if (TwentyFourHour5 >= 1) {
-                if (TwentyFourHour5 < 12) {
-                    mid5 = "AM"
-                }
-            }
-            if (TwentyFourHour5 > 11) {
-                mid5 = "PM"
-            }
-            
-            document.getElementById("hour6").innerHTML = hour5 + " " + mid5
-    
-            var hour6 = (hour+6)
-            if (hour6 > 12) {
-                hour6 = hour6 - 12
-            }	
-            var TwentyFourHour6 = (TwentyFourHour + 6)
-            var mid6 = mid 
-            if (TwentyFourHour6 > 24) {
-                TwentyFourHour6 = TwentyFourHour6 - 24
-            }
-            if (TwentyFourHour6 == 24) {
-                mid6 = "AM"
-            }
-            if (TwentyFourHour6 >= 1) {
-                if (TwentyFourHour6 < 12) {
-                    mid6 = "AM"
-                }
-            }
-            if (TwentyFourHour6 > 11) {
-                mid6 = "PM"
-            }
-            
-            document.getElementById("hour7").innerHTML = hour6 + " " + mid6
-    
-            var hour7 = (hour+7)
-            if (hour7 > 12) {
-                hour7 = hour7 - 12
-            }	
-            var TwentyFourHour7 = (TwentyFourHour + 7)
-            var mid7 = mid 
-            if (TwentyFourHour7 > 24) {
-                TwentyFourHour7 = TwentyFourHour7 - 24
-            }
-            if (TwentyFourHour7 == 24) {
-                mid7 = "AM"
-            }
-            if (TwentyFourHour7 >= 1) {
-                if (TwentyFourHour7 < 12) {
-                    mid7 = "AM"
-                }
-            }
-            if (TwentyFourHour7 > 11) {
-                mid7 = "PM"
-            }
-            
-            document.getElementById("hour8").innerHTML = hour7 + " " + mid7
+    setTimeout(function() {
+        var subject = document.getElementsByClassName("hourTimesToday");
+        for (var i = 0; i < subject.length; ++i) {
+            subject[i].innerHTML = subject[i].innerHTML.replace(/:00/g,'');
+        }
+        //console.log(subject)
+    },600)
 }
-DefaultHours();
+
+function DefaultDailyHours () {
+    setTimeout(function() {
+        var subject = document.getElementsByClassName("hourTimesDay1");
+        for (var i = 0; i < subject.length; ++i) {
+            subject[i].innerHTML = subject[i].innerHTML.replace(/:00/g,'');
+        }
+        //console.log(subject)
+    },500)
+}
 
 function TimeHourly () {
 
@@ -1164,7 +990,7 @@ function TimeHourly () {
 
             //Hour display
 
-            document.getElementById("hour1").innerHTML = hour + " " + mid
+            document.getElementById("hour1").innerHTML = "Now"
 
             var hour1 = (hour+1)
             if (hour1 > 12) {
@@ -1187,7 +1013,7 @@ function TimeHourly () {
                 mid1 = "PM"
             }
             
-            document.getElementById("hour2").innerHTML = hour1 + " " + mid1
+            document.getElementById("hour2").innerHTML = hour1 + ":00 " + mid1
     
             var hour2 = (hour+2)
             if (hour2 > 12) {
@@ -1210,7 +1036,7 @@ function TimeHourly () {
                 mid2 = "PM"
             }
             
-            document.getElementById("hour3").innerHTML = hour2 + " " + mid2
+            document.getElementById("hour3").innerHTML = hour2 + ":00 " + mid2
     
             var hour3 = (hour+3)
             if (hour3 > 12) {
@@ -1233,7 +1059,7 @@ function TimeHourly () {
                 mid3 = "PM"
             }
             
-            document.getElementById("hour4").innerHTML = hour3 + " " + mid3
+            document.getElementById("hour4").innerHTML = hour3 + ":00 " + mid3
     
             var hour4 = (hour+4)
             if (hour4 > 12) {
@@ -1256,7 +1082,7 @@ function TimeHourly () {
                 mid4 = "PM"
             }
             
-            document.getElementById("hour5").innerHTML = hour4 + " " + mid4
+            document.getElementById("hour5").innerHTML = hour4 + ":00 " + mid4
     
             var hour5 = (hour+5)
             if (hour5 > 12) {
@@ -1279,7 +1105,7 @@ function TimeHourly () {
                 mid5 = "PM"
             }
             
-            document.getElementById("hour6").innerHTML = hour5 + " " + mid5
+            document.getElementById("hour6").innerHTML = hour5 + ":00 " + mid5
     
             var hour6 = (hour+6)
             if (hour6 > 12) {
@@ -1302,7 +1128,7 @@ function TimeHourly () {
                 mid6 = "PM"
             }
             
-            document.getElementById("hour7").innerHTML = hour6 + " " + mid6
+            document.getElementById("hour7").innerHTML = hour6 + ":00 " + mid6
     
             var hour7 = (hour+7)
             if (hour7 > 12) {
@@ -1325,7 +1151,7 @@ function TimeHourly () {
                 mid7 = "PM"
             }
             
-            document.getElementById("hour8").innerHTML = hour7 + " " + mid7
+            document.getElementById("hour8").innerHTML = hour7 + ":00 " + mid7
     
 
     var hour8 = (hour+8)
@@ -1352,7 +1178,7 @@ function TimeHourly () {
         mid8 = "PM"
     }
     
-    document.getElementById("hour9").innerHTML = hour8 + " " + mid8
+    document.getElementById("hour9").innerHTML = hour8 + ":00 " + mid8
 
     var hour9 = (hour+9)
     if (hour9 > 12) {
@@ -1379,7 +1205,7 @@ function TimeHourly () {
         mid9 = "PM"
     }
 
-    document.getElementById("hour10").innerHTML = hour9 + " " + mid9
+    document.getElementById("hour10").innerHTML = hour9 + ":00 " + mid9
 
     var hour10 = (hour+10)
     if (hour10 > 12) {
@@ -1405,7 +1231,7 @@ function TimeHourly () {
         mid10 = "PM"
     }
 
-    document.getElementById("hour11").innerHTML = hour10 + " " + mid10
+    document.getElementById("hour11").innerHTML = hour10 + ":00 " + mid10
 
     var hour11 = (hour+11)
     if (hour11 > 12) {
@@ -1434,7 +1260,7 @@ function TimeHourly () {
     
 
 
-    document.getElementById("hour12").innerHTML = hour11 + " " + mid11
+    document.getElementById("hour12").innerHTML = hour11 + ":00 " + mid11
 
     var hour12 = (hour+12)
     if (hour12 > 12) {
@@ -1460,7 +1286,7 @@ function TimeHourly () {
         mid12 = "PM"
     }
     
-    document.getElementById("hour13").innerHTML = hour12 + " " + mid12
+    document.getElementById("hour13").innerHTML = hour12 + ":00 " + mid12
 
     var hour13 = (hour+13)
     if (hour13 > 12) {
@@ -1486,7 +1312,7 @@ function TimeHourly () {
         mid13 = "PM"
     }
     
-    document.getElementById("hour14").innerHTML = hour13 + " " + mid13
+    document.getElementById("hour14").innerHTML = hour13 + ":00 " + mid13
 
     var hour14 = (hour+14)
 
@@ -1517,7 +1343,7 @@ function TimeHourly () {
         mid14 = "PM"
     }
     
-    document.getElementById("hour15").innerHTML = hour14 + " " + mid14
+    document.getElementById("hour15").innerHTML = hour14 + ":00 " + mid14
 
 
     var hour15 = (hour+15)
@@ -2073,7 +1899,7 @@ function get3DaysWeather () {
 .then(data => (console.log(data)))*/
 
  //REALTIME
- fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=feels_like%2Ctemp%2Chumidity%2Cwind_speed%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey='+localStorage.getItem("apiKey"))
+ fetch('https://api.climacell.co/v3/weather/realtime?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&unit_system='+localStorage.getItem("units")+'&fields=feels_like%2Ctemp%2Chumidity%2Cwind_speed%2Cwind_direction%2Cbaro_pressure%2Cweather_code%2Csunrise%2Csunset&apikey='+localStorage.getItem("apiKey"))
  .then(response => response.json())
  .then(data => {
 
@@ -2177,12 +2003,12 @@ function get3DaysWeather () {
 	}
     localStorage.setItem("next10days", gigger + "-" + u + "-"+ cForDaily )
     //console.log(localStorage.getItem("next10days"))
-
-    
-
+    /*fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&location_id=shoreview&unit_system='+localStorage.getItem("units")+'&start_time=now&end_time='+next4days+'T14%3A09%3A50Z&fields=precipitation%2Ctemp%2Chumidity%2Cwind_speed%2Cwind_direction%2Cweather_code%2Cbaro_pressure%2Cfeels_like%2Cprecipitation_probability&apikey='+localStorage.getItem("apiKey"))
+	.then(response => response.json())
+	.then(data =>  (console.log(data)))*/
 
 //HOURLY WEATHER
-    fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&location_id=shoreview&unit_system='+localStorage.getItem("units")+'&start_time=now&end_time='+next4days+'T14%3A09%3A50Z&fields=precipitation%2Ctemp%2Chumidity%2Cwind_speed%2Cweather_code%2Cbaro_pressure%2Cfeels_like%2Cprecipitation_probability&apikey='+localStorage.getItem("apiKey"))
+    fetch('https://api.climacell.co/v3/weather/forecast/hourly?lat='+localStorage.getItem("lat")+'&lon='+localStorage.getItem("lon")+'&location_id=shoreview&unit_system='+localStorage.getItem("units")+'&start_time=now&end_time='+next4days+'T14%3A09%3A50Z&fields=precipitation%2Ctemp%2Chumidity%2Cwind_speed%2Cwind_direction%2Cweather_code%2Cbaro_pressure%2Cfeels_like%2Cprecipitation_probability&apikey='+localStorage.getItem("apiKey"))
 	.then(response => response.json())
 	.then(data => {
 
@@ -2205,24 +2031,104 @@ function get3DaysWeather () {
 		mid = 'AM'
 		}
 
-        var currentrainchance = data[0]["precipitation_probability"]["value"];
-        var temphour1 = Math.floor(data[0]['temp']['value']);
-        var temphour2 = Math.floor(data[1]['temp']['value']);
-        var temphour3 = Math.floor(data[2]['temp']['value']);
-        var temphour4 = Math.floor(data[3]['temp']['value']);
-        var temphour5 = Math.floor(data[4]['temp']['value']);
-        var temphour6 = Math.floor(data[5]['temp']['value']);
-        var temphour7 = Math.floor(data[6]['temp']['value']);
-        var temphour8 = Math.floor(data[7]['temp']['value']);
+        function rainChanceHourly (string) {
+            var subject = document.getElementById("rainChance" + string) 
 
-        var temphour9 = Math.floor(data[8]['temp']['value']);
-        var temphour10 = Math.floor(data[9]['temp']['value']);
-        var temphour11 = Math.floor(data[10]['temp']['value']);
-        var temphour12 = Math.floor(data[11]['temp']['value']);
-        var temphour13 = Math.floor(data[12]['temp']['value']);
-        var temphour14 = Math.floor(data[13]['temp']['value']);
-        var temphour15 = Math.floor(data[14]['temp']['value']);
-        var temphour16 = Math.floor(data[15]['temp']['value']);
+            subject.innerHTML = Math.floor(data[(string - 1)]['precipitation_probability']['value']) + " %"
+        } 
+
+
+        rainChanceHourly(1);
+
+        var currentrainchance = document.getElementById("rainChance1").innerHTML
+
+        rainChanceHourly(2);
+        rainChanceHourly(3);
+        rainChanceHourly(4);
+        rainChanceHourly(5);
+        rainChanceHourly(6);
+        rainChanceHourly(7);
+        rainChanceHourly(8);
+        rainChanceHourly(9);
+        rainChanceHourly(10);
+        rainChanceHourly(11);
+        rainChanceHourly(12);
+        rainChanceHourly(13);
+        rainChanceHourly(14);
+        rainChanceHourly(15);
+
+        document.getElementById("stat2").innerHTML = currentrainchance;
+
+        function testHumidityHourly (string) {
+            var subject = document.getElementById("humidityHour" + string) 
+
+            subject.innerHTML = Math.floor(data[(string - 1)]['humidity']['value']) + " %"
+        } 
+
+        testHumidityHourly(1);
+        testHumidityHourly(2);
+        testHumidityHourly(3);
+        testHumidityHourly(4);
+        testHumidityHourly(5);
+        testHumidityHourly(6);
+        testHumidityHourly(7);
+        testHumidityHourly(8);
+        testHumidityHourly(9);
+        testHumidityHourly(10);
+        testHumidityHourly(11);
+        testHumidityHourly(12);
+        testHumidityHourly(13);
+        testHumidityHourly(14);
+        testHumidityHourly(15);
+
+
+        function windHourly (string) {
+            var subject  = document.getElementById("windHour" + string) 
+            var dir = data[2]['wind_direction']['value']
+
+            if (0 < dir && dir < 45) {
+                dir = "N"
+            }
+            if (45 < dir && dir < 90) {
+                dir = "NE"
+            }
+            if (90 < dir && dir < 135) {
+                dir = "E"
+            }
+            if (135 < dir && dir < 180) {
+                dir = "SE"
+            }
+            if (180 < dir && dir < 225) {
+                dir = "S"
+            }
+            if (225 < dir && dir < 270) {
+                dir = "SW"
+            }
+            if (270 < dir && dir < 315) {
+                dir = "NW"
+            }
+            if (315 < dir && dir < 360) {
+                dir = "N"
+            }
+            subject.innerHTML = Math.floor(data[(string - 1)]['wind_speed']['value']) + " mph " + dir
+        }
+
+        windHourly(1)
+        windHourly(2)
+        windHourly(3)
+        windHourly(4)
+        windHourly(5)
+        windHourly(6)
+        windHourly(7)
+        windHourly(8)
+        windHourly(9)
+        windHourly(10)
+        windHourly(11)
+        windHourly(12)
+        windHourly(13)
+        windHourly(14)
+        windHourly(15)
+
 
         var weatherCode1 = data[0]['weather_code']['value']
         var weatherCode2 = data[1]['weather_code']['value']
@@ -2232,16 +2138,6 @@ function get3DaysWeather () {
         var weatherCode6 = data[5]['weather_code']['value']
         var weatherCode7 = data[6]['weather_code']['value']
         var weatherCode8 = data[7]['weather_code']['value']
-
-        icon1 = iconSelect(weatherCode1)
-        icon2 = iconSelect(weatherCode2)
-        icon3 = iconSelect(weatherCode3)
-        icon4 = iconSelect(weatherCode4)
-        icon5 = iconSelect(weatherCode5)
-        icon6 = iconSelect(weatherCode6)
-        icon7 = iconSelect(weatherCode7)
-        icon8 = iconSelect(weatherCode8)
-
         var weatherCode9 = data[8]['weather_code']['value']
         var weatherCode10 = data[9]['weather_code']['value']
         var weatherCode11 = data[10]['weather_code']['value']
@@ -2251,6 +2147,14 @@ function get3DaysWeather () {
         var weatherCode15 = data[14]['weather_code']['value']
         var weatherCode16 = data[15]['weather_code']['value']
 
+        icon1 = iconSelect(weatherCode1)
+        icon2 = iconSelect(weatherCode2)
+        icon3 = iconSelect(weatherCode3)
+        icon4 = iconSelect(weatherCode4)
+        icon5 = iconSelect(weatherCode5)
+        icon6 = iconSelect(weatherCode6)
+        icon7 = iconSelect(weatherCode7)
+        icon8 = iconSelect(weatherCode8)
         icon9 = iconSelect(weatherCode9)
         icon10 = iconSelect(weatherCode10)
         icon11 = iconSelect(weatherCode11)
@@ -2259,6 +2163,7 @@ function get3DaysWeather () {
         icon14 = iconSelect(weatherCode14)
         icon15 = iconSelect(weatherCode15)
         icon16 = iconSelect(weatherCode16)
+
 
         localStorage.setItem("icon9", icon9)
         localStorage.setItem("icon10", icon10)
@@ -2269,39 +2174,34 @@ function get3DaysWeather () {
         localStorage.setItem("icon15", icon15)
         localStorage.setItem("icon16", icon16)
 
-        ///ISAAC LOOK HERe!!! Wanna know where YOU LEFT OFF EH? Make a grid for the left bottom square, then place inital
-        //text so you can see the houly data. GLFH!!! LMAO
-
-        //Temp
-
         function setTempHourDefault () {
-
-            document.getElementById("temphour1").innerHTML = temphour1 + "°"
-            document.getElementById("temphour2").innerHTML = temphour2 + "°"
-            document.getElementById("temphour3").innerHTML = temphour3 + "°"
-            document.getElementById("temphour4").innerHTML = temphour4 + "°"
-            document.getElementById("temphour5").innerHTML = temphour5 + "°"
-            document.getElementById("temphour6").innerHTML = temphour6 + "°"
-            document.getElementById("temphour7").innerHTML = temphour7 + "°"
-            document.getElementById("temphour8").innerHTML = temphour8 + "°"
-
-            setTimeout(setTempHourDefault, 100)
+            function tempHour (string) {
+                var subject = document.getElementById("temphour" + string) 
+    
+                subject.innerHTML = Math.floor(data[(string - 1)]['temp']['value']) + "°"
+            } 
+    
+            tempHour(1);
+            tempHour(2);
+            tempHour(3);
+            tempHour(4);
+            tempHour(5);
+            tempHour(6);
+            tempHour(7);
+            tempHour(8);
+            tempHour(9);
+            tempHour(10);
+            tempHour(11);
+            tempHour(12);
+            tempHour(13);
+            tempHour(14);   
+            tempHour(15);
         }
         setTempHourDefault();
-
-        localStorage.setItem("temphour9", temphour9 + "°")  
-        localStorage.setItem("temphour10", temphour10 + "°")
-        localStorage.setItem("temphour11", temphour11 + "°")
-        localStorage.setItem("temphour12", temphour12 + "°")
-        localStorage.setItem("temphour13", temphour13 + "°")
-        localStorage.setItem("temphour14", temphour14 + "°")
-        localStorage.setItem("temphour15", temphour15 + "°")
-        localStorage.setItem("temphour16", temphour16 + "°")
 
         //Icons
 
         function setIconHourDefault () {
-
             document.getElementById("wiconhour1").src = icon1
             document.getElementById("wiconhour2").src = icon2
             document.getElementById("wiconhour3").src = icon3
@@ -2310,20 +2210,10 @@ function get3DaysWeather () {
             document.getElementById("wiconhour6").src = icon6
             document.getElementById("wiconhour7").src = icon7
             document.getElementById("wiconhour8").src = icon8
-
             setTimeout(setIconHourDefault, 100)
         }
         setIconHourDefault();
 
-
-        document.getElementById("temphour9").innerHTML = localStorage.getItem("temphour9")
-        document.getElementById("temphour10").innerHTML = localStorage.getItem("temphour10")
-        document.getElementById("temphour11").innerHTML = localStorage.getItem("temphour11")
-        document.getElementById("temphour12").innerHTML = localStorage.getItem("temphour12")
-        document.getElementById("temphour13").innerHTML = localStorage.getItem("temphour13")
-        document.getElementById("temphour14").innerHTML = localStorage.getItem("temphour14")
-        document.getElementById("temphour15").innerHTML = localStorage.getItem("temphour15")
-        //document.getElementById("temphour16").innerHTML = localStorage.getItem("temphour16")
 
         document.getElementById("wiconhour9").src = localStorage.getItem("icon9")
         document.getElementById("wiconhour10").src = localStorage.getItem("icon10")
@@ -2337,24 +2227,23 @@ function get3DaysWeather () {
         //--------------------------------
 
 
-        document.getElementById("stat2").innerHTML = currentrainchance + " %";
 
         //Daily Data placements:
 
-        setTimeout(function() {
-            document.getElementById("temphour1Day1").innerHTML = temphour1 + "°"
-            document.getElementById("temphour2Day1").innerHTML = temphour2 + "°"
-            document.getElementById("temphour3Day1").innerHTML = temphour3 + "°"
-            document.getElementById("temphour4Day1").innerHTML = temphour4 + "°"
-            document.getElementById("temphour5Day1").innerHTML = temphour5 + "°"
-            document.getElementById("temphour6Day1").innerHTML = temphour6 + "°"
-            document.getElementById("temphour7Day1").innerHTML = temphour7 + "°"
-            document.getElementById("temphour8Day1").innerHTML = temphour8 + "°"
-            document.getElementById("temphour9Day1").innerHTML = temphour9 + "°"
-            document.getElementById("temphour10Day1").innerHTML = temphour10 + "°"
-            document.getElementById("temphour11Day1").innerHTML = temphour11 + "°"
-            document.getElementById("temphour12Day1").innerHTML = temphour12 + "°"
-        }, 200)
+
+        document.getElementById("temphour1Day1").innerHTML = Math.floor(data[0]['temp']['value']) + " °"
+        document.getElementById("temphour2Day1").innerHTML = Math.floor(data[1]['temp']['value']) + " °" 
+        document.getElementById("temphour3Day1").innerHTML = Math.floor(data[2]['temp']['value']) + " °"
+        document.getElementById("temphour4Day1").innerHTML = Math.floor(data[3]['temp']['value']) + " °"
+        document.getElementById("temphour5Day1").innerHTML = Math.floor(data[4]['temp']['value']) + " °" 
+        document.getElementById("temphour6Day1").innerHTML = Math.floor(data[5]['temp']['value']) + " °" 
+        document.getElementById("temphour7Day1").innerHTML = Math.floor(data[6]['temp']['value']) + " °"
+        document.getElementById("temphour8Day1").innerHTML = Math.floor(data[7]['temp']['value']) + " °" 
+        document.getElementById("temphour9Day1").innerHTML = Math.floor(data[8]['temp']['value']) + " °"
+        document.getElementById("temphour10Day1").innerHTML = Math.floor(data[9]['temp']['value']) + " °"
+        document.getElementById("temphour11Day1").innerHTML = Math.floor(data[10]['temp']['value']) + " °"
+        document.getElementById("temphour12Day1").innerHTML = Math.floor(data[11]['temp']['value']) + " °" 
+
 
         document.getElementById("wiconHour1Day1").src = icon1
         document.getElementById("wiconHour2Day1").src = icon2

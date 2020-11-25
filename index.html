@@ -14,9 +14,9 @@
 </head>
 <body onload="testerror()" onload="welcome()" oncontextmenu="return false">
 
-    
+    <div id="halfRightImage" ></div>
     <div id="back"></div>
-    <div id="minheight">
+    <div id="minheight" style="display: none;">
         <p id="uhoh">Woah there! We aren't that responsive yet. Make your browser size bigger.</p>
         <p class="hideWelcomeText" id="welcometext">Welcome to Fresh.</p>
     </div>
@@ -26,24 +26,37 @@
     <div id="flowers" class="flowersshown"></div>
     <div id="biggrid">
 
-        <div id="bodygrid" class="goback">      
-            <div id="clocksquare" class="freeOffdetect">
-                <div id="notibubble" class="notiup">Notification</div>
-                <div id="clock"></div>
-                <div id="logosquare">
-                    <!--<div id="expandthelogo" class="closedhoriztranslatelogo">
-                        <p id="settings">settings</p>
-                    </div> -->
-                    <img id="logo" onclick="showUpdates()" src="./FreshLogos/LightTree.png" onmouseover="expandthelogo()" onmouseout="closethelogo()"/>
-                </div>
-                <div id="dotsquare" class="pulldots">
+        <div id="bodygrid" class="goback">  
+            <div id="rightBarIcons">
+                <div id="currentBarInd" class="currentBarCurrent"></div>
+
+                <div id="dotsquare" onclick="customize(), placeBar8()" class="pulldots">
                     <!--<div id="expandthedots" class="closedhoriztranslate">
                         <p id="customize">customize</p>
                     </div> -->
-                    <img id="dots" onclick="customize()" onmouseover="expandthedots()" onmouseout="closethedots()" src="./FreshLogos/DotsMenu.png" style="width: 60px; height: 55px; border-radius: 7px;">
+                    <svg id="ring" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M86,6.88c-43.65603,0 -79.12,35.46397 -79.12,79.12c0,43.65603 35.46397,79.12 79.12,79.12c43.65603,0 79.12,-35.46397 79.12,-79.12c0,-43.65603 -35.46397,-79.12 -79.12,-79.12zM86,13.76c39.93779,0 72.24,32.30221 72.24,72.24c0,39.93779 -32.30221,72.24 -72.24,72.24c-39.93779,0 -72.24,-32.30221 -72.24,-72.24c0,-39.93779 32.30221,-72.24 72.24,-72.24z"></path></g></g></svg>
+                    <svg id="circle" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="80" height="80" viewBox="0 0 172 172" style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M86,157.66667c-39.517,0 -71.66667,-32.14967 -71.66667,-71.66667c0,-39.517 32.14967,-71.66667 71.66667,-71.66667c39.517,0 71.66667,32.14967 71.66667,71.66667c0,39.517 -32.14967,71.66667 -71.66667,71.66667z"></path></g></g></svg>
+                    <img id="dots" src="https://img.icons8.com/dotty/80/000000/horizontal-settings-mixer.png" style="width: 40px; height: 40px; border-radius: 7px;">
                 </div>
-    
+                <div id="updateIcon"  onclick="showUpdates(), placeBar7()">
+                    <img id="circleArrows" src="https://img.icons8.com/ios-glyphs/90/000000/available-updates.png"/>
+                </div>
+                <div id="homeIcon" onclick=placeBar1()>
+                    <svg id="homeHouse" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 48 48" style=" fill:#000000;"><path d="M 23.951172 4 A 1.50015 1.50015 0 0 0 23.072266 4.3222656 L 8.859375 15.519531 C 7.0554772 16.941163 6 19.113506 6 21.410156 L 6 40.5 C 6 41.863594 7.1364058 43 8.5 43 L 18.5 43 C 19.863594 43 21 41.863594 21 40.5 L 21 30.5 C 21 30.204955 21.204955 30 21.5 30 L 26.5 30 C 26.795045 30 27 30.204955 27 30.5 L 27 40.5 C 27 41.863594 28.136406 43 29.5 43 L 39.5 43 C 40.863594 43 42 41.863594 42 40.5 L 42 21.410156 C 42 19.113506 40.944523 16.941163 39.140625 15.519531 L 24.927734 4.3222656 A 1.50015 1.50015 0 0 0 23.951172 4 z M 24 7.4101562 L 37.285156 17.876953 C 38.369258 18.731322 39 20.030807 39 21.410156 L 39 40 L 30 40 L 30 30.5 C 30 28.585045 28.414955 27 26.5 27 L 21.5 27 C 19.585045 27 18 28.585045 18 30.5 L 18 40 L 9 40 L 9 21.410156 C 9 20.030807 9.6307412 18.731322 10.714844 17.876953 L 24 7.4101562 z"></path></svg>
+                </div>
+                <div id="hourlyIcon" onclick=placeBar2()>
+                    <img id="hourlyClock" src="https://img.icons8.com/ios/80/000000/square-clock.png"/>                
+                </div>
+                <div id="dailyIcon" onclick=placeBar3()>
+                    <img id="weekCalendar" src="https://img.icons8.com/fluent-systems-regular/48/000000/week-view.png"/>
+                </div>
+            </div>    
+            <div id="clocksquare" class="freeOffdetect">
+                <div id="notibubble" class="notiup">Notification</div>
+                <div id="clock"></div>
             </div>
+
+
             <div id="rightbodygrid" class="freeOffdetect">
                 <div id="statsgrid">
                     <div id="sedge"></div>
@@ -85,10 +98,10 @@
             <div class="freeOffdetect" href="javascript:void(0);"  onclick="window.location.href='https://www.climacell.co/weather-api/';" id="climacell">Powered by
                 <a id="typeButton" class="typeform-share button" href="https://form.typeform.com/to/Bz7Iyn1W" data-mode="popup"  target="_blank">Give Feedback</a> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm_share", b="https://embed.typeform.com/"; if(!gi.call(d,id)){ js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script>
             </div>            
-            <div id="leftopbodygrid" class="heightNormalLeftop">
+            <div id="leftopbodygrid" class="heightNormalLeftop" onclick="expandCurrentWeatherSquare()">
                 <div id="farLeftGray" class="closeGrayAdvanced"> 
                     <img id="wicon"/>
-                    <img id="paragraphIcon" src="/FreshLogos/Paragraph-justify-left-01.png"/>
+                    <img id="paragraphIcon" src="/FreshLogos/Paragraph-justify-left-01.png" />
                     <div id="textDescCurrent"></div>
                 </div>
                 <p id="temp">70°</p>
@@ -97,79 +110,135 @@
                 <p id="date">July 4th, 2020</p>
                 <p id="city">Shoreview, MN</p>
             </div>
-            <div id="leftbottombodygrid" class="freeOffdetect lBBGnormal">
+
+            <div id="leftbottombodygrid" class="freeOffdetect leftbottomDashboard">
+                <div id="rowLabelsHourly">
+                    <div id="rowLabelsHourlyGrid">
+                        <p>Time</p>
+                        <p>Weather</p>
+                        <p>Temp</p>
+                        <p>Rain</p>
+                        <p>Humidity</p>
+                        <p>Wind</p>
+                        <p>--</p>
+                        <p>--</p>
+                    </div>
+                </div>
                 <div id="HourlyCurrentGray" class="mobileSlideNormal"></div>
 
-
-
-                <div id="HourlyGrid" class="normalHourlyGrid" onscroll="testHor()"  onmouseover="expandHourlyAdvanced()" onmouseout="closeHourlyAdvanced()">
+                <div id="HourlyGrid" class="normalHourlyGrid" onscroll="testHor()">
                     <em id="HourlyChartContainer">
                         <canvas id="hourlyChart"></canvas>
                     </em>
 
                         <div id="temphour1">test</div>
                         <img class="bruh1" id="wiconhour1"/>  
-                        <div id="hour1">3pm</div>           
+                        <div id="hour1" class="hourTimesToday">3pm</div>     
+                        <div id="rainChance1" class="rainChances"></div>          
+                        <div id="humidityHour1" class="humidityHour"></div>    
+                        <div id="windHour1" class="windHour"></div>
 
                         <img class="bruh2" id="wiconhour2"/>
                         <div id="temphour2">test</div>
-                        <div id="hour2">4pm</div>   
-
+                        <div id="hour2" class="hourTimesToday">4pm</div>
+                        <div id="rainChance2" class="rainChances"></div>
+                        <div id="humidityHour2" class="humidityHour"></div>    
+                        <div id="windHour2" class="windHour"></div>  
+        
                         <img class="bruh3" id="wiconhour3"/>
                         <div id="temphour3">test</div>
-                        <div id="hour3">5pm</div>   
-
+                        <div id="hour3" class="hourTimesToday">5pm</div>   
+                        <div id="rainChance3" class="rainChances"></div>  
+                        <div id="humidityHour3" class="humidityHour"></div>  
+                        <div id="windHour3" class="windHour"></div>  
+        
                         <img class="bruh4" id="wiconhour4"/>
                         <div id="temphour4">test</div>
-                        <div id="hour4">6pm</div>   
-                        
+                        <div id="hour4" class="hourTimesToday">6pm</div>   
+                        <div id="rainChance4" class="rainChances"></div>   
+                        <div id="humidityHour4" class="humidityHour"></div>  
+                        <div id="windHour4" class="windHour"></div>  
+        
                         <img class="bruh5" id="wiconhour5"/>
                         <div id="temphour5">test</div>
-                        <div id="hour5">7pm</div>   
-
+                        <div id="hour5" class="hourTimesToday">7pm</div>   
+                        <div id="rainChance5" class="rainChances"></div>   
+                        <div id="humidityHour5" class="humidityHour"></div>  
+                        <div id="windHour5" class="windHour"></div>  
+        
                         <img class="bruh6" id="wiconhour6"/>
                         <div id="temphour6">test</div>
-                        <div id="hour6">8pm</div>   
-
+                        <div id="hour6" class="hourTimesToday">8pm</div>   
+                        <div id="rainChance6" class="rainChances"></div>   
+                        <div id="humidityHour6" class="humidityHour"></div>  
+                        <div id="windHour6" class="windHour"></div>  
+        
                         <img class="bruh7" id="wiconhour7"/>
                         <div id="temphour7">test</div>
-                        <div id="hour7">9pm</div>   
-
+                        <div id="hour7" class="hourTimesToday">9pm</div>   
+                        <div id="rainChance7" class="rainChances"></div>   
+                        <div id="humidityHour7" class="humidityHour"></div>  
+                        <div id="windHour7" class="windHour"></div>  
+        
                         <img class="bruh8" id="wiconhour8"/>
                         <div id="temphour8">test</div>
-                        <div id="hour8">10pm</div>   
-
+                        <div id="hour8" class="hourTimesToday">10pm</div>   
+                        <div id="rainChance8" class="rainChances"></div>   
+                        <div id="humidityHour8" class="humidityHour"></div>  
+                        <div id="windHour8" class="windHour"></div>  
+        
                         <img class="bruh9" id="wiconhour9"/>
                         <div id="temphour9">test</div>
-                        <div id="hour9">10pm</div>  
-                
+                        <div id="hour9" class="hourTimesToday">10pm</div>  
+                        <div id="rainChance9" class="rainChances"></div>   
+                        <div id="humidityHour9" class="humidityHour"></div>  
+                        <div id="windHour9" class="windHour"></div>  
+        
                         <img class="bruh10" id="wiconhour10"/>
                         <div id="temphour10">test</div>
-                        <div id="hour10">10pm</div>  
-                
+                        <div id="hour10" class="hourTimesToday">10pm</div>  
+                        <div id="rainChance10" class="rainChances"></div>   
+                        <div id="humidityHour10" class="humidityHour"></div>  
+                        <div id="windHour10" class="windHour"></div>  
+        
                         <img class="bruh11" id="wiconhour11"/>
                         <div id="temphour11">test</div>
-                        <div id="hour11">10pm</div>  
-                
+                        <div id="hour11" class="hourTimesToday">10pm</div>  
+                        <div id="rainChance11" class="rainChances"></div>   
+                        <div id="humidityHour11" class="humidityHour"></div>  
+                        <div id="windHour11" class="windHour"></div>  
+        
                         <img class="bruh12" id="wiconhour12"/>
                         <div id="temphour12">test</div>
-                        <div id="hour12">10pm</div>  
-                
+                        <div id="hour12" class="hourTimesToday">10pm</div>  
+                        <div id="rainChance12" class="rainChances"></div>   
+                        <div id="humidityHour12" class="humidityHour"></div>  
+                        <div id="windHour12" class="windHour"></div>  
+        
                         <img class="bruh13" id="wiconhour13"/>
                         <div id="temphour13">test</div>
-                        <div id="hour13">10pm</div>  
-                
+                        <div id="hour13" class="hourTimesToday">10pm</div>  
+                        <div id="rainChance13" class="rainChances"></div>   
+                        <div id="humidityHour13" class="humidityHour"></div>  
+                        <div id="windHour13" class="windHour"></div>  
+        
                         <img class="bruh14" id="wiconhour14"/>
                         <div id="temphour14">test</div>
-                        <div id="hour14">10pm</div>  
-                
+                        <div id="hour14" class="hourTimesToday">10pm</div>  
+                        <div id="rainChance14" class="rainChances"></div>   
+                        <div id="humidityHour14" class="humidityHour"></div>  
+                        <div id="windHour14" class="windHour"></div>  
+        
                         <img class="bruh15" id="wiconhour15"/>
                         <div id="temphour15">test</div>
-                        <div id="hour15">10pm</div>  
-                </div>
+                        <div id="hour15" class="hourTimesToday">10pm</div>  
+                        <div id="rainChance15" class="rainChances"></div>   
+                        <div id="humidityHour15" class="humidityHour"></div>  
+                        <div id="windHour15" class="windHour"></div>  
+                    </div>
             </div>
             <div id="dailyBox" class="freeOffdetect closeBox">
-                <div class="closedrows" id="dailyGrid" onmouseenter="dailyHover()" onmouseleave="dailyHover2()">
+                <div class="closedrows" id="dailyGrid">
 
                     <div id="currentDay"></div>
                     <div id="futureDays"></div>
@@ -225,61 +294,53 @@
             
             <div id="innerHtmlLogs" style="display: none; position: absolute; bottom: 0; left: 50%;"></div>
 
+
+            <div id="customizesquare" class="swingout displaynone" class="displaynone">
+                <div id="bodytext">
+                    <div id="headerbasic">
+                        <div id="backgroundcolor">Background
+                            <div id="bgColorGrid" class="slideDownClass">
+                                <p  id="colorselect">Color</p>
+                                <div id="colorstrip">
+                                    <div id="colorgrid">
+                                        <input type="color" id="bgcolorpicker">
+                                        <div id="auto" onclick="autobgcolor()">AUTO</div>
+                                    </div>
+                                    
+                                </div>
+                                <p id="imgselect">Light Themes</p>
+                                <div id="imgstrip">
+                                    <div class="parent">
+                                        <div id="nonebg" onclick="nonebg1()"></div>
+                                        <div id="default" onclick="defaultbg()"></div>
+                                        <div id="rainbow" onclick="rainbowbg()"></div>
+                                        <div id="tropical" onclick="tropicalbg()"></div>
+                                        <div id="goldblue" onclick="goldblue()"></div>
+                                    </div> 
+                                </div>
+                                <p id="theme">Dark Themes</p>
+                                <div id="imgstrip2">
+                                    <div class="dThemeImgs">
+                                        <div id="darkModern">
+                                            <div>Under Construction</div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            <p id="layout">Layout (Beta)
+                                <button id="changeLayout">Under Construction</button>
+                                <button id="return" onclick="freshdashboard()">Return</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div> 
 
         
 
-        <div id="customizesquare" class="swingout displaynone" class="displaynone">
 
-            <!--
-            <div id="leftcolumntext">
-                <p id="basic">Basic</p>
-                <p id="advanced">Advanced (Beta)</p>
-                
-            </div>
-            <img id="divideline" src="Dividerline.png">
-            -->
-            <div id="bodytext">
-                <div id="headerbasic">
-                    <div id="backgroundcolor">Background
-                        <div id="bgColorGrid">
-                            <p id="colorselect">Color</p>
-                            <div id="colorstrip">
-                                <div id="colorgrid">
-                                    <input type="color" id="bgcolorpicker">
-                                    <div id="auto" onclick="autobgcolor()">AUTO</div>
-                                </div>
-                                
-                            </div>
-                            <p id="imgselect">Light Themes</p>
-                            <div id="imgstrip">
-                                <div class="parent">
-                                    <div id="nonebg" onclick="nonebg1()"></div>
-                                    <div id="default" onclick="defaultbg()"></div>
-                                    <div id="rainbow" onclick="rainbowbg()"></div>
-                                    <div id="tropical" onclick="tropicalbg()"></div>
-                                    <div id="goldblue" onclick="goldblue()"></div>
-                                </div> 
-                            </div>
-                            <p id="theme">Dark Themes</p>
-                            <div id="imgstrip2">
-                                <div class="dThemeImgs">
-                                    <div id="darkModern" onclick="darkModern()"></div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div id="headeradvanced">
-                    <p id="layout">Layout (Beta)
-                        <button id="changeLayout">Under Construction</button>
-                        <button id="return" onclick="freshdashboard()">Return</button>
-                    </p>
-                </div>
-            </div>
-        </div>
-        
     </div>
     
     <!--<div id="buttonhold" class="buttonholdfadeout buttonholdhidedisplay">
@@ -287,8 +348,7 @@
     </div>-->
     <div id="dottedboxleft" ></div>
     <div id="dottedboxright" ></div>
-    <div id="backwhite"></div>
-    <div id="backwhiteHeight" class="backwhiteHeighthidedisplay"></div>
+
     <input style="display: none;" id="name" type="text" class="css-input"/>
 
     <div class="updateBlurHide" id="upBlur" onclick="hideUpdates()">

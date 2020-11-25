@@ -32,14 +32,14 @@ document.getElementById('leftopbodygrid').addEventListener("mouseenter", functio
     if (localStorage.getItem("belowMediaMobile") == "yes") {
         return;
     } else {
-        expandCurrentWeatherSquare()
+        //expandCurrentWeatherSquare()
     }
 })
 document.getElementById('leftopbodygrid').addEventListener("mouseleave", function(){
     if (localStorage.getItem("belowMediaMobile") == "yes") {
         return;
     } else {
-        closeCurrentWeatherSquare()
+        //closeCurrentWeatherSquare()
     }
 })
 
@@ -587,6 +587,8 @@ Monkey.addEventListener("click", function() {
 
 function darkTheme () {
 
+    return;
+
     var dB = document.getElementById('futureDays');
     var cD = document.getElementById('currentDay');
     var dS = document.getElementById('dotsquare');
@@ -820,12 +822,27 @@ ADVANCED WEATHER DATA FOR EACH HOUR
 
 function expandCurrentWeatherSquare () {
 
+    
     //Vars:
 
     var lTBG = document.getElementById("leftopbodygrid")
     var rightGray = document.getElementById("farLeftGray")
     var textDesc = document.getElementById("textDescCurrent")
     var paraIcon = document.getElementById("paragraphIcon")
+
+    //console.log(rightGray.classList[0])
+
+    if (rightGray.classList[0] == "expandGrayAdvanced") {
+        closeCurrentWeatherSquare();
+        return;
+    }
+
+    var lBBG = document.getElementById("leftbottombodygrid")
+
+    setTimeout(function() {
+        lBBG.style.transition = "cubic-bezier(.41,.6,.4,.95) 1s;", lBBG.style.top = "32.9vh", lBBG.style.filter = "opacity(0)"
+    }, 1)
+
 
     //Change the rightGray square to expand 
 
@@ -834,10 +851,7 @@ function expandCurrentWeatherSquare () {
 
     //Change the box height to expand 
 
-    lTBG.classList.remove("heightNormalLeftop")
-    lTBG.classList.add("heightExpandLeftop")
-
-    lTBG.style.zIndex = "2"
+    //lTBG.style.zIndex = "2"
 
     //Add a scroll to the box if needed 
 
@@ -854,7 +868,7 @@ function expandCurrentWeatherSquare () {
 function closeCurrentWeatherSquare () {
     //Vars:
 
-    var lTBG = document.getElementById("leftopbodygrid")
+    var lBBG = document.getElementById("leftbottombodygrid")
     var rightGray = document.getElementById("farLeftGray")
     var textDesc = document.getElementById("textDescCurrent")
     var paraIcon = document.getElementById("paragraphIcon")
@@ -866,12 +880,12 @@ function closeCurrentWeatherSquare () {
 
     //Change the box height to expand 
 
-    lTBG.classList.remove("heightExpandLeftop")
-    lTBG.classList.add("heightNormalLeftop")
+    //lTBG.classList.remove("heightExpandLeftop")
+    //lTBG.classList.add("heightNormalLeftop")
 
     setTimeout(function() {
-        lTBG.style.zIndex = null
-    },500);
+        lBBG.style.transition = "cubic-bezier(.41,.6,.4,.95) 1s;", lBBG.style.top = "30.9vh", lBBG.style.filter = "opacity(1)"
+    },100);
 
     //Add a scroll to the box if needed 
 
@@ -903,6 +917,57 @@ ADVANCED WEATHER DATA FOR EACH HOUR
 
 5. ALL OF THESE PROPERTIES SHOULD BE REASSIGNED A NULL VALUE IF POSSIBLE WHEN CLOSING THE SQUARE */
 
+document.getElementById("HourlyGrid").addEventListener("mouseenter", function() {
+
+    return;
+
+    var gray = document.getElementById("HourlyCurrentGray")
+    var hG = document.getElementById("HourlyGrid") 
+
+
+
+
+    if (window.innerWidth > 1200) {
+        gray.style.filter = "opacity(0.1)"
+        setTimeout(function() {
+            //alert("dsds")
+            var hGRect = hG.getBoundingClientRect()
+            var hGActualWidthColumns = hGRect.width/16 
+
+            var exactFromStart = (hGRect.width - hGActualWidthColumns)
+
+            //console.log(hGActualWidthColumns)
+        
+            gray.style.filter = "opacity(1)"
+
+            gray.style.width = exactFromStart + "px"
+        }, 501)
+    }
+})
+
+document.getElementById("HourlyGrid").addEventListener("mouseleave", function() {
+
+
+    return;
+
+    var gray = document.getElementById("HourlyCurrentGray")
+    var hG = document.getElementById("HourlyGrid") 
+
+    if (window.innerWidth > 1200) {
+        gray.style.filter = "opacity(0.1)"
+
+        setTimeout(function() {
+            gray.style.width = null
+            setTimeout(function() {
+                gray.style.filter = "opacity(1)"
+            },200)
+        },401)
+    }
+})
+
+
+
+
 
 function expandHourlyAdvanced() {
 
@@ -911,6 +976,9 @@ function expandHourlyAdvanced() {
 
         var hG = document.getElementById("HourlyGrid") 
         var lBBG = document.getElementById("leftbottombodygrid") 
+        var gray = document.getElementById("HourlyCurrentGray")
+
+
 
         //Change the square to become bigger:
 
@@ -922,6 +990,7 @@ function expandHourlyAdvanced() {
         }, 501)*/
 
         hG.classList.add("HourlyGridOverflowAuto");
+
         //hG.classList.remove("normalHourlyGrid");
         //hG.classList.add("fullExpandHourlyGrid");
 
@@ -1082,8 +1151,8 @@ hourlyGrid.addEventListener("mouseenter", function()  {
             var IsMouse = document.getElementById('innerHtmlLogs').innerHTML    
         
             if (IsMouse == "isMouse") {
-                if (e.deltaY > 0) hourlyGrid.scrollLeft += 100;
-                else hourlyGrid.scrollLeft -= 100;
+                if (e.deltaY > 0) hourlyGrid.scrollLeft += 20;
+                else hourlyGrid.scrollLeft -= 20;
             } 
         } else {
             //console.warn("dss")
@@ -1102,13 +1171,16 @@ hourlyGrid.onmouseleave = function () {
 }
 
 
+function isOverflown(element) {
+    return element.scrollWidth > element.clientWidth;
+}
 /* Daily Box Hourly Grids scrolling functions */
 
 setTimeout(function(){
     var hourlyDay1 = document.getElementById('HourlyGridDay1')
 
     hourlyDay1.addEventListener("mouseenter", function()  {
-    
+
         //console.warn("detected that mouse entered")
     
         function handler(e) {
@@ -1132,12 +1204,23 @@ setTimeout(function(){
     });
     
     hourlyDay1.onmouseenter = function () {
+
+        var el = hourlyDay1
+        var checkOverflow = (isOverflown(el) ? 'yes' : 'no')
+        if (checkOverflow == 'no') {
+            return;
+        } 
+
         localStorage.setItem("isMouseOverHourlyGridDay1", "yes")
         document.getElementById("dailyGrid").style.overflowY = "hidden"
+
+        hourlyDay1.style.gridTemplateRows = "0.7fr 0.7fr 1fr"
+
     }
     hourlyDay1.onmouseleave = function () {
         localStorage.setItem("isMouseOverHourlyGridDay1", "no")
         document.getElementById("dailyGrid").style.overflowY = null
+        hourlyDay1.style.gridTemplateRows = null
     }
 }, 500);
 
@@ -1170,12 +1253,20 @@ setTimeout(function(){
     });
     
     hourlyDay2.onmouseenter = function () {
+        var el = hourlyDay2
+        var checkOverflow = (isOverflown(el) ? 'yes' : 'no')
+        if (checkOverflow == 'no') {
+            return;
+        } 
+
         localStorage.setItem("isMouseOverHourlyGridDay2", "yes")
         document.getElementById("dailyGrid").style.overflowY = "hidden"
+        hourlyDay2.style.gridTemplateRows = "0.7fr 0.7fr 1fr"
     }
     hourlyDay2.onmouseleave = function () {
         localStorage.setItem("isMouseOverHourlyGridDay2", "no")
         document.getElementById("dailyGrid").style.overflowY = null
+        hourlyDay2.style.gridTemplateRows = null
     }
 }, 500);
 
@@ -1208,12 +1299,20 @@ setTimeout(function(){
     });
     
     hourlyDay3.onmouseenter = function () {
+        var el = hourlyDay3
+        var checkOverflow = (isOverflown(el) ? 'yes' : 'no')
+        if (checkOverflow == 'no') {
+            return;
+        } 
+
         localStorage.setItem("isMouseOverHourlyGridDay3", "yes")
         document.getElementById("dailyGrid").style.overflowY = "hidden"
+        hourlyDay3.style.gridTemplateRows = "0.7fr 0.7fr 1fr"
     }
     hourlyDay3.onmouseleave = function () {
         localStorage.setItem("isMouseOverHourlyGridDay3", "no")
         document.getElementById("dailyGrid").style.overflowY = null
+        hourlyDay3.style.gridTemplateRows = null
     }
 }, 500);
 
@@ -1246,11 +1345,37 @@ setTimeout(function(){
     });
     
     hourlyDay4.onmouseenter = function () {
+        var el = hourlyDay4
+        var checkOverflow = (isOverflown(el) ? 'yes' : 'no')
+        if (checkOverflow == 'no') {
+            return;
+        } 
+
         localStorage.setItem("isMouseOverHourlyGridDay4", "yes")
         document.getElementById("dailyGrid").style.overflowY = "hidden"
+        hourlyDay4.style.gridTemplateRows = "0.7fr 0.7fr 1fr"
     }
     hourlyDay4.onmouseleave = function () {
         localStorage.setItem("isMouseOverHourlyGridDay4", "no")
         document.getElementById("dailyGrid").style.overflowY = null
+        hourlyDay4.style.gridTemplateRows = null
     }
 }, 500);
+
+/*
+document.getElementById("dotsquare").addEventListener("mouseenter", function () {
+    document.getElementById("circle").style.filter = "opacity(1)"
+    document.getElementById("ring").style.filter = "opacity(1)"
+    document.getElementById("ring").style.transform = "scale(0.9)"
+})
+document.getElementById("dotsquare").addEventListener("mouseleave", function () {
+    document.getElementById("circle").style.filter = null
+    document.getElementById("ring").style.filter = null
+    document.getElementById("ring").style.transform = null
+})
+document.getElementById("dotsquare").addEventListener("click", function () {
+    document.getElementById("ring").style.transform = "scale(1.4)"
+    document.getElementById("ring").style.filter = "opacity(0)"
+})
+
+*/

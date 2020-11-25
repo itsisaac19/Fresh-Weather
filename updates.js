@@ -1,5 +1,40 @@
 document.getElementById("updatesBox").innerHTML = `
 <h1>Update (V 1.5)</h1>
+<p id="pastUpdates">November 24, 2020</p>
+<p>Hey! A new look (and a lot more). </p>
+<p><b>A lot was changed.</b> This will hopefully help. The entire website is
+acessible without visiting another web address, or page. 
+
+<br><br>
+
+On the far right
+of the window is a bar with icons; each representing different weather 
+information. The home icon is your dashboard, the clock icon is hourly 
+weather, and the calendar week view represents daily weather. 
+
+<br><br>
+
+The arrows in
+a circle allow you to view the latest updates and notes. The sliders bring
+you to the customize square. <b>More info below:</b></p>
+<li>Content</li>
+<dd> - Hourly weather is now much more robust, with hour by hour advanced
+information. <b>NOTE: Most everything is able to be scrolled vertically or 
+horizontally.</b>
+</dd>
+<li>Responsiveness</li>
+<dd> - This update isn't responsive friendly, so don't be suprised if 
+things aren't aligned correctly. <b>Please report any issues by emailing me at isaac@freshweather.co</b>
+</dd>
+<dd> - THIS UPDATE IS NOT MOBILE FRIENDLY, please don't visit it on a 
+mobile device as you will see garbage. Mobile friendly is coming soon.
+</dd>
+
+<p id="pastUpdates">PAST UPDATES</p>
+
+
+
+<h1>Update (V 1.5)</h1>
 <p id="pastUpdates">November 6, 2020</p>
 <p>Heyo! Some updates here:</p>
 <li>Content</li>
@@ -11,7 +46,8 @@ document.getElementById("updatesBox").innerHTML = `
 <li>Bug Fixes</li>
     <dd> - <b>Mobile users</b> will not encounter an issue where there is a white rectangle covering most of the viewport (yay!).</dd>
 <hr>
-<p id="pastUpdates">PAST UPDATES</p>
+
+
 <h1>Update (V 1.4)</h1>
 <p id="pastUpdates">October 31, 2020</p>
 <p>Hi loyal testers!</p>
@@ -26,6 +62,8 @@ document.getElementById("updatesBox").innerHTML = `
     <dd> - <b>More clickable squares-</b>Each square that is displaying information will be able to be clicked, and expanded. So far the top left, bottom left, and middle squares are able to be clicked. Try it out!</dd>
 </p>
 <hr>
+
+
 <h1>Update (V 1.3)</h1>
 <p id="pastUpdates">October 19, 2020</p>
 <p>Heyo! Back with another update!</p>
@@ -39,6 +77,8 @@ document.getElementById("updatesBox").innerHTML = `
     <dd> - Each square on the homepage that is displaying information will be able to be clicked, and expanded. So far only the top left square (the one with the current temperature) is able to be clicked. Try it out!</dd>
 </p>
 <hr>
+
+
 <h1>Update (V 1.2)</h1>
 <p id="pastUpdates">October 19, 2020</p>
 <p>Gee! More weather more weather!
@@ -55,6 +95,8 @@ document.getElementById("updatesBox").innerHTML = `
     <dd> - The Update box is now easier to view with a blur in the background, as well as a larger text box.</dd>
 </p>
 <hr>
+
+
 <h1>Update (V 1.1)</h1>
 <p id="pastUpdates">October 17, 2020</p>
 <p>Heyo! Big updates here!
@@ -69,6 +111,8 @@ document.getElementById("updatesBox").innerHTML = `
     <dd> - The Update box is now accessible via the tree icon on the top left of your screen.</dd>
 </p>
 <hr>
+
+
 <h1>First Update (V 1.0)</h1>
 <p id="pastUpdates">October 16, 2020</p>
 <p>

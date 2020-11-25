@@ -18,53 +18,53 @@ function placeHourlyGrids (string) {
                 <canvas id="hourlyChartDay`+string+`"></canvas>
             </em>
     
-            <div id="temphour`+string+`Day`+string+`" class="temphour1Days">60°</div>
+            <div id="temphour`+string+`Day`+string+`" class="temphour1Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour1Day`+string+`" class="wicon1Days"/>  
-            <div id="hour1Day`+string+`" class="hour1days">9 AM</div>  
+            <div id="hour1Day`+string+`" class="hour1days hourTimesDay`+string+`">9 AM</div>  
 
-            <div id="temphour`+(string + 1)+`Day`+string+`" class="temphour2Days">60°</div>
+            <div id="temphour`+(string + 1)+`Day`+string+`" class="temphour2Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour2Day`+string+`" class="wicon2Days"/>  
-            <div id="hour2Day`+string+`" class="hour2days">10 AM</div> 
+            <div id="hour2Day`+string+`" class="hour2days hourTimesDay`+string+`">10 AM</div> 
 
-            <div id="temphour`+(string + 2)+`Day`+string+`" class="temphour3Days">60°</div>
+            <div id="temphour`+(string + 2)+`Day`+string+`" class="temphour3Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour3Day`+string+`" class="wicon3Days"/>  
-            <div id="hour3Day`+string+`" class="hour3days">11 AM</div> 
+            <div id="hour3Day`+string+`" class="hour3days hourTimesDay`+string+`">11 AM</div> 
 
-            <div id="temphour`+(string + 3)+`Day`+(string)+`" class="temphour4Days">60°</div>
+            <div id="temphour`+(string + 3)+`Day`+(string)+`" class="temphour4Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour4Day`+string+`" class="wicon4Days"/>  
-            <div id="hour4Day`+string+`" class="hour4days">12 PM</div> 
+            <div id="hour4Day`+string+`" class="hour4days hourTimesDay`+string+`">12 PM</div> 
 
-            <div id="temphour`+(string + 4)+`Day`+(string)+`" class="temphour5Days">60°</div>
+            <div id="temphour`+(string + 4)+`Day`+(string)+`" class="temphour5Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour5Day`+string+`" class="wicon5Days"/>  
-            <div id="hour5Day`+string+`" class="hour5days">1 PM</div>  
+            <div id="hour5Day`+string+`" class="hour5days hourTimesDay`+string+`">1 PM</div>  
 
-            <div id="temphour`+(string + 5)+`Day`+(string)+`" class="temphour6Days">60°</div>
+            <div id="temphour`+(string + 5)+`Day`+(string)+`" class="temphour6Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour6Day`+string+`" class="wicon6Days"/>  
-            <div id="hour6Day`+string+`" class="hour6days">2 PM</div> 
+            <div id="hour6Day`+string+`" class="hour6days hourTimesDay`+string+`">2 PM</div> 
 
-            <div id="temphour`+(string + 6)+`Day`+(string)+`" class="temphour7Days">60°</div>
+            <div id="temphour`+(string + 6)+`Day`+(string)+`" class="temphour7Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour7Day`+string+`" class="wicon7Days"/>  
-            <div id="hour7Day`+string+`" class="hour7days">3 PM</div> 
+            <div id="hour7Day`+string+`" class="hour7days hourTimesDay`+string+`">3 PM</div> 
 
-            <div id="temphour`+(string + 7)+`Day`+(string)+`" class="temphour8Days">60°</div>
+            <div id="temphour`+(string + 7)+`Day`+(string)+`" class="temphour8Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour8Day`+string+`" class="wicon8Days"/>  
-            <div id="hour8Day`+string+`" class="hour8days">4 PM</div> 
+            <div id="hour8Day`+string+`" class="hour8days hourTimesDay`+string+`">4 PM</div> 
 
-            <div id="temphour`+(string + 8)+`Day`+(string)+`" class="temphour9Days">60°</div>
+            <div id="temphour`+(string + 8)+`Day`+(string)+`" class="temphour9Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour9Day`+string+`" class="wicon9Days"/>  
-            <div id="hour9Day`+string+`" class="hour9days">5 PM</div>  
+            <div id="hour9Day`+string+`" class="hour9days hourTimesDay`+string+`">5 PM</div>  
 
-            <div id="temphour`+(string + 9)+`Day`+(string)+`" class="temphour10Days">60°</div>
+            <div id="temphour`+(string + 9)+`Day`+(string)+`" class="temphour10Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour10Day`+string+`" class="wicon10Days"/>  
-            <div id="hour10Day`+string+`" class="hour10days">6 PM</div> 
+            <div id="hour10Day`+string+`" class="hour10days hourTimesDay`+string+`">6 PM</div> 
 
-            <div id="temphour`+(string + 10)+`Day`+(string)+`" class="temphour11Days">60°</div>
+            <div id="temphour`+(string + 10)+`Day`+(string)+`" class="temphour11Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour11Day`+string+`" class="wicon11Days"/>  
-            <div id="hour11Day`+string+`" class="hour11days">7 PM</div> 
+            <div id="hour11Day`+string+`" class="hour11days hourTimesDay`+string+`">7 PM</div> 
 
-            <div id="temphour`+(string + 11)+`Day`+(string)+`" class="temphour12Days">60°</div>
+            <div id="temphour`+(string + 11)+`Day`+(string)+`" class="temphour12Days tempHourDaysBottomUp">60°</div>
             <img alt="img" id="wiconHour12Day`+string+`" class="wicon12Days"/>  
-            <div id="hour12Day`+string+`" class="hour12days">8 PM</div> 
+            <div id="hour12Day`+string+`" class="hour12days hourTimesDay`+string+`">8 PM</div> 
     
         </div>
     
