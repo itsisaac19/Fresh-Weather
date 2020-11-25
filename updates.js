@@ -1,5 +1,5 @@
 document.getElementById("updatesBox").innerHTML = `
-<h1>Update (V 1.5)</h1>
+<h1>Update (V 1.7)</h1>
 <p id="pastUpdates">November 24, 2020</p>
 <p>Hey! A new look (and a lot more). </p>
 <p><b>A lot was changed.</b> This will hopefully help. The entire website is
