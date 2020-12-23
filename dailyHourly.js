@@ -373,3 +373,39 @@ function day4chart () {
 
       });
 }
+
+
+function expandDay(string) {
+
+  var hourlyGrid = document.getElementById("HourlyDay" + string)
+
+  var dates = document.getElementsByClassName("dateDaily")
+  var dateOfClicked = document.getElementById("dateDaily" + string).innerHTML
+
+}
+
+
+document.getElementById("day1").addEventListener("click", function() {
+  expandDay(1);
+})
+document.getElementById("day2").addEventListener("click", function() {
+  expandDay(2);
+})
+document.getElementById("day3").addEventListener("click", function() {
+  expandDay(3);
+})
+document.getElementById("day4").addEventListener("click", function() {
+  expandDay(4);
+})
+document.getElementById("day5").addEventListener("click", function() {
+  expandDay(5);
+})
+document.getElementById("day6").addEventListener("click", function() {
+  expandDay(6);
+})
+document.getElementById("day7").addEventListener("click", function() {
+  expandDay(7);
+})
+
+
+

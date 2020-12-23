@@ -590,7 +590,18 @@ width: 40px;
 #weekCalendar:hover {
   cursor: pointer;
 }
-
+#eachDayIcon {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translateX(-50%);
+}
+#checkMarkDay {
+  width: 40px;
+}
+#checkMarkDay:hover {
+  cursor: pointer;
+}
 
 
 
@@ -1395,7 +1406,7 @@ width: 40px;
 }
 .expandBox {
   transition: ease-in-out 0.6s;
-  width: 90%;
+  width: 80%;
 }
 #dailyGrid {
   position: absolute;
@@ -1422,6 +1433,14 @@ width: 40px;
     left: -2px;
   }
 }
+#day1 { grid-area: 1 / 1 / 2 / 5; }
+#day2 { grid-area: 2 / 1 / 3 / 5; }
+#day3 { grid-area: 3 / 1 / 4 / 5; }
+#day4 { grid-area: 4 / 1 / 5 / 5; }
+#day5 { grid-area: 5 / 1 / 6 / 5; }
+#day6 { grid-area: 6 / 1 / 7 / 5; }
+#day7 { grid-area: 7 / 1 / 8 / 5; }
+
 .normalHourlyGridDay {
   font-family: 'Barlow', sans-serif;
   font-size: calc(10px + (13 - 10) * ((100vw - 300px) / (1600 - 300)));
@@ -1437,7 +1456,7 @@ width: 40px;
   overflow-y: hidden;
 
   display: grid;
-  grid-template-columns: repeat(12, 60px);
+  grid-template-columns: repeat(12, 70px);
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
